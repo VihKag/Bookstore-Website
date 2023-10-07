@@ -1,12 +1,10 @@
 import './App.css';
-
+import ProductCard from './components/Products/Productcard';
 function App() {
   return (
     <>
       <div className="App">
-        <div className="test-tailwind text-red-500">
-          Hello world
-        </div>
+        <ProductCard title="Product"/>
       </div>
     </>
   );
