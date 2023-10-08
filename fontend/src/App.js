@@ -1,12 +1,12 @@
 import './App.css';
-
+import Header from './components/Header/Header';
+import ProductList from './components/Products/ProductList';
 function App() {
   return (
     <>
       <div className="App">
-        <div className="test-tailwind text-red-500">
-          Hello world
-        </div>
+        <Header/>
+        <ProductList />
       </div>
     </>
   );
