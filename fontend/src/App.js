@@ -1,10 +1,12 @@
 import './App.css';
-import ProductCard from './components/Products/Productcard';
+import Header from './components/Header/Header';
+import ProductList from './components/Products/ProductList';
 function App() {
   return (
     <>
       <div className="App">
-        <ProductCard />
+        <Header/>
+        <ProductList />
       </div>
     </>
   );
