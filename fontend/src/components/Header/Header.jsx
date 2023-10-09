@@ -6,7 +6,7 @@ const Header = () => {
       <div className="w-10/12 mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img src="logo.png" alt="Website Logo" className="h-8 w-8" />
+            <FontAwesomeIcon icon="fa-solid fa-book" />
             <span className="ml-2 text-white text-xl font-semibold">Bookstore</span>
           </div>
           <nav className="hidden md:flex">
