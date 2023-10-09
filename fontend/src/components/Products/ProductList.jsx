@@ -3,7 +3,7 @@ import ProductCard from "./Productcard";
 const ProductList = () =>{
     return(
         <>
-            <div className="flex flex-wrap w-10/12 mx-auto">
+            <div className="flex flex-wrap">
                     <ProductCard />
                     <ProductCard />
                     <ProductCard />
@@ -11,7 +11,7 @@ const ProductList = () =>{
                     <ProductCard />
                     <ProductCard />               
             </div>  
-            <div className="w-10/12 mx-auto justify-center flex">
+            <div className="mx-auto justify-center flex">
                 <Pagination/>
             </div>
         </>
