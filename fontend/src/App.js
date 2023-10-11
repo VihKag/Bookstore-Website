@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css"; // Nếu bạn có các quy tắc CSS tùy chỉnh, hãy import chúng ở đây
+import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 function App() {
@@ -12,10 +12,13 @@ function App() {
       </div>
       {/* Phần Form được đặt bên phải */}
       <div className="w-full flex items-center justify-center lg:w-1/2">
-        <LoginPage />
-        {/* <SignupPage /> */}
+        {/* <LoginPage /> */}
+        <SignupPage />
       </div>
     </div>
+    //   <React.Fragment>
+    //     <PasswordApp />
+    //   </React.Fragment>
   );
 }
 

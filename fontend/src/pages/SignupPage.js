@@ -1,9 +1,10 @@
 import * as React from "react";
+import PasswordApp from "./PasswordApp";
 export default function SignupPage() {
   return (
-    <div className="bg-white px-10 py-20 rounded-3xl border-1 border-gray">
+    <div className="bg-white px-12 py-16 rounded-3xl border-2 border-gray">
       <h1 className="text-5xl font-semibold text-center">Đăng Ký</h1>
-      <p className=" text-center font-medium text-lg text-gray-500 mt-4 ">
+      <p className=" text-center font-medium text-lg text-gray-500 mt- ">
         Xin chào! Mời bạn đăng ký tài khoản
       </p>
       <div className="mt-2">
@@ -23,19 +24,21 @@ export default function SignupPage() {
         </div>
         <div classname="mt-2">
           <label className="text-lg font-medium">Mật khẩu</label>
-          <input
+          {/* <input
             className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
             placeholder="Nhập mật khẩu"
             type="password"
-          />
+          /> */}
+          <PasswordApp />
         </div>
         <div classname="mt-2">
           <label className="text-lg font-medium">Xác nhận mật khẩu</label>
-          <input
+          {/* <input
             className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
             placeholder="Nhập lại mật khẩu"
             type="password"
-          />
+          /> */}
+          <PasswordApp />
         </div>
         <div className="mt-4 flex justify-between items-center">
           <div>
