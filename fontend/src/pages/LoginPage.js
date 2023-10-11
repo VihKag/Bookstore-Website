@@ -1,8 +1,10 @@
 import * as React from "react";
-export default function LoginPage() {
+import PasswordApp from "./PasswordApp";
+
+const LoginPage = () => {
   return (
-    <div className="bg-white px-10 py-20 rounded-3xl border-1 border-gray">
-      <h1 className="text-5xl font-semibold text-center">Đăng Nhập</h1>
+    <div className="bg-white px-12 py-16 mt-[-10px] rounded-3xl border-2 border-gray">
+      <h1 className="text-5xl font-semibold text-center mb-4">Đăng Nhập</h1>
       <p className="font-medium text-lg text-gray-500 mt-4 ">
         Xin chào! Mời bạn đăng nhập tài khoản
       </p>
@@ -14,18 +16,14 @@ export default function LoginPage() {
             placeholder="Nhập tên người dùng"
           />
         </div>
-        <div classname="mt-2">
+        <div className="mt-2">
           <label className="text-lg font-medium">Mật khẩu</label>
-          <input
-            className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
-            placeholder="Nhập mật khẩu"
-            type="password"
-          />
+          <PasswordApp />
         </div>
         <div className="mt-4 flex justify-between items-center">
           <div>
             <input type="checkbox" id="remember" />
-            <label className="ml-2 font-medium text-base" for="remember">
+            <label className="ml-2 font-medium text-base" htmlFor="remember">
               Ghi nhớ mật khẩu
             </label>
           </div>
@@ -111,4 +109,6 @@ export default function LoginPage() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginPage;
