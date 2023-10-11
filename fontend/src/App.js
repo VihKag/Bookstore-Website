@@ -1,13 +1,10 @@
-import React from "react";
-// import CategoryPage from "./pages/CategoryPage";
-import Home from "./pages/Home";
-import "./App.css";
+import './App.css';
+import CategoryPage from './pages/CategoryPage';
 function App() {
   return (
     <>
       <div className="App">
-        {/* <CategoryPage/> */}
-        <Home /> 
+        <CategoryPage />
       </div>
     </>
   );
