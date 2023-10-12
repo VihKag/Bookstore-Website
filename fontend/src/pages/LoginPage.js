@@ -3,7 +3,13 @@ import PasswordApp from "./PasswordApp";
 
 const LoginPage = () => {
   return (
-    <div className="bg-white px-12 py-16 mt-[-10px] rounded-3xl border-2 border-gray">
+    <div
+      className="bg-white px-14 py-16 mt-[-10px] rounded-3xl border-2 border-gray"
+      style={{
+        boxShadow:
+          "0px 1px 2px rgba(0, 0, 0, 0.05), 0px -1px 2px rgba(0, 0, 0, 0.05), 1px 0px 2px rgba(0, 0, 0, 0.05), -1px 0px 2px rgba(0, 0, 0, 0.05)",
+      }}
+    >
       <h1 className="text-5xl font-semibold text-center mb-2">Đăng Nhập</h1>
       <p className="font-medium text-lg text-gray-500 mt-4 ">
         Xin chào! Mời bạn đăng nhập tài khoản
@@ -27,12 +33,12 @@ const LoginPage = () => {
               Ghi nhớ mật khẩu
             </label>
           </div>
-          <button className="font-medium text-base text-violet-500 hover:underline hover:scale-[1.03]">
+          <button className="font-medium text-base text-[#0dd3b7] hover:underline hover:scale-[1.03]">
             Quên mật khẩu?
           </button>
         </div>
         <div className="mt-4 flex flex-col gap-y-4">
-          <button className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 rounded-xl bg-gradient-to-tr from-violet-500 to bg-pink-500 text-white text-lg font-bold">
+          <button className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 rounded-xl bg-[#0dd3b7] text-white text-lg font-bold">
             Đăng nhập
           </button>
           <button className="flex justify-center items-center rounded-xl py-2 border-2 border-gray-100 items-center gap-2 active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all text-lg font-semibold">
@@ -102,7 +108,7 @@ const LoginPage = () => {
         </div>
         <div className="mt-6 flex justify-center items-center">
           <p className="font-medium text-base">Bạn chưa có tài khoản? </p>
-          <button className="font-medium text-base text-violet-500 hover:underline hover:scale-[1.03] ml-1.5">
+          <button className="font-medium text-base text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1.5">
             Đăng ký
           </button>
         </div>
