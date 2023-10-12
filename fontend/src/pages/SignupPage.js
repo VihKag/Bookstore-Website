@@ -1,10 +1,11 @@
 import * as React from "react";
 import PasswordApp from "./PasswordApp";
+import PasswordConfirm from "./PasswordConfirm";
 export default function SignupPage() {
   return (
-    <div className="bg-white px-12 py-16 rounded-3xl border-2 border-gray">
-      <h1 className="text-5xl font-semibold text-center">Đăng Ký</h1>
-      <p className=" text-center font-medium text-lg text-gray-500 mt- ">
+    <div className="bg-white px-12 py-16 mt-[-10px] rounded-3xl border-2 border-gray">
+      <h1 className="text-5xl font-semibold text-center mb-2">Đăng Ký</h1>
+      <p className=" text-center font-medium text-lg text-gray-500 mt-4 ">
         Xin chào! Mời bạn đăng ký tài khoản
       </p>
       <div className="mt-2">
@@ -38,7 +39,7 @@ export default function SignupPage() {
             placeholder="Nhập lại mật khẩu"
             type="password"
           /> */}
-          <PasswordApp />
+          <PasswordConfirm />
         </div>
         <div className="mt-4 flex justify-between items-center">
           <div>
