@@ -6,11 +6,13 @@ import Login from "./Login";
 import Signup from "./Signup";
 import ProductDetail from './pages/ProductDetail';
 import Home from './pages/Home';
+import Category from './pages/CategoryPage'
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/category" element={<Category/>} />
         <Route path="/prodcutdetail" element={<ProductDetail />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
