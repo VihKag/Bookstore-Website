@@ -1,7 +1,7 @@
 import React from "react";
-import "./App.css";
-import SignupPage from "./pages/SignupPage";
-import backgroundImage from "./assets/image/bg.gif";
+import "../App.css";
+import SignupPage from "./SignupPage";
+import backgroundImage from "../assets/image/bg.gif";
 function Login() {
   const backgroundStyle = {
     backgroundImage: `url(${backgroundImage})`,

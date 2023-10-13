@@ -2,8 +2,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Login from "./Login";
-import Signup from "./Signup";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import ProductDetail from './pages/ProductDetail';
 import Home from './pages/Home';
 import Category from './pages/CategoryPage'
