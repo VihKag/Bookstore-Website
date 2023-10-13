@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import pic from "../assets/image/book1.jpg";
 import {
   faStar,
   faStarHalfAlt,
@@ -32,11 +33,11 @@ function ProductDetail() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left section */}
           <div className="img-display overflow-hidden">
-            <div className="img-showcase flex transition-all duration-500 ease">
+            <div className="img-container" style={{ height: "500px" }}>
               <img
-                src="/image/shoe_1.jpg"
-                alt="pic1"
-                style={{ width: "100%", height: "auto" }}
+                src={pic}
+                alt="pic"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
               />
             </div>
           </div>
