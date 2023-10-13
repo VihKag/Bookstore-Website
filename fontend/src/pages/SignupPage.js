@@ -1,17 +1,24 @@
 import * as React from "react";
 import PasswordApp from "./PasswordApp";
+import PasswordConfirm from "./PasswordConfirm";
 export default function SignupPage() {
   return (
-    <div className="bg-white px-12 py-16 rounded-3xl border-2 border-gray">
-      <h1 className="text-5xl font-semibold text-center">Đăng Ký</h1>
-      <p className=" text-center font-medium text-lg text-gray-500 mt- ">
+    <div
+      className="bg-white px-14 py-16 mt-[-10px] rounded-3xl border-2 border-gray"
+      style={{
+        boxShadow:
+          "0px 1px 2px rgba(0, 0, 0, 0.05), 0px -1px 2px rgba(0, 0, 0, 0.05), 1px 0px 2px rgba(0, 0, 0, 0.05), -1px 0px 2px rgba(0, 0, 0, 0.05)",
+      }}
+    >
+      <h1 className="text-5xl font-semibold text-center mb-4">Đăng Ký</h1>
+      <p className=" text-center font-medium text-lg text-gray-500 mt-4 ">
         Xin chào! Mời bạn đăng ký tài khoản
       </p>
       <div className="mt-2">
         <div>
           <label className="text-lg font-medium">Tài khoản</label>
           <input
-            className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 mb-1 bg-transparent"
+            className="w-full border-2 border-gray-100 rounded-xl py-4 px-6 mt-1 mb-1 bg-transparent"
             placeholder="Nhập tên người dùng"
           />
         </div>
@@ -38,7 +45,7 @@ export default function SignupPage() {
             placeholder="Nhập lại mật khẩu"
             type="password"
           /> */}
-          <PasswordApp />
+          <PasswordConfirm />
         </div>
         <div className="mt-4 flex justify-between items-center">
           <div>
@@ -52,13 +59,16 @@ export default function SignupPage() {
           </button> */}
         </div>
         <div className="mt-6 flex flex-col gap-y-4">
-          <button className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 rounded-xl bg-gradient-to-tr from-violet-500 to bg-pink-500 text-white text-lg font-bold">
+          <button
+            className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 rounded-xl bg-[#0dd3b7]
+           text-white text-lg font-bold"
+          >
             Xác nhận
           </button>
         </div>
         <div className="mt-6 flex justify-center items-center">
           <p className="font-medium text-base">Bạn đã có tài khoản? </p>
-          <button className="font-medium text-base text-violet-500 hover:underline hover:scale-[1.03] ml-1.5">
+          <button className="font-medium text-base text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1.5">
             Đăng nhập
           </button>
         </div>
