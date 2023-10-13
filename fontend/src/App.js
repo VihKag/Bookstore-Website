@@ -1,10 +1,14 @@
 import './App.css';
-import CategoryPage from './pages/CategoryPage';
+import Home from './pages/Home';
+// import CategoryPage from './pages/CategoryPage';
+// import CarouselSlider from './components/Carousel/Carousel';
 function App() {
   return (
     <>
       <div className="App">
-        <CategoryPage />
+        <Home/>
+        {/* <CategoryPage /> */}
+        {/* <CarouselSlider/> */}
       </div>
     </>
   );

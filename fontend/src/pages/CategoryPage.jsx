@@ -3,6 +3,8 @@ import React from "react";
 import ProductList from "../components/Products/ProductList";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+// import banner1 from "../assets/banner/banner1.jpg";
+// import banner2 from "../assets/banner/banner2.png";
 import CarouselSlider from "../components/Carousel/Carousel";
 const CategoryPage = ({ products }) => {
   const genres = ["Fiction", "Non-fiction", "Science", "Mystery"];
@@ -40,7 +42,9 @@ const CategoryPage = ({ products }) => {
           </div>
           <div>
             <div className="ml-5">
-              <div className=""><CarouselSlider /></div>
+              <div className="mb-2">
+                <CarouselSlider/>
+              </div>
               
               <div className="flex justify-center">
                 <select

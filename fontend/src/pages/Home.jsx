@@ -6,11 +6,12 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="container bg-slate-500">
+      <Carousel/>
+      <div className="container">
         <section>
           {/* Banner quảng cáo */}
           <div className="banner">
-            <Carousel/>
+
           </div>
         </section>
 
