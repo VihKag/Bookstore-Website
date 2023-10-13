@@ -41,7 +41,7 @@ const LoginPage = () => {
           <button className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 rounded-xl bg-[#0dd3b7] text-white text-lg font-bold">
             Đăng nhập
           </button>
-          <button className="flex justify-center rounded-xl py-2 border-2 border-gray-100 items-center gap-2 active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all text-lg font-semibold">
+          <button className="flex justify-center items-center rounded-xl py-2 border-2 border-gray-100 gap-2 active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all text-lg font-semibold">
             <svg
               width="30px"
               height="30px"

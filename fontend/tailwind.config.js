@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}","./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}"],
   theme: {
     container: {
       padding: {
@@ -16,7 +16,6 @@ module.exports = {
   plugins: [
     function ({ addUtilities }) {
       const newUtilities = {};
-
       // Tạo lớp CSS cho các kích thước từ 1 đến 12
       for (let i = 1; i <= 12; i++) {
         newUtilities[`.col-${i}`] = {
@@ -25,5 +24,6 @@ module.exports = {
       }
       addUtilities(newUtilities, ['responsive', 'hover']);
     },
+    require('flowbite/plugin')
   ],
 }

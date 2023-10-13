@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Footer = () =>{
     return(
         <>
-            <div className="flat-iconbox mx-auto container border-tb mt-6 bg-white">
+            <div className="flat-iconbox mx-auto border-tb mt-6 bg-white">
                 <div>
                     <div className="flex flex-wrap justify-around align-middle">
                         <div className="sm:w-1/2 md:w-1/4 max-sm:w-full justify-center flex p-4">
