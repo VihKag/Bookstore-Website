@@ -1,5 +1,5 @@
 import * as React from "react";
-import PasswordApp from "./PasswordApp";
+import PasswordApp from "../components/Other/PasswordApp";
 
 const LoginPage = () => {
   return (

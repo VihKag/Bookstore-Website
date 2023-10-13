@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import SignupPage from "./SignupPage";
 import backgroundImage from "../assets/image/bg.gif";
-function Login() {
+function Signup() {
   const backgroundStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover", // Đảm bảo hình ảnh được hiển thị đầy đủ trong phần nền
@@ -24,4 +24,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
