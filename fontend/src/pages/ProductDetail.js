@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import pic from "../assets/image/shoe_3.jpg"
 import {
   faStar,
   faStarHalfAlt,
@@ -34,7 +35,7 @@ function ProductDetail() {
           <div className="img-display overflow-hidden">
             <div className="img-showcase flex transition-all duration-500 ease">
               <img
-                src="/image/shoe_1.jpg"
+                src={pic}
                 alt="pic1"
                 style={{ width: "100%", height: "auto" }}
               />
