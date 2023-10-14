@@ -8,16 +8,16 @@ const CarouselSlider = () => {
       <div id="default-carousel" className="relative w-full" data-carousel="slide">
         <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src={banner1} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+              <img src={banner1} className="absolute rounded-md block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
           </div>
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src={banner2} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+              <img src={banner2} className="absolute rounded-md block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
           </div>
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src={banner1} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+              <img src={banner1} className="absolute rounded-md block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
           </div>
           <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src={banner2} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+              <img src={banner2} className="absolute rounded-md block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
           </div>
         </div>
         <button type="button" className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-2 cursor-pointer group focus:outline-none" data-carousel-prev>
