@@ -15,7 +15,7 @@ const ProductCard = (product) => {
     };
 
     return (
-        <div className="xl:col-3 lg:col-4 sm:col-6 md:col-5">
+        <div className="xl:col-1-4 lg:col-1-3 sm:col-1-2 md:col-5-12">
             <div className="card-height pb-6" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <div className="p-0 flex items-stretch">
                     <div className="w-2/4 relative image-overlap-before">
