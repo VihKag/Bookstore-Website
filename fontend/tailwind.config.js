@@ -17,10 +17,11 @@ module.exports = {
     function ({ addUtilities }) {
       const newUtilities = {};
       for (let i = 1; i <= 12; i++) {
-        newUtilities[`.col-${i}`] = {
-          'max-width': `${(i / 12) * 100}%`,
-          'max-width': `${(1 / i) * 100}%`,
-        };
+        for (let j = 1; j <= i; j++) {
+          newUtilities[`.col-${j}-${i}`] = {
+            'max-width': `${(j / i) * 100}%`,
+          };
+        }
       }
       addUtilities(newUtilities, ['responsive', 'hover']);
     },
