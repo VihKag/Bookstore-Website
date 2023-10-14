@@ -16,10 +16,10 @@ module.exports = {
   plugins: [
     function ({ addUtilities }) {
       const newUtilities = {};
-      // Tạo lớp CSS cho các kích thước từ 1 đến 12
       for (let i = 1; i <= 12; i++) {
         newUtilities[`.col-${i}`] = {
           'max-width': `${(i / 12) * 100}%`,
+          'max-width': `${(1 / i) * 100}%`,
         };
       }
       addUtilities(newUtilities, ['responsive', 'hover']);
