@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+<<<<<<< HEAD:fontend/src/pages/ProductDetail.jsx
 import pic from "../assets/image/book1.jpg"
+=======
+import pic from "../assets/image/shoe_3.jpg"
+>>>>>>> 9f27bd5d94b3319dc7d306af750baa15fd7d4ad7:fontend/src/pages/ProductDetail.js
 import {
   faStar,
   faStarHalfAlt,
@@ -36,8 +40,13 @@ function ProductDetail() {
             <div className="img-container" style={{ height: "500px" }}>
               <img
                 src={pic}
+<<<<<<< HEAD:fontend/src/pages/ProductDetail.jsx
                 alt="pic"
                 style={{ width: "100%", height: "100%", objectFit: "contain" }}
+=======
+                alt="pic1"
+                style={{ width: "100%", height: "auto" }}
+>>>>>>> 9f27bd5d94b3319dc7d306af750baa15fd7d4ad7:fontend/src/pages/ProductDetail.js
               />
             </div>
           </div>
