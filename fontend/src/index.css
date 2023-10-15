@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.link-hover:hover{
+    color: blue;
+    text-decoration: underline;
+}

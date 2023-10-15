@@ -1,6 +1,6 @@
 import * as React from "react";
-import PasswordApp from "./PasswordApp";
-import PasswordConfirm from "./PasswordConfirm";
+import PasswordApp from "../components/Other/PasswordApp";
+import PasswordConfirm from "../components/Other/PasswordConfirm";
 export default function SignupPage() {
   return (
     <div

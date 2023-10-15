@@ -1,0 +1,7 @@
+.limit-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Giới hạn văn bản trong 2 dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  

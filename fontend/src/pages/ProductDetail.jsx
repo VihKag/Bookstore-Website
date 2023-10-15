@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import pic from "../assets/image/book1.jpg";
+import pic from "../assets/image/book1.jpg"
 import {
   faStar,
   faStarHalfAlt,
