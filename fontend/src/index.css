@@ -5,3 +5,8 @@
     color: blue;
     text-decoration: underline;
 }
+.tabhome-btn:hover{
+    border: 0.1px solid black;
+    color: black;
+    font-weight:500;
+}
