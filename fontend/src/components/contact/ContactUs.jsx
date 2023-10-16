@@ -3,7 +3,7 @@ import "./contactus.css";
 
 const ContactUs = () => {
   return (
-    <div className="container">
+    <div className="container-contact container">
         <div className="blur-background"></div>
 
       <div className="contact-box">

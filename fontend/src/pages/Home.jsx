@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <>
       <Header />      
-      <div className="container mx-auto">     
+      <div className="mx-auto container">     
         <div className="homebanner">
           <Carousel/>
           <div className="hidden sm:flex mb-5 mt-2">
@@ -36,7 +36,6 @@ const Home = () => {
             </div>
           </div>
         </div>  
-
         <div className="flex justify-between flex-wrap">
           {icontab.map((item,index)=>(
             <div key={index} className="w-1/4 md:col-1-8">
