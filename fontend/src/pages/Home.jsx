@@ -5,6 +5,7 @@ import banner1 from "../assets/banner/banner1.jpg";
 import Carousel from "../components/Carousel/Carousel";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import imgBook from '../assets/books/03.jpg';
+import Footer2 from "../components/footer2/footer2";
 import BookContainer from "../components/Container/BookContainer";
 const Home = () => {
   const icontab = [
@@ -122,6 +123,7 @@ const Home = () => {
         <BookContainer list={books} category="XU HƯỚNG"/>
       </div>
       <Footer />
+  <Footer2/>
     </>
   );
 };
