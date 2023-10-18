@@ -10,3 +10,15 @@
     color: black;
     font-weight:700;
 }
+
+body {
+    overflow: auto !important;
+  }
+  
+  /* ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+  } */
