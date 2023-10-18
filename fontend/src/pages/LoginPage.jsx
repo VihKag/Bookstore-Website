@@ -1,5 +1,6 @@
 import * as React from "react";
 import PasswordApp from "../components/Other/PasswordApp";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   return (
@@ -108,9 +109,9 @@ const LoginPage = () => {
         </div>
         <div className="mt-6 flex justify-center items-center">
           <p className="font-medium text-base">Bạn chưa có tài khoản? </p>
-          <button className="font-medium text-base text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1.5">
+          <Link to="/signup" className="text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1.5">
             Đăng ký
-          </button>
+          </Link>
         </div>
       </div>
     </div>
