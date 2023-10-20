@@ -1,15 +1,25 @@
 import React from 'react';
+import logoPNG from '../../assets/image/bookicon.png';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
+
 const Header = () => {
   return (
   <>
     <nav className="bg-gray-100 border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="{{< param homepage >}}/" className="flex items-center">
-          <FontAwesomeIcon icon="fa-solid fa-book " size="2x"/>
-          <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white ml-2 ">PKQ Bookstore</span>
+            <Link to="/"><img src={logoPNG} alt="Logo" className="w-12 h-12 mr-2" /></Link> 
+            <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white ml-2 ">PKQ Bookstore</span>
         </a>
         <div className="flex items-center md:order-2">
+            <a href="/cart" className="flex mr-6 text-sm" id="cart-button">
+              <FontAwesomeIcon icon={faShoppingCart} className="w-6 h-6" />
+            </a>
+            <a href="/wishlist" className="flex mr-6 text-sm" id="wishlist-button">
+              <FontAwesomeIcon icon={faHeart} className="w-6 h-6" />
+            </a>
           <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only">Open user menu</span>
             <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user logo"/>
@@ -53,7 +63,7 @@ const Header = () => {
             <a href="/service" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#0dd3b7] md:p-0 dark:text-white md:dark:hover:text-[#0dd3b7] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
           </li>
           <li>
-            <a href="/#" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#0dd3b7] md:p-0 dark:text-white md:dark:hover:text-[#0dd3b7] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+            <a href="/#" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#0dd3b7] md:p-0 dark:text-white md:dark:hover:text-[#0dd3b7] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Order</a>
           </li>
           <li>
             <a href="/contact" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#0dd3b7] md:p-0 dark:text-white md:dark:hover:text-[#0dd3b7] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>

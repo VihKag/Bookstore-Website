@@ -10,7 +10,7 @@ const AboutPage = () => {
         {
             icon: faUser,
             title: "Thành viên nhóm",
-            content: "Thái Hoàng Phúc - Phạm Nguyễn Phú Quí  Nguyễn Vinh Khang"
+            content: "Nhóm của chúng tôi gồm 3 thành viên thuộc khoa Công nghệ thông tin chuyên ngành Công nghệ phần mềm đại học Sư phạm kĩ thuật Thành phố Hồ Chí Minh : Thái Hoàng Phúc - Phạm Nguyễn Phú Quí  Nguyễn Vinh Khang "
 
         },
         {
@@ -31,7 +31,7 @@ const AboutPage = () => {
             <div className="text-center">
                 <h1 className="text-4xl font-bold mt-4 mb-3 mx-8 ">About us</h1>
                 <p className="text-m mt-4 mb-6 mx-8">Chào mừng bạn đến với PKQ BookStore - nơi kết nối niềm đam mê đọc sách với sự tiện lợi của mua sắm trực tuyến! Chúng tôi là đội ngũ cung cấp tài nguyên cho những người đam mê sách, nơi mà trí tưởng tượng bay bổng và kiến thức không bao giờ bị giới hạn.</p>
-                <div className="flex justify-around p-3 mx-8">
+                <div className="flex justify-around p-3 mx-8 card-container">
                     {cardData.map((card, index) => (
                         <div
                             key={index}
