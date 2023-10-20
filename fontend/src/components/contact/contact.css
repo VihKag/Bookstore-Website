@@ -155,9 +155,10 @@ textarea.input {
 /* Chọn span kế tiếp của input được focus hoặc có giá trị */
 .input:focus~span,
 .input:valid~span {
-    top: -5px;
+    top: 0px;
     font-size: 0.8rem;
     color: white;
+    background-color: #0dd3b7;
     
 }
 .input-container.textarea label {
