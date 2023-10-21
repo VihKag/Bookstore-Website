@@ -10,6 +10,7 @@ import ServicePage from "./pages/ServicePage";
 import ContactPage from "./components/contact/ContactPage";
 import Product from "./pages/Product";
 import WishlistPage from "./pages/WishlistPage";
+import Cart from "./components/Cart/Cart";
 function App() {
   return (
     <Router>
@@ -19,10 +20,11 @@ function App() {
         <Route path="/product" element={<Product />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/about" element={<AboutPage />} />{" "}
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
   );

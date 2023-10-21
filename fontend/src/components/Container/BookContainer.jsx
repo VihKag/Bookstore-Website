@@ -4,7 +4,7 @@ const BookContainer = ({list,category,img})=>{
     return(
         <>
         <div className="Category-display my-4">
-          <div className="Category-header bg-green-300">
+          <div className="Category-header bg-[#5cf5e1]">
             <div className="inline-block m-2 text-2xl font-semibold">
                 <FontAwesomeIcon icon="fa-solid fa-fire" size="xl" style={{color: "#ff0000",}} />
               <span className="ml-2">{category}</span>
@@ -55,7 +55,7 @@ const BookContainer = ({list,category,img})=>{
                     </div>
                     <div class="flex items-center justify-between">
                         <span class="lg:text-3xl md:text-2xl sm:text-xl font-bold text-gray-900">$599</span>
-                        <a href="/#" class="text-white min-w-max bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg md:text-sm px-5 py-2.5 text-center max-md:hidden">+ <FontAwesomeIcon icon="fa-solid fa-cart-shopping" style={{color: "#ff0000",}} /></a>
+                    <a href="/#" class="text-white min-w-max bg-[#0dd3b7] hover:bg-[#74e3d4] focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg md:text-sm px-5 py-2.5 text-center max-md:hidden"> <FontAwesomeIcon icon = " fa-plus"/> <FontAwesomeIcon icon="fa-solid fa-cart-shopping" size="xl" style={{color: "#fff",}} /></a>
                     </div>
                 </div>
               </div>
