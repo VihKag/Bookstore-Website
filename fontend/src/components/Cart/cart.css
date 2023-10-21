@@ -1,11 +1,7 @@
-.container {
+.container-cart {
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px;
-  }
-  
-  h1 {
-    
   }
   
   .empty-cart {
