@@ -3,10 +3,10 @@ import './contact.css'; // Assuming you have the styles in a file named ContactF
 import Header from '../Header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import pic1 from "./shape.png"
-import pic2 from "./location.png"
-import pic3 from "./email.png"
-import pic4 from "./phone.png"
+import pic1 from "../../assets/image/shape.png"
+import pic2 from "../../assets/image/location.png"
+import pic3 from "../../assets/image/email.png"
+import pic4 from "../../assets/image/phone.png"
 
 function ContactPage() {
     const [focused, setFocused] = useState(false);

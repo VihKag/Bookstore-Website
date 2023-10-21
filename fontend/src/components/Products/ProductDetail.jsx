@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import pic from "../assets/image/book1.jpg"
+import pic from "../../assets/image/book1.jpg"
 import {
   faStar,
   faStarHalfAlt,
@@ -28,7 +28,8 @@ function ProductDetail() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    
+    <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="max-w-screen-xl mx-auto p-8 bg-white shadow-lg rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left section */}
@@ -173,6 +174,7 @@ function ProductDetail() {
         </div>
       </div>
     </div>
+  
   );
 }
 

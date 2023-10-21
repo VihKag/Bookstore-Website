@@ -2,7 +2,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import './cart.css'
 import React, { useState } from 'react';
-import pic from 'C:/Users/ACER/Desktop/Bookstore-Website/fontend/src/assets/books/01.jpg'
+import pic from '../../assets/image/book1.jpg'
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
