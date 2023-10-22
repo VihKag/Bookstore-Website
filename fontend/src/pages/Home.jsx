@@ -2,9 +2,13 @@ import React from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import banner1 from "../assets/banner/banner1.jpg";
+import banner2 from "../assets/banner/banner2.png";
+import banner4 from "../assets/banner/banner4.png";
+import banner5 from "../assets/banner/banner5.png";
 import Carousel from "../components/Carousel/Carousel";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import imgBook from '../assets/books/03.jpg';
+import Footer2 from "../components/footer2/footer2";
 import BookContainer from "../components/Container/BookContainer";
 const Home = () => {
   const icontab = [
@@ -96,16 +100,16 @@ const Home = () => {
           <Carousel/>
           <div className="hidden sm:flex mb-5 mt-2">
             <div className="col-1-4 mr-2">
-              <img src={banner1} alt="../assets/banner/banner1.jpg" className="rounded-md" />
+              <img src={banner1} alt="../assets/banner/banner2.jpg" className="rounded-md" />
             </div>
             <div className="col-1-4 mr-2">
-              <img src={banner1} alt="../assets/banner/banner1.jpg" className="rounded-md" />
+              <img src={banner2} alt="../assets/banner/banner2.png" className="rounded-md" />
             </div>
             <div className="col-1-4 mr-2">
-              <img src={banner1} alt="../assets/banner/banner1.jpg" className="rounded-md" />
+              <img src={banner4} alt="../assets/banner/banner4.png" className="rounded-md" />
             </div>
             <div className="col-1-4">
-              <img src={banner1} alt="../assets/banner/banner1.jpg" className="rounded-md" />
+              <img src={banner5} alt="../assets/banner/banner5.png" className="rounded-md" />
             </div>
           </div>
         </div>  
@@ -118,8 +122,11 @@ const Home = () => {
           ))}      
         </div>
         <BookContainer list={books} category="XU HƯỚNG"/>
+        
       </div>
+      
       <Footer />
+  <Footer2/>
     </>
   );
 };

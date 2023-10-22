@@ -1,6 +1,8 @@
 import * as React from "react";
 import PasswordApp from "../components/Other/PasswordApp";
 import PasswordConfirm from "../components/Other/PasswordConfirm";
+import { Link } from "react-router-dom";
+
 export default function SignupPage() {
   return (
     <div
@@ -68,9 +70,9 @@ export default function SignupPage() {
         </div>
         <div className="mt-6 flex justify-center items-center">
           <p className="font-medium text-base">Bạn đã có tài khoản? </p>
-          <button className="font-medium text-base text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1.5">
+          <Link to="/login" className="text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1.5">
             Đăng nhập
-          </button>
+          </Link>
         </div>
       </div>
     </div>
