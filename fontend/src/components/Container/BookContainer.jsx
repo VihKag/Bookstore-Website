@@ -29,7 +29,7 @@ const BookContainer = ({list,category,img})=>{
             {list.map((item,index)=>(
               <div key={index} class="col-2-11 my-2 bg-white border border-gray-200 rounded-lg shadow">
                 <a href="/#">
-                    <img class="p-8 rounded-t-lg" src={item.imgBook} alt="product" />
+                    <img class="p-2 rounded-t-lg" src={item.imgBook} alt="product" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="/#">
