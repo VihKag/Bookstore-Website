@@ -10,6 +10,7 @@ import ServicePage from "./pages/ServicePage";
 import ContactPage from "./components/contact/ContactPage";
 import Product from "./pages/Product";
 import WishlistPage from "./pages/WishlistPage";
+import Dashboard from "./pages/Admin/Dashboard";
 // import Cart from "./components/Cart/Cart";
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/service" element={<ServicePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         {/* <Route path="/cart" element={<Cart />} /> */}
       </Routes>
     </Router>

@@ -54,16 +54,16 @@ function ContactPage() {
                         <div className="social-media">
                             <p>Connect with us :</p>
                             <div className="social-icons">
-                                <a href="#">
+                                <a href="/#">
                                     <FontAwesomeIcon icon={faFacebookF} />
                                 </a>
-                                <a href="#">
+                                <a href="/#">
                                     <FontAwesomeIcon icon={faTwitter} />
                                 </a>
-                                <a href="#">
+                                <a href="/#">
                                     <FontAwesomeIcon icon={faInstagram} />
                                 </a>
-                                <a href="#">
+                                <a href="/#">
                                     <FontAwesomeIcon icon={faLinkedinIn} />
                                 </a>
                             </div>
