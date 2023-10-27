@@ -18,8 +18,6 @@ const Home = () => {
     {label: 'Payment', img: './path'},
     {label: 'Payment', img: './path'},
     {label: 'Payment', img: './path'},
-    {label: 'Payment', img: './path'},
-    {label: 'Payment', img: './path'}
   ];
   const books = [
     {
@@ -117,7 +115,7 @@ const Home = () => {
         </div>  
         <div className="flex justify-between flex-wrap">
           {icontab.map((item,index)=>(
-            <div key={index} className="w-1/4 md:col-1-8">
+            <div key={index} className="col-1-6">
               <div className="text-4xl lg:text-5xl w-full flex justify-center"><FontAwesomeIcon icon="fa-solid fa-receipt" style={{color: "#ca1c1c",}} /></div>
               <div className="max-w-max mx-auto">{item.label}</div>
           </div>  

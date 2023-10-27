@@ -25,6 +25,8 @@ module.exports = {
       }
       addUtilities(newUtilities, ['responsive', 'hover']);
     },
-    require('flowbite/plugin')
+    require('flowbite/plugin')({
+      charts: true,
+    }),
   ],
 }
