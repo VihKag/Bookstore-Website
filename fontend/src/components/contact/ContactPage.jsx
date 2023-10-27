@@ -29,7 +29,7 @@ function ContactPage() {
             <div className="container-contact">
                 <span className="big-circle"></span>
                 <img src={pic1} className="square" alt="" />
-                <div className="form">
+                <div className="form-contact">
                     <div className="contact-info">
                         <h3 className="title">Let's get in touch</h3>
                         <p className="text">
@@ -74,7 +74,7 @@ function ContactPage() {
                         <span className="circle one"></span>
                         <span className="circle two"></span>
 
-                        <form action="index.html" autoComplete="off">
+                        <form className="contact" action="index.html" autoComplete="off">
                             <h3 className="title">Contact us</h3>
                             <div className="input-container">
                                 <input

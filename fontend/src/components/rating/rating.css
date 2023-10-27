@@ -1,7 +1,6 @@
 .rating-container {
     display:flex;
     width: 100%;
-    /* Đảm bảo container rộng 100% */
 }
 
 .comment-container {
@@ -35,7 +34,6 @@
 .rating-container {
     display:flex;
     width: 100%;
-    /* Đảm bảo container rộng 100% */
 }
 
 .comment-container {
@@ -43,7 +41,7 @@
     margin-right: 10px;
         margin-left: 20px;
 }
-form{
+form.rating{
     padding: 1rem 0;
 }
 

@@ -13,7 +13,7 @@ export default function SignupPage() {
       }}
     >
       <h1 className="text-5xl font-semibold text-center mb-4">Đăng Ký</h1>
-      <p className=" text-center font-medium text-lg text-gray-500 mt-4 ">
+      <p className=" text-center font-medium text-xl text-gray-500 mt-2 mb-4">
         Xin chào! Mời bạn đăng ký tài khoản
       </p>
       <div className="mt-2">
