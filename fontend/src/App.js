@@ -10,7 +10,10 @@ import ServicePage from "./pages/ServicePage";
 import ContactPage from "./components/contact/ContactPage";
 import Product from "./pages/Product";
 import WishlistPage from "./pages/WishlistPage";
-// import Cart from "./components/Cart/Cart";
+import Cart from "./components/Cart/Cart";
+import Testimonial from "./pages/Testimonial";
+import Rating2 from "./components/rating2/rating2";
+import ReviewArticle from "./components/rating2/review";
 function App() {
   return (
     <Router>
@@ -24,7 +27,10 @@ function App() {
         <Route path="/service" element={<ServicePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
-        {/* <Route path="/cart" element={<Cart />} /> */}
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/testimonial" element={<Testimonial />} />
+        <Route path="/rate" element={<Rating2 />} />
+        <Route path="/review" element={<ReviewArticle />} />
       </Routes>
     </Router>
   );

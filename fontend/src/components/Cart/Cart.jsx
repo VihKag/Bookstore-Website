@@ -74,7 +74,7 @@ function Cart() {
   return (
     <>
       <Header /> 
-    <div className="container">
+    <div className="container-cart">
       <h1 className="cart-title">GIỎ HÀNG</h1>
       <div className="cart-wrapper">
         <div className="cart-items-wrapper">

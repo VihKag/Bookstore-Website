@@ -11,8 +11,8 @@ const LoginPage = () => {
           "0px 1px 2px rgba(0, 0, 0, 0.05), 0px -1px 2px rgba(0, 0, 0, 0.05), 1px 0px 2px rgba(0, 0, 0, 0.05), -1px 0px 2px rgba(0, 0, 0, 0.05)",
       }}
     >
-      <h1 className="text-5xl font-semibold text-center mb-2">Đăng Nhập</h1>
-      <p className="font-medium text-lg text-gray-500 mt-4 ">
+      <h1 className="text-5xl font-semibold text-center mb-4">Đăng Nhập</h1>
+      <p className="font-medium text-xl text-gray-500 mt-2 mb-4 ">
         Xin chào! Mời bạn đăng nhập tài khoản
       </p>
       <div className="mt-2">

@@ -42,9 +42,10 @@ const Rating = () => {
                     })}
                 </div>
             </div>
+            <div></div>
             <div>
                 <h2 className="text-xl">Bình luận của bạn</h2>
-                <form onSubmit={handleSubmit}>
+                <form className="rating" onSubmit={handleSubmit}>
                     <textarea
                         rows="4"
                         cols="50"
