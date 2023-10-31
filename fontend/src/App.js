@@ -12,6 +12,11 @@ import Product from "./pages/Product";
 import WishlistPage from "./pages/WishlistPage";
 import Cart from "./components/Cart/Cart";
 import Testimonial from "./pages/Testimonial";
+import TermPage from "./pages/TermPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import SecurityPage from "./pages/SecurityPage";
+// import Dashboard from "./pages/Admin/Dashboard";
+
 function App() {
   return (
     <Router>
@@ -27,7 +32,11 @@ function App() {
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/testimonial" element={<Testimonial />} />
+        <Route path="/terms" element={<TermPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/security" element={<SecurityPage />} />
 
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
       </Routes>
     </Router>
   );

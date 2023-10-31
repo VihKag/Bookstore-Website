@@ -13,16 +13,16 @@ const Footer2 = () => {
 
                     <div className="sb_footer-links-div">
                         <h4>For business</h4>
-                        <a className="a-footer" href="/employee">
+                        <a className="a-footer" href="/testimonial">
                             <p>
                                 Employee
                             </p>
                         </a>
-                        <a className="a-footer" href="/healthplan">
+                        <a className="a-footer" href="/">
                             <p>
-                                Health Plan
+                                News
                             </p>
-                        </a><a className="a-footer" href="/individual">
+                        </a><a className="a-footer" href="/">
                             <p>
                                 Individual
                             </p>
@@ -30,7 +30,7 @@ const Footer2 = () => {
                     </div>
                     <div className="sb_footer-links-div">
                         <h4>Resources</h4>
-                        <a className="a-footer" href="/resource">
+                        <a className="a-footer" href="/testimonial">
                             <p>
                                 Resource center
                             </p>
@@ -39,15 +39,15 @@ const Footer2 = () => {
                             <p>
                                 Testimonials
                             </p>
-                        </a><a className="a-footer" href="/resource">
+                        </a><a className="a-footer" href="/testimonial">
                             <p>
-                                STV
+                                Other
                             </p>
                         </a>
                     </div>
                     <div className="sb_footer-links-div">
                         <h4>Partners</h4>
-                        <a className="a-footer" href="/employer">
+                        <a className="a-footer" href="https://hcmute.edu.vn/">
                             <p>HCMUTE</p>
                         </a>
                     </div>
@@ -55,9 +55,6 @@ const Footer2 = () => {
                         <h4>Company</h4>
                         <a className="a-footer" href="/about">
                             <p>About</p>
-                        </a>
-                        <a className="a-footer" href="/press">
-                            <p>Press</p>
                         </a>
                         <a className="a-footer" href="/service">
                             <p>Service</p>
@@ -94,7 +91,7 @@ const Footer2 = () => {
                         <a className="a-footer" href="/privacy">
                             <div>
                                 <p>
-                                   Privacy
+                                    Privacy
                                 </p>
                             </div>
                         </a><a className="a-footer" href="/security">
@@ -103,7 +100,7 @@ const Footer2 = () => {
                                     Security
                                 </p>
                             </div>
-                        </a><a className="a-footer" href="/cookie">
+                        </a><a className="a-footer" href="/">
                             <div>
                                 <p>
                                     Cookie Declaration

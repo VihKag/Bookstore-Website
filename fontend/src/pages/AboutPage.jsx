@@ -54,7 +54,7 @@ const AboutPage = () => {
                         </div>
                     ))}
                 </div>
-                <p className="text-m mt-6 mb-2 mx-8">Xin chân thành cảm ơn bạn đã đến với PKQ BookStore. Chúng tôi hy vọng rằng mỗi cuốn sách bạn mua sẽ mang đến cho bạn những giây phút đọc sách tràn ngập niềm vui và sự sáng tạo. Hãy bắt đầu hành trình khám phá với chúng tôi và để chúng tôi làm nơi bạn tìm thấy những câu chuyện tuyệt vời !!! </p>
+                <p className="text-m mt-6 mb-4 mx-8">Xin chân thành cảm ơn bạn đã đến với PKQ BookStore. Chúng tôi hy vọng rằng mỗi cuốn sách bạn mua sẽ mang đến cho bạn những giây phút đọc sách tràn ngập niềm vui và sự sáng tạo. Hãy bắt đầu hành trình khám phá với chúng tôi và để chúng tôi làm nơi bạn tìm thấy những câu chuyện tuyệt vời !!! </p>
             </div>
             <Footer2/>
         </>
