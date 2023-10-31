@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import imgBook from '../assets/books/03.jpg';
 import Footer2 from "../components/footer2/footer2";
 import BookContainer from "../components/Container/BookContainer";
+import AuthorList from "../components/Other/AuthorList";
+import FeaturedBook from "../components/Other/FeatureBook";
 const Home = () => {
   const icontab = [
     {label: 'Discounts', img: './path'},
@@ -122,7 +124,10 @@ const Home = () => {
           ))}      
         </div>
         <BookContainer list={books} category="XU HƯỚNG"/>
-        
+        <div className="flex justify-between flex-wrap w-full space-x-4">
+          <AuthorList />
+          <FeaturedBook />
+        </div>
       </div>
       
       <Footer />
