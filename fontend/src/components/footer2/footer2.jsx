@@ -13,7 +13,7 @@ const Footer2 = () => {
 
                     <div className="sb_footer-links-div">
                         <h4>For business</h4>
-                        <a className="a-footer" href="/employer">
+                        <a className="a-footer" href="/employee">
                             <p>
                                 Employee
                             </p>
@@ -35,7 +35,7 @@ const Footer2 = () => {
                                 Resource center
                             </p>
                         </a>
-                        <a className="a-footer" href="/resource">
+                        <a className="a-footer" href="/testimonial">
                             <p>
                                 Testimonials
                             </p>
@@ -48,7 +48,7 @@ const Footer2 = () => {
                     <div className="sb_footer-links-div">
                         <h4>Partners</h4>
                         <a className="a-footer" href="/employer">
-                            <p>Swing Tech</p>
+                            <p>HCMUTE</p>
                         </a>
                     </div>
                     <div className="sb_footer-links-div">
@@ -59,15 +59,15 @@ const Footer2 = () => {
                         <a className="a-footer" href="/press">
                             <p>Press</p>
                         </a>
-                        <a className="a-footer" href="/career">
-                            <p>Career</p>
+                        <a className="a-footer" href="/service">
+                            <p>Service</p>
                         </a>
                         <a className="a-footer" href="/contact">
                             <p>Contact</p>
                         </a>
                     </div>
                     <div className="sb_footer-links-div">
-                        <h4>Coming soon on </h4>
+                        <h4>Connect with us </h4>
                         <div className="socialmedia">
                             <p><img src={fb} alt="" /></p>
                             <p><img src={twitter} alt="" /></p>

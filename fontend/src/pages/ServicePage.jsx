@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook,   faIdCard, faLock, faMagnifyingGlass, faPhone } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Header/Header";
 import { faFolder } from "@fortawesome/free-regular-svg-icons";
-
+import Footer2 from "../components/footer2/footer2";
 const ServicePage = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -68,6 +68,8 @@ const ServicePage = () => {
                     ))}
                 </div>
             </div>
+            <Footer2 />
+
         </>
     );
 }

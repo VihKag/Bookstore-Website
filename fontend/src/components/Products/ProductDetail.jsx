@@ -88,7 +88,7 @@ function ProductDetail() {
               <h2 className="text-xl font-semibold mb-1">
                 Thông tin sản phẩm:
               </h2>
-              <p className="text-sm text-gray-700 mb-1">
+              <p className="text-m text-justify text-gray-700 mb-1">
                 Hiện nay có một sự hiểu nhầm đã xảy ra. Tuy Đắc Nhân Tâm là tựa
                 sách hầu hết mọi người đều biết đến, vì những danh tiếng và mức
                 độ phổ biến, nhưng một số người lại “ngại” đọc. Lý do vì họ
@@ -110,7 +110,7 @@ function ProductDetail() {
                 />
                 Tác giả:{" "}
                 <span className="text-gray-700 font-semibold">
-                  Dale Carnegie
+                   Dale Carnegie
                 </span>
               </li>
               <li className="mb-1 flex items-center">

@@ -11,6 +11,7 @@ import ContactPage from "./components/contact/ContactPage";
 import Product from "./pages/Product";
 import WishlistPage from "./pages/WishlistPage";
 import Cart from "./components/Cart/Cart";
+import Testimonial from "./pages/Testimonial";
 function App() {
   return (
     <Router>
@@ -25,6 +26,8 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/testimonial" element={<Testimonial />} />
+
       </Routes>
     </Router>
   );

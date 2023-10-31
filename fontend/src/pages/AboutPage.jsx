@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook,  faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Header/Header";
+import Footer2 from "../components/footer2/footer2";
 
 const AboutPage = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -55,7 +56,7 @@ const AboutPage = () => {
                 </div>
                 <p className="text-m mt-6 mb-2 mx-8">Xin chân thành cảm ơn bạn đã đến với PKQ BookStore. Chúng tôi hy vọng rằng mỗi cuốn sách bạn mua sẽ mang đến cho bạn những giây phút đọc sách tràn ngập niềm vui và sự sáng tạo. Hãy bắt đầu hành trình khám phá với chúng tôi và để chúng tôi làm nơi bạn tìm thấy những câu chuyện tuyệt vời !!! </p>
             </div>
-            
+            <Footer2/>
         </>
     );
 }
