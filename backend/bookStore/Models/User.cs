@@ -35,7 +35,7 @@ public partial class User
 
     public virtual Role? RoleNavigation { get; set; }
 
-    public User(string username, string name, string email, string password, string phone)
+    public User(string username, string name,  string email, string password, string phone)
     {
         Username = username;
         Name = name;
