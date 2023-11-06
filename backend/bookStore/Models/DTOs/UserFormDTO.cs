@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Build.Framework;
+using Newtonsoft.Json;
 
 namespace bookStore.Models.DTOs
 {
