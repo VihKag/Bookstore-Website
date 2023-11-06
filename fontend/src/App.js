@@ -17,6 +17,7 @@ import PrivacyPage from "./pages/PrivacyPage";
 import SecurityPage from "./pages/SecurityPage";
 // import Dashboard from "./pages/Admin/Dashboard";
 
+import AdminRoute from "./routes/AdminRoutes";
 function App() {
   return (
     <Router>
@@ -37,6 +38,7 @@ function App() {
         <Route path="/security" element={<SecurityPage />} />
 
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Route path="/admin/*" element={<AdminRoute />} />
       </Routes>
     </Router>
   );
