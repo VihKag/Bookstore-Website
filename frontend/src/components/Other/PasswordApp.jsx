@@ -14,6 +14,7 @@ const PasswordApp = () => {
         <div className="w-5/5 mx-auto relative">
           <div className="w-full">
             <input
+              name="password"
               type={open === false ? "password" : "text"}
               placeholder="Nhập mật khẩu"
               className=" text-sm w-full border-2 border-gray-100 rounded-xl  py-2 px-4 mt-1 mb-1 bg-transparent"
