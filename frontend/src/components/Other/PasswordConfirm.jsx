@@ -16,10 +16,10 @@ const PasswordConfirm = () => {
             <input
               type={open === false ? "password" : "text"}
               placeholder="Xác nhận mật khẩu"
-              className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 mb-1 bg-transparent"
+              className="text-sm w-full border-2 border-gray-100 rounded-xl py-2 px-4 mt-1 mb-1 bg-transparent"
             />
           </div>
-          <div className="text-2xl absolute top-4 right-5">
+          <div className="text-sm absolute top-4 right-5">
             {open === false ? (
               <FontAwesomeIcon icon={faEye} onClick={toggle} />
             ) : (
