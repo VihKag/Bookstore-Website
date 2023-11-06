@@ -4,19 +4,19 @@ GO;
 USE Bookstore;
 
 CREATE TABLE Author (
-    AuthorID nvarchar(15) PRIMARY KEY,
+    AuthorID nvarchar(36) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Description TEXT,
     isDelete bit
 );
 
 CREATE TABLE Image (
-	ID nvarchar(15) PRIMARY KEY,
+	ID nvarchar(36) PRIMARY KEY,
 	Name nvarchar(1000)
 );
 
 CREATE TABLE Book (
-    ISBN nvarchar(15) PRIMARY KEY,
+    ISBN nvarchar(36) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Description varchar(500),
 	Price float,
@@ -24,49 +24,49 @@ CREATE TABLE Book (
     Deminsion varchar(100),
     Weigh varchar(100),
     Language varchar(100),
-    ImageID nvarchar(15),
+    ImageID nvarchar(36),
     State bit,
     isDelete bit,
     FOREIGN KEY (ImageID) REFERENCES Image(ID)
 );
 
 CREATE TABLE BookAuthor (
-	ID nvarchar(15) PRIMARY KEY,
-    AuthorID nvarchar(15),
-    ISBN nvarchar(15),
+	ID nvarchar(36) PRIMARY KEY,
+    AuthorID nvarchar(36),
+    ISBN nvarchar(36),
     isDelete bit,
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN),
     FOREIGN KEY (AuthorID) REFERENCES Author(AuthorID)
 );
 
 CREATE TABLE Publisher (
-    ID nvarchar(15) PRIMARY KEY,
+    ID nvarchar(36) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Description TEXT,
     isDelete bit
 );
 
 CREATE TABLE BookPublisher (
-    ID nvarchar(15) PRIMARY KEY,
-    ISBN nvarchar(15),
-    PubID nvarchar(15),
+    ID nvarchar(36) PRIMARY KEY,
+    ISBN nvarchar(36),
+    PubID nvarchar(36),
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN),
     FOREIGN KEY (PubID) REFERENCES Publisher(ID)
 );
 
 CREATE TABLE Category (
-    ID nvarchar(15) PRIMARY KEY,
+    ID nvarchar(36) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
-    Parent nvarchar(15),
+    Parent nvarchar(36),
     Description TEXT,
     isDelete bit,
     FOREIGN KEY (Parent) REFERENCES Category(ID)
 );
 
 CREATE TABLE BookCategory (
-    ID nvarchar(15) PRIMARY KEY,
-    ISBN nvarchar(15),
-    CateID nvarchar(15),
+    ID nvarchar(36) PRIMARY KEY,
+    ISBN nvarchar(36),
+    CateID nvarchar(36),
     isDelete bit,
     FOREIGN KEY (CateID) REFERENCES Category(ID),
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN)
@@ -78,11 +78,11 @@ CREATE TABLE Role (
 );
 
 CREATE TABLE [User] (
-    ID nvarchar(15) PRIMARY KEY,
+    ID nvarchar(36) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Email NVARCHAR(100),
     Phone NVARCHAR(11) NOT NULL,
-    Gender nvarchar(10),
+    Gender bit,
     DateOfBirth datetime,
     Username nvarchar(100) NOT NULL,
     Password nvarchar(100) NOT NULL,
@@ -90,23 +90,21 @@ CREATE TABLE [User] (
     isActive bit,
     FOREIGN KEY (Role) REFERENCES Role(ID)
 );
-
 CREATE TABLE RefreshToken (
-    RefreshToken nvarchar(15) PRIMARY KEY,
-    UserID nvarchar(15),
-    ParentID nvarchar(15),
+    Token nvarchar(100) PRIMARY KEY,
+    UserID nvarchar(36),
+    ParentID nvarchar(100),
     CreateAt datetime,
-    ExpriteAt datetime,
-    isUse bit,
+    ExpireAt datetime,
+    isUsed bit,
     isRevoked bit,
-    FOREIGN KEY (ParentID) REFERENCES RefreshToken(RefreshToken),
     FOREIGN KEY (UserID) REFERENCES [User](ID)
 );
 
 CREATE TABLE Evaluate (
-    ID nvarchar(15) PRIMARY KEY,
-    ISBN nvarchar(15),
-    UserID nvarchar(15),
+    ID nvarchar(36) PRIMARY KEY,
+    ISBN nvarchar(36),
+    UserID nvarchar(36),
     Vote float,
     Comment TEXT,
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN),
@@ -114,16 +112,16 @@ CREATE TABLE Evaluate (
 );
 
 CREATE TABLE Favorite (
-    ID nvarchar(15) PRIMARY KEY,
-    ISBN nvarchar(15),
-    UserID nvarchar(15),
+    ID nvarchar(36) PRIMARY KEY,
+    ISBN nvarchar(36),
+    UserID nvarchar(36),
     FOREIGN KEY (UserID) REFERENCES [User](ID),
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN)
 );
 
 CREATE TABLE [Order] (
-    ID nvarchar(15) PRIMARY KEY,
-    UserID nvarchar(15),
+    ID nvarchar(36) PRIMARY KEY,
+    UserID nvarchar(36),
     Total int,
     OrderDay datetime,
     Status bit,
@@ -133,9 +131,9 @@ CREATE TABLE [Order] (
 );
 
 CREATE TABLE OrderDetail (
-    ID nvarchar(15) PRIMARY KEY,
-    OderID nvarchar(15),
-    ISBN nvarchar(15) NOT NULL,
+    ID nvarchar(36) PRIMARY KEY,
+    OderID nvarchar(36),
+    ISBN nvarchar(36) NOT NULL,
     Quantity int,
     Amount int,
     isDelete bit,
