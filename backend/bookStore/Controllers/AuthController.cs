@@ -44,7 +44,7 @@ namespace bookStore.Controllers
             return Ok(authResult);
         }
         [HttpPost("Login")]
-        public async Task<ActionResult> Login([FromBody] UserFormDTO userDTO)
+        public async Task<ActionResult> Login([FromBody] LoginDTO userDTO)
         {
             var Authresult = await _userService.Login(userDTO);
             if (Authresult.Result == false)

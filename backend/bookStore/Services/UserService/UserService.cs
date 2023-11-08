@@ -66,7 +66,7 @@ namespace bookStore.Services.UserService
             return null;
         }
 
-        public async Task<AuthResult> Login(UserFormDTO dto)
+        public async Task<AuthResult> Login(LoginDTO dto)
         {
             var user_exsit = _userRepository.FindByCondition(u => u.Username == dto.UserName).FirstOrDefault();
             if (user_exsit != null)
