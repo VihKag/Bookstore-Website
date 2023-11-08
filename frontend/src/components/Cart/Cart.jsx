@@ -29,6 +29,15 @@ function Cart() {
    
     setTotalPrice(totalPrice + product.price);
   };
+  const calculateTotalQuantity = () => {
+    let totalQuantity = 0;
+  
+    cartItems.forEach((item) => {
+      totalQuantity += item.quantity;
+    });
+  
+    return totalQuantity;
+  };
 
   const removeFromCart = (product) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== product.id);
@@ -73,7 +82,7 @@ function Cart() {
   };
   return (
     <>
-      <Header /> 
+    <Header /> 
     <div className="container-cart">
       <h1 className="cart-title">GIỎ HÀNG</h1>
       <div className="cart-wrapper">
@@ -81,9 +90,11 @@ function Cart() {
           {cartItems.length === 0 ? (
           <p className="empty-cart"> Giỏ hàng trống! Hãy lựa chọn các sản phẩm bạn mong muốn và thêm vào giỏ hàng!</p>
         ) : (
+          <>
+          <h2>Thông tin sản phẩm</h2>
           <ul className="cart-items">
             {cartItems.map((item) => (
-              <li className="cart-item" key={item.id}>
+              <li className="cart-item  border-b-2 border-t-2 p-2" key={item.id}>
                 <div className="item-info">
                   <img src={item.image} alt={item.name} className="item-image" />
                   <div>
@@ -106,12 +117,13 @@ function Cart() {
               </li>
             ))}
           </ul>
+          </>
           )}
         </div>
         <div className="order-summary">
           <h2>Tóm tắt đơn hàng</h2>
-          <p className="cart-info">Số lượng sản phẩm: {cartItems.length}</p>
-          <p>Tổng tiền: {totalPrice}đ</p>
+          <p className="cart-info">Số lượng sản phẩm: {calculateTotalQuantity()}</p>
+          <p className="total-price">Tổng tiền: {totalPrice}đ</p>
           {/* Thêm các thông tin khác của đơn hàng */}
           <button onClick={handleCheckout}>Thanh toán</button>
         </div>
