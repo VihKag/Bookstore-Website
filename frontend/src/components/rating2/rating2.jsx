@@ -15,7 +15,7 @@ const Rating2 = () => {
             <p className="text-sm font-medium ml-4 text-gray-500 dark:text-gray-400">1,745 global ratings</p>
             {[5, 4, 3, 2, 1].map((stars, index) => (
                 <div key={index} className="flex items-center mt-4 ml-4 mb-4">
-                    <a href="#" className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">{stars} Star</a>
+                    <a href="/#" className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline">{stars} Star</a>
                     <div className="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
                         <div className="h-5 bg-yellow-300 rounded" style={{ width: `${stars * 20}%` }}></div>
                     </div>

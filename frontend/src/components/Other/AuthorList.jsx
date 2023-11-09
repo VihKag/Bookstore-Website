@@ -10,16 +10,16 @@ const AuthorList = () => {
         <div className="w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
             <div className="flex items-center justify-between mb-4">
                 <h5 className="text-2xl font-bold leading-none text-gray-900 dark:text-white">List of authors</h5>
-                <a href="#" className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-500">
+                <a href="/#" className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-500">
                     View all
                 </a>
             </div>
             <div className="flow-root">
-                <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
+                <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                     <li className="py-3 sm:py-4">
                         <div className="flex items-center space-x-4">
                             <div className="flex-shrink-0">
-                                <img className="w-16 h-16 rounded-full" src={pic1} alt="author image" />
+                                <img className="w-16 h-16 rounded-full" src={pic1} alt="author" />
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
@@ -37,7 +37,7 @@ const AuthorList = () => {
                     <li className="py-3 sm:py-4">
                         <div className="flex items-center space-x-4">
                             <div className="flex-shrink-0">
-                                <img className="w-16 h-16 rounded-full" src={pic2} alt="author image" />
+                                <img className="w-16 h-16 rounded-full" src={pic2} alt="author" />
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
@@ -55,7 +55,7 @@ const AuthorList = () => {
                     <li className="py-3 sm:py-4">
                         <div className="flex items-center space-x-4">
                             <div className="flex-shrink-0">
-                                <img className="w-16 h-16 rounded-full" src={pic3} alt="author image" />
+                                <img className="w-16 h-16 rounded-full" src={pic3} alt="author" />
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
@@ -73,7 +73,7 @@ const AuthorList = () => {
                     <li className="py-3 sm:py-4">
                         <div className="flex items-center space-x-4">
                             <div className="flex-shrink-0">
-                                <img className="w-16 h-16 rounded-full" src={pic4} alt="author image" />
+                                <img className="w-16 h-16 rounded-full" src={pic4} alt="author" />
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
@@ -91,7 +91,7 @@ const AuthorList = () => {
                     <li className="pt-3 pb-0 sm:pt-4">
                         <div className="flex items-center space-x-4">
                             <div className="flex-shrink-0">
-                                <img className="w-16 h-16 rounded-full" src={pic5} alt="author image" />
+                                <img className="w-16 h-16 rounded-full" src={pic5} alt="author" />
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-lg font-medium text-gray-900 truncate dark:text-white">

@@ -37,7 +37,7 @@ const ReviewArticle = () => {
             <footer className="mb-5 ml-4 text-sm text-gray-500 dark:text-gray-400"><p>Reviewed in Thu Duc City <time dateTime="2017-03-03 19:00">December 3, 2023</time></p></footer>
             <p className="mb-2 ml-4 text-gray-500 dark:text-gray-400">This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems.</p>
             <p className="mb-3 ml-4 text-gray-500 dark:text-gray-400">It is obviously not the same build quality as those very expensive watches. But that is like comparing a Citroën to a Ferrari. This watch was well under £100! An absolute bargain.</p>
-            <a href="#" className="block ml-4 mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read more</a>
+            <a href="/#" className="block ml-4 mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read more</a>
             <aside>
                 <p className="mt-1 ml-4 text-xs text-gray-500 dark:text-gray-400">19 people found this helpful</p>
                 <div className="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">

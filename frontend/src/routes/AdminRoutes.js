@@ -6,6 +6,7 @@ import Products from "../components/Table/Products";
 import CreateProduct from "../components/Form/CreateProduct";
 import TableCustomer from "../components/Table/TableCustomer";
 import TableStaff from "../components/Table/TableStaff";
+import Profile from "../components/Form/Profile";
 const AdminRoute = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const AdminRoute = () => {
             <Route path="customers" element={<TableCustomer />}/>
             <Route path="staffs" element={<TableStaff />}/>
             <Route path="products" element={<Products />}/>
+            <Route path="profile" element={<Profile />}/>
             <Route path="add_account" element={<CreateProduct />}/>
             <Route path="add_product" element={<CreateProduct />}/>
         </Route>
