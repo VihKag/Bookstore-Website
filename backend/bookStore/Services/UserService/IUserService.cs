@@ -11,6 +11,6 @@ namespace bookStore.Services.UserService
         void Delete(string id);
         UserDTO Update(UserDTO userDTO);
         Task<AuthResult> Register(UserFormDTO dto);
-        Task<AuthResult> Login(UserFormDTO dto);
+        Task<AuthResult> Login(LoginDTO dto);
     }
 }
