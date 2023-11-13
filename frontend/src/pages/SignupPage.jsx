@@ -1,33 +1,48 @@
-import * as React from "react";
-import PasswordApp from "../components/Other/PasswordApp";
-import PasswordConfirm from "../components/Other/PasswordConfirm";
+import React, {useState} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../api/AuthApi";
 export default function SignupPage() {
-  const usenavigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
+  const toggle = () => {
+    setOpen(!open);
+  };
+  const usenavigate = useNavigate();
+  const [formData, setFormData] = useState({
+    userName: "",
+    name: "",
+    phone: "",
+    email: "",
+    password: "",
+    confirm: "",
+  });
+  const handleChange = (e)=>{
+    const {name, value} = e.target;
+    setFormData({
+      ...formData,
+      [name]:value,
+    })
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = {
-      username: e.target.username.value,
-      name: e.target.name.value,
-      password: e.target.password.value,
-      phone: e.target.phone.value,
-      email: e.target.email.value,
-      confirm: e.target.confirm.value,
-    };
-
-    const success = await signup({username: formData.username, name: formData.name, password: formData.password, phone: formData.phone, confirm: formData.confirm});
-    if (success) {
-      usenavigate('/');
-    } else {
-      console.log('Signup failed');
+    if(formData.confirm !== formData.password) {
+      alert("Password and Confirm Password are not the same");
+      return false;
+    } else{
+      const success = await signup(formData);
+      if (success) {
+        usenavigate('/');
+      } else {
+        console.log('Signup failed');
+      }
     }
+
   };
   return (
     <>
-    <form onSubmit={(e) => handleSubmit(e)} id="form-signup">
+    <form onSubmit={handleSubmit} id="form-signup">
       <div
         className="bg-white px-8 py-4 mt-[-10px] rounded-3xl border-2 border-gray"
         style={{
@@ -44,6 +59,8 @@ export default function SignupPage() {
               name="username"
               className="text-sm w-full border-2 border-gray-100 rounded-xl py-2 px-4 mt-1 mb-1 bg-transparent"
               placeholder="Nhập tên đăng nhập"
+              onChange={handleChange}
+              value={formData.username}
             />
           </div>
           <div>
@@ -53,6 +70,8 @@ export default function SignupPage() {
               name="name"
               className=" text-sm w-full border-2 border-gray-100 rounded-xl py-2 px-4 mt-1 mb-1 bg-transparent"
               placeholder="Nhập tên người dùng"
+              onChange={handleChange}
+              value={formData.name}
             />
           </div>
           <div>
@@ -62,6 +81,8 @@ export default function SignupPage() {
               name="phone"
               className="text-sm w-full border-2 border-gray-100 rounded-xl  py-2 px-4 mt-1 mb-1 bg-transparent"
               placeholder="Nhập số điện thoại"
+              onChange={handleChange}
+              value={formData.phone}
             />
           </div>
           <div>
@@ -71,20 +92,62 @@ export default function SignupPage() {
               name="email"
               className="text-sm w-full border-2 border-gray-100 rounded-xl py-2 px-4 mt-1 mb-1 bg-transparent"
               placeholder="Nhập email"
+              onChange={handleChange}
+              value={formData.email}
             />
           </div>
           <div className="mt-2">
             <label className="text-sm font-medium">Mật khẩu</label>
-            <PasswordApp />
+            <section>
+        <div className="w-5/5 mx-auto relative">
+          <div className="w-full">
+            <input
+              name="password"
+              type={open === false ? "password" : "text"}
+              placeholder="Nhập mật khẩu"
+              className=" text-sm w-full border-2 border-gray-100 rounded-xl  py-2 px-4 mt-1 mb-1 bg-transparent"
+              onChange={handleChange}
+              value={formData.password}
+            />
+          </div>
+          <div className="text-sm absolute top-4 right-5">
+            {open === false ? (
+              <FontAwesomeIcon icon={faEye} onClick={toggle} />
+            ) : (
+              <FontAwesomeIcon icon={faEyeSlash} onClick={toggle} />
+            )}
+          </div>
+        </div>
+      </section>
           </div>
           <div className="mt-2">
             <label className="text-sm font-medium">Xác nhận mật khẩu</label>
-            <PasswordConfirm />
+            <section>
+        <div className="w-5/5 mx-auto relative">
+          <div className="w-full">
+            <input
+              name="confirm"
+              type={open === false ? "password" : "text"}
+              placeholder="Xác nhận mật khẩu"
+              className="text-sm w-full border-2 border-gray-100 rounded-xl py-2 px-4 mt-1 mb-1 bg-transparent"
+              onChange={handleChange}
+              value={formData.confirm}
+            />
+          </div>
+          <div className="text-sm absolute top-4 right-5">
+            {open === false ? (
+              <FontAwesomeIcon icon={faEye} onClick={toggle} />
+            ) : (
+              <FontAwesomeIcon icon={faEyeSlash} onClick={toggle} />
+            )}
+          </div>
+        </div>
+      </section>
           </div>
           <div className=" text-sm mt-4 flex justify-between items-center">
             <div>
               <input type="checkbox" id="remember" />
-              <label className="ml-2 font-medium text-base" for="remember">
+              <label className="ml-2 font-medium text-base" htmlFor="remember">
                 Tôi đồng ý với các điều khoản
               </label>
             </div>

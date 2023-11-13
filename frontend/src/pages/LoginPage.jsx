@@ -1,11 +1,17 @@
-import * as React from "react";
-import PasswordApp from "../components/Other/PasswordApp";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import googleIcon from "../assets/image/ic_gg.jpg";
 import facebookIcon from "../assets/image/ic_fb.png";
 import { login } from "../api/AuthApi";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 const LoginPage = () => {
+  const [open, setOpen] = useState(false);
+
+  const toggle = () => {
+    setOpen(!open);
+  };
     const usenavigate = useNavigate();
     const handleSubmit = async (prop) =>{
       prop.preventDefault();
@@ -45,7 +51,25 @@ const LoginPage = () => {
           </div>
           <div className="mt-2">
             <label className="text-md font-medium">Mật khẩu</label>
-            <PasswordApp />
+            <section>
+        <div className="w-5/5 mx-auto relative">
+          <div className="w-full">
+            <input
+              name="password"
+              type={open === false ? "password" : "text"}
+              placeholder="Nhập mật khẩu"
+              className=" text-sm w-full border-2 border-gray-100 rounded-xl  py-2 px-4 mt-1 mb-1 bg-transparent"
+            />
+          </div>
+          <div className="text-sm absolute top-4 right-5">
+            {open === false ? (
+              <FontAwesomeIcon icon={faEye} onClick={toggle} />
+            ) : (
+              <FontAwesomeIcon icon={faEyeSlash} onClick={toggle} />
+            )}
+          </div>
+        </div>
+      </section>
           </div>
           <div className="mt-4 flex justify-between items-center">
             <div>
