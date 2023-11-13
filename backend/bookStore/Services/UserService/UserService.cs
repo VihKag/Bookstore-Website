@@ -139,7 +139,7 @@ namespace bookStore.Services.UserService
                     Result = false,
                     Errors = new List<string>
                         {
-                            "Password không hợp lệ. Phải có ít nhất 8 kí tự."
+                            "Password không hợp lệ. Phải có ít nhất 8 kí tự và một kí tự đặc biệt."
                         }
                 });
             }
@@ -231,9 +231,12 @@ namespace bookStore.Services.UserService
             {
                 return false;
             }
+            if (!password.Any(c => !char.IsLetterOrDigit(c)))
+            {
+                return false;
+            }
 
             return true;
-
         }
         private bool IsValidPhone(string phone)
         {   

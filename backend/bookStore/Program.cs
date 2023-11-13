@@ -10,6 +10,9 @@ using bookStore.Services.ObjectMapping;
 using bookStore.Services.AuthService;
 using bookStore.Services.RefreshTokenService;
 using bookStore.Services.UserService;
+using bookStore.Repository;
+using bookStore.Repository.Implement;
+using bookStore.Services.CategoryService;
 
 internal class Program
 {
@@ -78,10 +81,13 @@ internal class Program
         });
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IAuthService, AuthService>();
         builder.Services.AddScoped<IRefreshTokenService, RefreshTokenService>();
+        builder.Services.AddScoped<ICategoryService, CategoryService>();
+        
 
         builder.Services.AddSingleton<MappingService>();
         builder.Services.AddDbContext<DataContext>(ServiceLifetime.Scoped);

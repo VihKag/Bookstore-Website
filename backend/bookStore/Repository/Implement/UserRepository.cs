@@ -1,7 +1,6 @@
 ﻿using bookStore.Data;
 using bookStore.Models;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Common;
 using System.Linq.Expressions;
 
 namespace bookStore.Reponsitory.Implement
