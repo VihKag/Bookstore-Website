@@ -29,6 +29,15 @@ function Cart() {
 
     setTotalPrice(totalPrice + product.price);
   };
+  const calculateTotalQuantity = () => {
+    let totalQuantity = 0;
+  
+    cartItems.forEach((item) => {
+      totalQuantity += item.quantity;
+    });
+  
+    return totalQuantity;
+  };
 
   const removeFromCart = (product) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== product.id);

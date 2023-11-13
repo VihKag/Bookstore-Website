@@ -66,9 +66,9 @@ namespace bookStore.Services.UserService
             return null;
         }
 
-        public async Task<AuthResult> Login(UserFormDTO dto)
+        public async Task<AuthResult> Login(LoginDTO dto)
         {
-            var user_exsit = _userRepository.FindByCondition(u => u.Email == dto.Email).FirstOrDefault();
+            var user_exsit = _userRepository.FindByCondition(u => u.Username == dto.UserName).FirstOrDefault();
             if (user_exsit != null)
             {
                 if (!BCrypt.Net.BCrypt.Verify(dto.Password, user_exsit.Password))
@@ -155,7 +155,8 @@ namespace bookStore.Services.UserService
                 });
             }
             string password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-            var new_user = new User(dto.UserName, dto.Name, dto.Email, password, dto.Phone);
+            dto.Name = "Tên người dùng";
+            var new_user = new User(dto.UserName,dto.Name, dto.Email, password, dto.Phone);
             new_user.Id = Nanoid.Generate(size: 20);
             new_user.IsActive = true;
             new_user.Gender = true;

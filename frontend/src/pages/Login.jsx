@@ -8,7 +8,7 @@ function Login() {
     backgroundSize: "cover", // Đảm bảo hình ảnh được hiển thị đầy đủ trong phần nền
     backgroundPosition: "center", // Đặt vị trí hiển thị của hìnhs ảnh
   };
-
+  
   return (
     <div className="flex w-full h-screen">
       <div

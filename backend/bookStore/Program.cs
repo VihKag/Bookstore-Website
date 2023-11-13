@@ -47,7 +47,6 @@ internal class Program
             });
 
 
-
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -94,11 +93,17 @@ internal class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseRouting();
         app.UseCors(x => x
                .SetIsOriginAllowed(origin => true)
                .AllowAnyMethod()
                .AllowAnyHeader()
                .AllowCredentials());
+
+      
+
         app.UseHttpsRedirection();
 
         //app.UseMiddleware<JwtMiddleware>();

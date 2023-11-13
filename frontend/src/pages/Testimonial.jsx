@@ -21,7 +21,7 @@ const Testimonial = () => {
                     </blockquote>
                     {/* Testimonial author */}
                     <figcaption className="flex items-center justify-center space-x-3">
-                        <img className="rounded-full w-9 h-9" src={avt} alt="profile picture" />
+                        <img className="rounded-full w-9 h-9" src={avt} alt="profile" />
                         <div className="space-y-0.5 font-medium dark:text-white text-left">
                             <div>Thái Hoàng Phúc</div>
                             <div className="text-sm text-gray-500 dark:text-gray-400">UI Developer & Frontend </div>
@@ -36,7 +36,7 @@ const Testimonial = () => {
                         <p className="my-4">Be who you are and say what you mean, because those who mind don’t matter and those who matter don’t mind."</p>
                     </blockquote>
                     <figcaption className="flex items-center justify-center space-x-3">
-                        <img className="rounded-full w-9 h-9" src={avt2} alt="profile picture" />
+                        <img className="rounded-full w-9 h-9" src={avt2} alt="profile" />
                         <div className="space-y-0.5 font-medium dark:text-white text-left">
                             <div>Phạm Nguyễn Phú Quí</div>
                             <div className="text-sm text-gray-500 dark:text-gray-400">Frontend & Backend</div>
@@ -51,7 +51,7 @@ const Testimonial = () => {
                         <p className="my-4">Life is like riding a bicycle. To keep your balance, you must keep moving."</p>
                     </blockquote>
                     <figcaption className="flex items-center justify-center space-x-3">
-                        <img className="rounded-full w-9 h-9" src={avt3} alt="profile picture" />
+                        <img className="rounded-full w-9 h-9" src={avt3} alt="profile" />
                         <div className="space-y-0.5 font-medium dark:text-white text-left">
                             <div>Nguyễn Vinh Khang</div>
                             <div className="text-sm text-gray-500 dark:text-gray-400">Frontend & Backend</div>
@@ -66,7 +66,7 @@ const Testimonial = () => {
                         <p className="my-4">You have many examples that can be used to create a fast prototype for your team."</p>
                     </blockquote>
                     <figcaption className="flex items-center justify-center space-x-3">
-                        <img className="rounded-full w-9 h-9" src={avt4} alt="profile picture" />
+                        <img className="rounded-full w-9 h-9" src={avt4} alt="profile" />
                         <div className="space-y-0.5 font-medium dark:text-white text-left">
                             <div>Mr Hoàng Công Trình</div>
                             <div className="text-sm text-gray-500 dark:text-gray-400">Teacher</div>
