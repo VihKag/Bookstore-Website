@@ -4,8 +4,8 @@ import ProductDetail from "../components/Products/ProductDetail";
 import Rating from "../components/rating/Rating";
 import Detail from "../components/Products/Detail";
 import Footer from "../components/Footer/Footer";
-import Rating2 from "../components/rating2/rating2";
-import ReviewArticle from "../components/rating2/review";
+import Rating2 from "../components/rating/rating2";
+import ReviewArticle from "../components/rating/review";
 import Breadcrumb from "../components/Other/Breadcrumb";
 const Product = () => {
     return (

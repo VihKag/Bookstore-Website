@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook,   faIdCard, faLock, faMagnifyingGlass, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faIdCard, faLock, faMagnifyingGlass, faPhone } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Header/Header";
 import { faFolder } from "@fortawesome/free-regular-svg-icons";
-import Footer2 from "../components/footer2/footer2";
+import Footer2 from "../components/Footer/footer2";
 const ServicePage = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -16,7 +16,7 @@ const ServicePage = () => {
         {
             icon: faIdCard,
             title: "Thanh Toán An Toàn",
-            content: "ích hợp các cổng thanh toán an toàn để cho phép khách hàng thanh toán bằng thẻ tín dụng, thẻ ghi nợ, hoặc các phương thức thanh toán trực tuyến"
+            content: "Tích hợp các cổng thanh toán an toàn để cho phép khách hàng thanh toán bằng thẻ tín dụng, thẻ ghi nợ, hoặc các phương thức thanh toán trực tuyến"
         },
         {
             icon: faMagnifyingGlass,
@@ -62,7 +62,7 @@ const ServicePage = () => {
                             <div className="px-6 py-4">
                                 <FontAwesomeIcon icon={card.icon} className="items-center mb-2" size="2x" />
                                 <div className="font-bold text-2xl items-center text-center mb-2">{card.title}</div>
-                                <p className="text-gray-700 text-base">{card.content}</p>
+                                <p className="text-gray-700 text-base text-justify">{card.content}</p>
                             </div>
                         </div>
                     ))}

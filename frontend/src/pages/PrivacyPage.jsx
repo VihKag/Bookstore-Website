@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import Footer2 from '../components/Footer/footer2';
 const PrivacyPage = () => {
     return (
         <div>
@@ -27,13 +28,14 @@ const PrivacyPage = () => {
                         4. Chia Sẻ Thông Tin
                         Chúng tôi không bán, trao đổi hoặc chia sẻ thông tin cá nhân của bạn với bất kỳ bên thứ ba nào khác ngoại trừ trường hợp chúng tôi cần chia sẻ thông tin để xử lý đơn hàng hoặc theo yêu cầu pháp lý.
                     </li>
-                    <li className='mt-3 mb-3'>
+                    <li className='mt-3 mb-6'>
 
                         5. Cập Nhật Thông Tin và Liên Hệ
                         Bạn có quyền cập nhật thông tin cá nhân của mình bằng cách đăng nhập vào tài khoản của bạn trên trang web của chúng tôi. Nếu bạn có bất kỳ câu hỏi hoặc lo ngại nào về chính sách quyền riêng tư của chúng tôi, vui lòng liên hệ với chúng tôi theo thông tin dưới đây.
                     </li>
                 </ul>
             </div>
+            <Footer2/>
         </div>
     );
 };

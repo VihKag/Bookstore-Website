@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header';
+import Footer2 from '../components/Footer/footer2';
 const SecurityPage = () => {
     return (
         <div>
@@ -27,13 +28,14 @@ const SecurityPage = () => {
                         4. Phát Hiện Và Ngăn Chặn Kỹ Thuật Số:
                         Chúng tôi sử dụng các công nghệ phát hiện và ngăn chặn để bảo vệ trang web của chúng tôi khỏi các tấn công kỹ thuật số như tấn công DDoS và tấn công SQL Injection.
                     </li>
-                    <li className='mt-3 mb-3'>
+                    <li className='mt-3 mb-6'>
 
                         5. Cập Nhật Bảo Mật:
                         Chúng tôi duy trì và cập nhật định kỳ các hệ thống và phần mềm để đảm bảo rằng chúng luôn đáp ứng với các tiêu chuẩn bảo mật cao nhất.
                     </li>
                 </ul>
             </div>
+            <Footer2/>
         </div>
     );
 };
