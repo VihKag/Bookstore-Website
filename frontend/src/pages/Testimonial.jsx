@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header/Header';
-import Footer2 from '../components/footer2/footer2';
+import Footer2 from '../components/Footer/footer2';
 import avt from "../assets/image/phuc.png"
 import avt2 from "../assets/image/qui.jpg"
 import avt3 from "../assets/image/avt3.jpg"
@@ -33,7 +33,7 @@ const Testimonial = () => {
                 <figure className="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-tr-lg dark:bg-gray-800 dark:border-gray-700">
                     <blockquote className="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Member</h3>
-                        <p className="my-4">Designing with Figma components that can be easily translated to the utility classes of Tailwind CSS is a huge timesaver!"</p>
+                        <p className="my-4">Be who you are and say what you mean, because those who mind don’t matter and those who matter don’t mind."</p>
                     </blockquote>
                     <figcaption className="flex items-center justify-center space-x-3">
                         <img className="rounded-full w-9 h-9" src={avt2} alt="profile picture" />
@@ -48,7 +48,7 @@ const Testimonial = () => {
                 <figure className="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-bl-lg md:border-b-0 md:border-r dark:bg-gray-800 dark:border-gray-700">
                     <blockquote className="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Member</h3>
-                        <p className="my-4">Aesthetically, the well designed components are beautiful and will undoubtedly level up your next application."</p>
+                        <p className="my-4">Life is like riding a bicycle. To keep your balance, you must keep moving."</p>
                     </blockquote>
                     <figcaption className="flex items-center justify-center space-x-3">
                         <img className="rounded-full w-9 h-9" src={avt3} alt="profile picture" />
