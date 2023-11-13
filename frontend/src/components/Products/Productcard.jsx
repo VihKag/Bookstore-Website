@@ -32,11 +32,11 @@ const ProductCard = (product) => {
                                 <div className="block font-bold box-border limit-text lg:text-xl">Title for book {product.title}</div>
                                 <div className="block text-slate-600 text-sm lg:text-base">Author name {product.author}</div>
                                 <span className="stars block text-xs lg:mb-2">
-                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#eeff00" }} />
-                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#eeff00" }} />
-                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#eeff00" }} />
-                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#eeff00" }} />
-                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#eeff00" }} />
+                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#FFD700" }} />
+                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#FFD700" }} />
+                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#FFD700" }} />
+                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#FFD700" }} />
+                                    <FontAwesomeIcon icon="fa-solid fa-star" style={{ color: "#FFD700" }} />
                                 </span>
                             </div>
                             <div className="flex items-center">
@@ -45,8 +45,8 @@ const ProductCard = (product) => {
                             </div>
                         </div>
                         <div className="flex text-lg lg:text-xl">
-                            <a href="buyClick" ><FontAwesomeIcon icon="fa-solid fa-cart-shopping" style={{color: "#0091ff",}} /></a>
-                            <a href="likeClick" className='ml-4'><FontAwesomeIcon icon="fa-solid fa-heart" style={{color: "#ff6bc9",}} /></a>
+                            <a href="buyClick" ><FontAwesomeIcon icon="fa-solid fa-cart-shopping" style={{ color: "#00d3b7",}} /></a>
+                            <a href="likeClick" className='ml-4'><FontAwesomeIcon icon="fa-solid fa-heart" style={{color: "#cc0000",}} /></a>
                         </div>
                     </div>
                 </div>

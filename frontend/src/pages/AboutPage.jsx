@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook,  faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Header/Header";
-import Footer2 from "../components/footer2/footer2";
+import Footer2 from "../components/Footer/footer2";
 
 const AboutPage = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -49,14 +49,14 @@ const AboutPage = () => {
                                 <FontAwesomeIcon icon={card.icon} className="items-center mb-2" size="2x" />
                                 <div className="font-bold text-2xl items-center text-center mb-2 ">{card.title}</div>
                                 {/* </div> */}
-                                <p className="text-gray-700 text-base">{card.content}</p>
+                                <p className="text-gray-700 text-base text-justify">{card.content}</p>
                             </div>
                         </div>
                     ))}
                 </div>
-                <p className="text-m mt-6 mb-4 mx-8">Xin chân thành cảm ơn bạn đã đến với PKQ BookStore. Chúng tôi hy vọng rằng mỗi cuốn sách bạn mua sẽ mang đến cho bạn những giây phút đọc sách tràn ngập niềm vui và sự sáng tạo. Hãy bắt đầu hành trình khám phá với chúng tôi và để chúng tôi làm nơi bạn tìm thấy những câu chuyện tuyệt vời !!! </p>
+                <p className="text-m mt-6 mb-4 mx-8 text-justify">Xin chân thành cảm ơn bạn đã đến với PKQ BookStore. Chúng tôi hy vọng rằng mỗi cuốn sách bạn mua sẽ mang đến cho bạn những giây phút đọc sách tràn ngập niềm vui và sự sáng tạo. Hãy bắt đầu hành trình khám phá với chúng tôi và để chúng tôi làm nơi bạn tìm thấy những câu chuyện tuyệt vời !!! </p>
             </div>
-            <Footer2/>
+            <Footer2 />
         </>
     );
 }

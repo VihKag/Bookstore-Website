@@ -85,10 +85,14 @@ const CategoryPage = ({ products }) => {
                   <option value="US">8</option>
                   <option value="CA">16</option>
                 </select>
+                <button className="border text-sm rounded-md bg-white p-2 mb-2 max-w-max ml-3">
+                  Filter
+                </button>
               </div>
               <div className="w-full bg-white p-6 rounded-md">
                 <ProductList products={products} />
               </div>
+              
             </div>
           </div>
         </div>

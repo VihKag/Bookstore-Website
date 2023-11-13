@@ -15,18 +15,18 @@ function Cart() {
       updatedCartItems[existingItemIndex].quantity += 1;
       setCartItems(updatedCartItems);
     }
-    else{
+    else {
       const newProduct = {
         id: product.id,
         name: product.name,
         price: product.price,
-       // image: `/images/${product.id}.jpg`,
+        // image: `/images/${product.id}.jpg`,
         image: pic,
         quantity: 1,
       };
-      setCartItems([...cartItems,newProduct]);
+      setCartItems([...cartItems, newProduct]);
     }
-   
+
     setTotalPrice(totalPrice + product.price);
   };
   const calculateTotalQuantity = () => {
@@ -82,72 +82,69 @@ function Cart() {
   };
   return (
     <>
-    <Header /> 
-    <div className="container-cart">
-      <h1 className="cart-title">GIỎ HÀNG</h1>
-      <div className="cart-wrapper">
-        <div className="cart-items-wrapper">
-          {cartItems.length === 0 ? (
-          <p className="empty-cart"> Giỏ hàng trống! Hãy lựa chọn các sản phẩm bạn mong muốn và thêm vào giỏ hàng!</p>
-        ) : (
-          <>
-          <h2>Thông tin sản phẩm</h2>
-          <ul className="cart-items">
-            {cartItems.map((item) => (
-              <li className="cart-item  border-b-2 border-t-2 p-2" key={item.id}>
-                <div className="item-info">
-                  <img src={item.image} alt={item.name} className="item-image" />
-                  <div>
-                    <p className="item-name">{item.name}</p>
-                    <p className="item-price">{item.price}đ</p>
-                  </div>
-                </div>
-                <div className="quantity">
-                  <button className="quantity-btn" onClick={() => decreaseQuantity(item)}>
-                    -
-                  </button>
-                  <span className="quantity-value">{item.quantity}</span>
-                  <button className="quantity-btn" onClick={() => increaseQuantity(item)}>
-                    +
-                  </button>
-                </div>
-                <button className="remove-btn" onClick={() => removeFromCart(item)}>
-                  Xóa
-                </button>
-              </li>
-            ))}
-          </ul>
-          </>
-          )}
+      <Header />
+      <div className="container-cart">
+        <h1 className="cart-title">GIỎ HÀNG</h1>
+        <div className="cart-wrapper">
+          <div className="cart-items-wrapper">
+            {cartItems.length === 0 ? (
+              <p className="empty-cart"> Giỏ hàng trống! Hãy lựa chọn các sản phẩm bạn mong muốn và thêm vào giỏ hàng!</p>
+            ) : (
+              <ul className="cart-items">
+                {cartItems.map((item) => (
+                  <li className="cart-item" key={item.id}>
+                    <div className="item-info">
+                      <img src={item.image} alt={item.name} className="item-image" />
+                      <div>
+                        <p className="item-name">{item.name}</p>
+                        <p className="item-price">{item.price}đ</p>
+                      </div>
+                    </div>
+                    <div className="quantity">
+                      <button className="quantity-btn" onClick={() => decreaseQuantity(item)}>
+                        -
+                      </button>
+                      <span className="quantity-value">{item.quantity}</span>
+                      <button className="quantity-btn" onClick={() => increaseQuantity(item)}>
+                        +
+                      </button>
+                    </div>
+                    <button className="remove-btn" onClick={() => removeFromCart(item)}>
+                      Xóa
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div className="order-summary">
+            <h2>Tóm tắt đơn hàng</h2>
+            <p className="cart-info">Số lượng sản phẩm: {cartItems.length}</p>
+            <p>Tổng tiền: {totalPrice}đ</p>
+            {/* Thêm các thông tin khác của đơn hàng */}
+            <button onClick={handleCheckout}>Thanh toán</button>
+          </div>
         </div>
-        <div className="order-summary">
-          <h2>Tóm tắt đơn hàng</h2>
-          <p className="cart-info">Số lượng sản phẩm: {calculateTotalQuantity()}</p>
-          <p className="total-price">Tổng tiền: {totalPrice}đ</p>
-          {/* Thêm các thông tin khác của đơn hàng */}
-          <button onClick={handleCheckout}>Thanh toán</button>
-        </div>
+        <h2>Danh sách sản phẩm</h2>
+        <ul className="product-list">
+          <li className="product-list-item">
+            <button onClick={() => addToCart({ id: 1, image: 'assets/image/book1.jpg', name: 'Sản phẩm 1', price: 100000 })}>
+              Thêm vào giỏ hàng
+            </button>
+          </li>
+          <li className="product-list-item">
+            <button onClick={() => addToCart({ id: 2, image: 'assets/image/book1.jpg', name: 'Sản phẩm 2', price: 200000 })}>
+              Thêm vào giỏ hàng
+            </button>
+          </li>
+          <li className="product-list-item">
+            <button onClick={() => addToCart({ id: 3, image: 'assets/image/book1.jpg', name: 'Sản phẩm 3', price: 300000 })}>
+              Thêm vào giỏ hàng
+            </button>
+          </li>
+        </ul>
       </div>
-      <h2>Danh sách sản phẩm</h2>
-      <ul className="product-list">
-        <li className="product-list-item">
-          <button onClick={() => addToCart({ id: 1,image: 'assets/image/book1.jpg', name: 'Sản phẩm 1', price: 100000 })}>
-            Thêm vào giỏ hàng
-          </button>
-        </li>
-        <li className="product-list-item">
-          <button onClick={() => addToCart({ id: 2, image: 'assets/image/book1.jpg', name: 'Sản phẩm 2', price: 200000 })}>
-            Thêm vào giỏ hàng
-          </button>
-        </li>
-        <li className="product-list-item">
-          <button onClick={() => addToCart({ id: 3, image: 'assets/image/book1.jpg', name: 'Sản phẩm 3', price: 300000 })}>
-            Thêm vào giỏ hàng
-          </button>
-        </li>
-      </ul>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 }
