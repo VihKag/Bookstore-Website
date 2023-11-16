@@ -7,6 +7,7 @@ import pic from '../../assets/image/book1.jpg'
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   const addToCart = (product) => {
     const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.name === product.name);
@@ -14,21 +15,22 @@ function Cart() {
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingItemIndex].quantity += 1;
       setCartItems(updatedCartItems);
-    }
-    else {
+      setCartItemCount(calculateTotalQuantity());
+    } else {
       const newProduct = {
         id: product.id,
         name: product.name,
         price: product.price,
-        // image: `/images/${product.id}.jpg`,
         image: pic,
         quantity: 1,
       };
       setCartItems([...cartItems, newProduct]);
+      setCartItemCount(calculateTotalQuantity());
     }
 
     setTotalPrice(totalPrice + product.price);
   };
+
   const calculateTotalQuantity = () => {
     let totalQuantity = 0;
   
@@ -119,8 +121,8 @@ function Cart() {
           </div>
           <div className="order-summary">
             <h2>Tóm tắt đơn hàng</h2>
-            <p className="cart-info">Số lượng sản phẩm: {cartItems.length}</p>
-            <p>Tổng tiền: {totalPrice}đ</p>
+<p className="cart-info">Số lượng sản phẩm: {calculateTotalQuantity()}</p>
+            <p className="total-cart">Tổng tiền: {totalPrice}đ</p>
             {/* Thêm các thông tin khác của đơn hàng */}
             <button onClick={handleCheckout}>Thanh toán</button>
           </div>
