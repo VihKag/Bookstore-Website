@@ -11,8 +11,8 @@ namespace bookStore.Services.ObjectMapping
         public MappingProfile()
         {
             
-          //  CreateMap<Category, CategoryDTO>();
-           // CreateMap<CategoryDTO, Category>();
+            CreateMap<Category, CategoryDTO>();
+            CreateMap<CategoryDTO, Category>();
            
             CreateMap<RefreshToken, RefreshTokenDTO>();
 

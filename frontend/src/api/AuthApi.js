@@ -12,29 +12,17 @@ const login = async ({username, password})=>{
         return false;
     }
 }
-const signup = async ({ username, name, password, phone, email, confirm }) => {
+const signup = async ({ username, name, phone, email, password}) => {
     try {
-      if (password !== confirm) {
-        alert("Passwords do not match");
-        console.log("step 0");
-        throw new Error();
-      }
       console.log("step 1");
-      const response = await axios.post(API_SIGNUP, {
+      await axios.post(API_SIGNUP, {
         username,
         name,
         phone,
         email,
-        password,
-        
+        password,   
       });
-      console.log("step 2");
-      if (response.data.success) {
-        return login({ username, password });
-      } else {
-        console.log("step 3");
-        return false;
-      }
+      return true;
     } catch (error) {
       console.log("Signup failed", error);
       return false;
