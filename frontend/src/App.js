@@ -16,6 +16,7 @@ import TermPage from "./pages/TermPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import SecurityPage from "./pages/SecurityPage";
 import Dashboard from "./pages/Admin/Dashboard";
+import UserProfile from "./components/user/UserProfile";
 
 function App() {
   return (
@@ -35,8 +36,8 @@ function App() {
         <Route path="/terms" element={<TermPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/security" element={<SecurityPage />} />
-
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/user/:activepage" element={<UserProfile />} />
       </Routes>
     </Router>
   );
