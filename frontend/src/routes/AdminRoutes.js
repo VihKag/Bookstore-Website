@@ -8,6 +8,7 @@ import TableStaff from "../components/Table/TableStaff";
 import Profile from "../components/Form/Profile";
 import BookForm from "../components/Form/BookForm";
 import SignupPage from "../pages/SignupPage";
+import AddAccount from "../components/Form/AddAccount";
 const AdminRoute = () => {
   return (
     <>
@@ -20,11 +21,10 @@ const AdminRoute = () => {
             <Route path="staffs" element={<TableStaff />}/>
             <Route path="products" element={<Products />}/>
             <Route path="profile" element={<Profile />}/>
-            <Route path="add_account" element={<SignupPage />}/>
+            <Route path="add_account" element={<AddAccount />}/>
             <Route path="add_product" element={<BookForm />}/>
         </Route>
-    </Routes>
-        
+    </Routes>       
     </>
   );
 };
