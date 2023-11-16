@@ -15,7 +15,7 @@ import Testimonial from "./pages/Testimonial";
 import TermPage from "./pages/TermPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import SecurityPage from "./pages/SecurityPage";
-import Dashboard from "./components/Dashboard/Dashboard";
+import AdminRoute from "./routes/AdminRoutes";
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/security" element={<SecurityPage />} />
 
-        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/*" element={<AdminRoute />} />
       </Routes>
     </Router>
   );
