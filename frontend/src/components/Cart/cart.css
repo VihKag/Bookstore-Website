@@ -31,6 +31,7 @@
   flex: 0.5;
   /* Thay đổi kích thước giỏ hàng */
   margin-right: 100px;
+  height: 100%;
 }
 
 .cart-info {
@@ -41,7 +42,9 @@
   list-style: none;
   padding: 0;
 }
-
+.total-cart{
+  margin-bottom: 10px;
+}
 .cart-item {
   display: flex;
   align-items: center;
@@ -109,6 +112,7 @@
   /* Thay đổi kích thước padding */
   position: relative;
   padding-bottom: 50px;
+  height: 100%;
   /* Để dành không gian cho nút thanh toán */
 }
 
