@@ -8,7 +8,7 @@ namespace bookStore.Services.UserService
         List<UserDTO> GetAllUser();
         UserDTO GetByID(string id);
         UserDTO GetByEmail(string email);
-        void Delete(string id);
+        bool Delete(string id);
         UserDTO Update(UserDTO userDTO);
         Task<AuthResult> Register(UserFormDTO dto);
         Task<AuthResult> Login(LoginDTO dto);

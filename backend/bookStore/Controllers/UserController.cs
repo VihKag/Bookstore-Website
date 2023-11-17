@@ -27,6 +27,21 @@ namespace bookStore.Controllers
             var pagedUsers = _userService.PaginationUser(pageNumber, pageSize);
             return Ok(pagedUsers);
         }
+
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(string id)
+        {
+            var result = _userService.Delete(id);
+            if (result == false)
+            {
+                return NotFound("Không tìm thấy User!");
+            }
+            return Ok("Thành công!!!");
+        }
+
+
+
         [HttpGet("{id}")]
 //        [Authorize(Roles = "User")]
         public ActionResult GetByID(string id)
