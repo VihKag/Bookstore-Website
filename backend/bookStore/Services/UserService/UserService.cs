@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using X.PagedList;
 using System.Text.RegularExpressions;
+using bookStore.Repository;
 
 namespace bookStore.Services.UserService
 {
@@ -19,26 +20,36 @@ namespace bookStore.Services.UserService
         private readonly IUserRepository _userRepository;
         private readonly MappingService _mappingService;
         private readonly IAuthService _authService;
+        
         public UserService(DataContext context, IUserRepository userRepository, MappingService mappingService, IAuthService authService)
         {
             _context = context;
             _userRepository = userRepository;
             _mappingService = mappingService;
             _authService = authService;
+            
         }
 
-        public void Delete(string id)
+        public bool Delete(string id)
         {
-            var user_exsit = _userRepository.FindById(id);
-            if (user_exsit != null)
+            if (_userRepository.FindById(id) == null)
             {
-                user_exsit.IsActive = false;
-                _userRepository.Update(user_exsit);
-                _userRepository.Save();
+                return false;
             }
-        }
 
-        public  List<UserDTO> GetAllUser()
+            TemporarilyDelete(id);
+
+            _userRepository.Save();
+
+            return true;
+        }
+        public void TemporarilyDelete(string id)
+        {
+            User user = _userRepository.FindByConditionWithTracking(x => x.Id == id).FirstOrDefault()!;
+
+            user.IsActive = false;
+        }
+        public List<UserDTO> GetAllUser()
         {
             List<User> entityList = _userRepository.FindAll();
             List<UserDTO> dtoList = new List<UserDTO>();
@@ -79,6 +90,17 @@ namespace bookStore.Services.UserService
             var user_exsit = _userRepository.FindByCondition(u => u.Username == dto.UserName).FirstOrDefault();
             if (user_exsit != null)
             {
+                if (!user_exsit.IsActive)
+                {
+                    return (new AuthResult
+                    {
+                        Errors = new List<string>()
+                            {
+                                "Tài khoản bị vô hiệu hóa!"
+                            },
+                        Result = false
+                    });
+                }
                 if (!BCrypt.Net.BCrypt.Verify(dto.Password, user_exsit.Password))
                 {
                     return (new AuthResult
@@ -172,11 +194,11 @@ namespace bookStore.Services.UserService
                 });
             }
             string password = BCrypt.Net.BCrypt.HashPassword(dto.Password);
-            dto.Name = "Tên người dùng";
             var new_user = new User(dto.UserName,dto.Name, dto.Email, password, dto.Phone);
             new_user.Id = Nanoid.Generate(size: 20);
             new_user.IsActive = true;
             new_user.Gender = true;
+            new_user.Role = "2";
             _userRepository.Create(new_user);
             var token = await _authService.GenerateJWTs(new_user);
             var userDto = _mappingService.GetMapper().Map<UserDTO>(new_user);
