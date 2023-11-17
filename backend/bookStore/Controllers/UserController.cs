@@ -22,10 +22,10 @@ namespace bookStore.Controllers
 
 //        [Authorize(Roles = "Admin")]
         [HttpGet]
-        public async Task<ActionResult<List<User>>> GetAllUser()
+        public ActionResult<List<UserDTO>> PaginationUser(int pageNumber, int pageSize)
         {
-            var users = await _userService.GetAllUser();
-            return Ok(users);
+            var pagedUsers = _userService.PaginationUser(pageNumber, pageSize);
+            return Ok(pagedUsers);
         }
         [HttpGet("{id}")]
 //        [Authorize(Roles = "User")]

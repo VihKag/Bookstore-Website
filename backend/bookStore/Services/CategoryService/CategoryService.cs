@@ -4,18 +4,18 @@ using bookStore.Models;
 using bookStore.Repository;
 using bookStore.Services.ObjectMapping;
 using NanoidDotNet;
+using System.Drawing.Printing;
+using X.PagedList;
 
 namespace bookStore.Services.CategoryService
 {
     public class CategoryService: ICategoryService
     {
-        private readonly DataContext _context;
         private readonly MappingService _mappingService;
         private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryService(DataContext context, MappingService mappingService, ICategoryRepository categoryRepository)
+        public CategoryService(MappingService mappingService, ICategoryRepository categoryRepository)
         {
-            _context = context;
             _mappingService = mappingService;
             _categoryRepository = categoryRepository;
         }
@@ -50,6 +50,7 @@ namespace bookStore.Services.CategoryService
             entity.Id = dto.Id;
             entity.Name = dto.Name;
             entity.Parent = dto.Parent; 
+            entity.Description = dto.Description;
 
             _categoryRepository.Update(entity);
             _categoryRepository.Save();
@@ -176,6 +177,15 @@ namespace bookStore.Services.CategoryService
             Category category = _categoryRepository.FindByConditionWithTracking(x => x.Id == id, x => x.BookCategories).FirstOrDefault()!;
 
             category.IsDelete = true;
+        }
+
+        public List<CategoryDTO> PaginationCategory(int pageNumber,int pageSize)
+        {
+            var allCategories = GetAll();
+
+            var pagedCategories = allCategories.ToPagedList(pageNumber, pageSize);
+            var pagedCategoriesList = pagedCategories.ToList();
+            return pagedCategoriesList;
         }
     }
 }

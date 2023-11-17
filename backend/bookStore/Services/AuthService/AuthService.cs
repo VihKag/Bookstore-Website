@@ -31,6 +31,7 @@ namespace bookStore.Services.AuthService
         {
             var jwtHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_configuration.GetSection("JwtConfig:SecretKey").Value);
+            var roleClaim = new Claim(ClaimTypes.Role, user.RoleNavigation?.Name);
 
             var authClaims = new ClaimsIdentity(new[]
                 {
@@ -40,6 +41,7 @@ namespace bookStore.Services.AuthService
                     new Claim(JwtRegisteredClaimNames.Sub, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToUniversalTime().ToString())
                 });
+            authClaims.AddClaim(roleClaim);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(authClaims),
