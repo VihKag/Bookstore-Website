@@ -15,7 +15,11 @@ namespace bookStore.Models.DTOs
 
         public string? Phone { get; set; }
 
-        public string? UserName { get; set; }
+        //public string? UserName { get; set; }
+
+        public bool? Gender { get; set; }
+
+        public DateTime? DateOfBirth { get; set; }
 
     }
 }
