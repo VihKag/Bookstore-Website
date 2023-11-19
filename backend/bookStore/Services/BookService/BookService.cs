@@ -60,7 +60,7 @@ namespace bookStore.Services.BookService
             {
                 Author author = _authorRepository.FindByName(au);
                 string IdAuB = Nanoid.Generate(size: 10);
-                var new_BookAuthor = new BookAuthor(IdAuB, dto.Isbn, author.AuthorId);
+                var new_BookAuthor = new BookAuthor(IdAuB, author.AuthorId, dto.Isbn);
                 new_BookAuthor.IsDelete = false;
                 _bookAuthorRepository.Create(new_BookAuthor);
                 _bookAuthorRepository.Save();
