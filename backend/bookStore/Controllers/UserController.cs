@@ -54,7 +54,7 @@ namespace bookStore.Controllers
             var user = _userService.GetByID(id);
             return Ok(user);
         }
-        [HttpPost("update")]
+        [HttpPut]
 //        [Authorize(Roles = "User")]
         public ActionResult UpdateProfile(UserDTO userDTO)
         {

@@ -9,12 +9,12 @@ namespace bookStore.Services.BookService
         bool Delete(string isbn);
         List<BookDTO> GetAll();
         List<BookDTO> GetAllDeleted();
-        BookDTO? GetById(string isbn);
+        Book GetById(string isbn);
         BookDTO? GetByName(string name);
         bool PermanentlyDelete(string isbn);
         BookDTO? Restore(string isbn);
         BookDTO? Update(BookDTO dto);
-        List<BookDTO> PaginationAuthor(int pageNumber, int pageSize);
+        List<BookDTO> PaginationBook(int pageNumber, int pageSize);
 
     }
 }
