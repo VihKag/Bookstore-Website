@@ -50,6 +50,7 @@ CREATE TABLE BookPublisher (
     ID nvarchar(36) PRIMARY KEY,
     ISBN nvarchar(36),
     PubID nvarchar(36),
+	isDelete bit,
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN),
     FOREIGN KEY (PubID) REFERENCES Publisher(ID)
 );
