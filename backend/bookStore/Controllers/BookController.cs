@@ -27,7 +27,7 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
-        [HttpGet("id")]
+        [HttpGet("isbn")]
         public ActionResult<Book> GetById(string isbn)
         {
             var book = _bookService.GetById(isbn);

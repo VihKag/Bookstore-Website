@@ -9,7 +9,7 @@ namespace bookStore.Services.BookService
         bool Delete(string isbn);
         List<BookDTO> GetAll();
         List<BookDTO> GetAllDeleted();
-        Book GetById(string isbn);
+        BookDTO? GetById(string isbn);
         BookDTO? GetByName(string name);
         bool PermanentlyDelete(string isbn);
         BookDTO? Restore(string isbn);
