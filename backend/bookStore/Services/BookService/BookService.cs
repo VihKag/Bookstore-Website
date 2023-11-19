@@ -96,9 +96,15 @@ namespace bookStore.Services.BookService
             throw new NotImplementedException();
         }
 
-        public BookDTO? GetById(string isbn)
+        public Book GetById(string isbn)
         {
-            throw new NotImplementedException();
+            Book entity = _bookRepository.FindById(isbn);
+            if (entity == null)
+            {
+                return null;
+            }
+            //BookDTO dto = _mappingService.GetMapper().Map<BookDTO>(entity);        
+            return entity;
         }
 
         public BookDTO? GetByName(string name)
@@ -106,7 +112,7 @@ namespace bookStore.Services.BookService
             throw new NotImplementedException();
         }
 
-        public List<BookDTO> PaginationAuthor(int pageNumber, int pageSize)
+        public List<BookDTO> PaginationBook(int pageNumber, int pageSize)
         {
             throw new NotImplementedException();
         }

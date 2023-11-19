@@ -15,6 +15,7 @@ using bookStore.Repository.Implement;
 using bookStore.Services.CategoryService;
 using bookStore.Services.AuthorService;
 using bookStore.Services.PublisherService;
+using bookStore.Services.BookService;
 
 internal class Program
 {
@@ -87,6 +88,10 @@ internal class Program
         builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
         builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
         builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+        builder.Services.AddScoped<IBookRepository, BookRepository>();
+        builder.Services.AddScoped<IBookAuthorRepository,BookAuhtorRepository>();
+        builder.Services.AddScoped<IBookCategoryRepository, BookCategoryRepository>();
+        builder.Services.AddScoped<IBookPublisherRepository, BookPublisherRepository>();
 
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IAuthService, AuthService>();
@@ -94,6 +99,7 @@ internal class Program
         builder.Services.AddScoped<ICategoryService, CategoryService>();
         builder.Services.AddScoped<IAuthorSevice, AuthorService>();
         builder.Services.AddScoped<IPublisherService, PublisherService>();
+        builder.Services.AddScoped<IBookService,BookService>();
         
 
         builder.Services.AddSingleton<MappingService>();

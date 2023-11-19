@@ -25,6 +25,9 @@ namespace bookStore.Services.ObjectMapping
             CreateMap<PublisherDTO, Publisher>();
             CreateMap<Publisher, PublisherDTO>();
 
+            CreateMap<BookDTO, Book>();
+            CreateMap<Book, BookDTO>();
+
             //...Trong quá trình làm phát sinh thêm nhiều map thì bổ sung dần vào đây 
 
         }
