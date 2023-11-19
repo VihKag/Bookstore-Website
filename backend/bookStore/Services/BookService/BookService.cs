@@ -50,7 +50,6 @@ namespace bookStore.Services.BookService
             {
                 Category category = _categoryRepository.FindByName(cate);
                 string IdcateB = Nanoid.Generate(size: 10);
-               
                 var new_BookCategory = new BookCategory(IdcateB,dto.Isbn,category.Id);
                 new_BookCategory.IsDelete= false;
                 _bookCategoryRepository.Create(new_BookCategory);

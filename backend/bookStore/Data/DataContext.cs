@@ -165,6 +165,7 @@ public partial class DataContext : DbContext
             entity.Property(e => e.PubId)
                 .HasMaxLength(36)
                 .HasColumnName("PubID");
+            entity.Property(e => e.IsDelete).HasColumnName("isDelete");
 
             entity.HasOne(d => d.IsbnNavigation).WithMany(p => p.BookPublishers)
                 .HasForeignKey(d => d.Isbn)
