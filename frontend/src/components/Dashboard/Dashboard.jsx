@@ -8,8 +8,6 @@ import ListTopProduct from '../List/ListTopProduct';
 const Dashboard= () =>{
     return(
         <>
-            {/* <div className="p-4 sm:ml-64">
-                <div className="p-4 border-2 rounded-lg mt-14"> */}
                     <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 mb-4">
                         <CardOne/>
                         <CardTwo/>
@@ -26,8 +24,6 @@ const Dashboard= () =>{
                             <ListTopUser/>
                         </div>                        
                     </div>                    
-                {/* </div>
-            </div> */}
         </>
     );
 }
