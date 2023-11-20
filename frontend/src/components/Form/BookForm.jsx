@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CreateProduct = () => {
+const BookForm = () => {
     const [formData, setFormData] = useState({
         productdetail_id: '',
         warehouse_id: '',
@@ -221,4 +221,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default BookForm;
