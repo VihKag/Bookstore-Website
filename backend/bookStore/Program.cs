@@ -16,6 +16,7 @@ using bookStore.Services.CategoryService;
 using bookStore.Services.AuthorService;
 using bookStore.Services.PublisherService;
 using bookStore.Services.BookService;
+using bookStore.Services.OrderService;
 
 internal class Program
 {
@@ -92,6 +93,7 @@ internal class Program
         builder.Services.AddScoped<IBookAuthorRepository,BookAuhtorRepository>();
         builder.Services.AddScoped<IBookCategoryRepository, BookCategoryRepository>();
         builder.Services.AddScoped<IBookPublisherRepository, BookPublisherRepository>();
+        builder.Services.AddScoped<IOrderDetailRepository, OrderRepository>();
 
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IAuthService, AuthService>();
@@ -100,6 +102,7 @@ internal class Program
         builder.Services.AddScoped<IAuthorSevice, AuthorService>();
         builder.Services.AddScoped<IPublisherService, PublisherService>();
         builder.Services.AddScoped<IBookService,BookService>();
+        builder.Services.AddScoped<IOrderService,OrderService>();
         
 
         builder.Services.AddSingleton<MappingService>();

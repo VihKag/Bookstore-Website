@@ -7,9 +7,9 @@ using System.Linq.Expressions;
 
 namespace bookStore.Repository.Implement
 {
-    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
+    public class OrderDetailRepository : RepositoryBase<Order>, IOrderDetailRepository
     {
-        public OrderRepository(DataContext context) : base(context)
+        public OrderDetailRepository(DataContext context) : base(context)
         {
         }
 
@@ -22,6 +22,11 @@ namespace bookStore.Repository.Implement
                 query = query.Include(include);
             }
             return query.AsNoTracking().FirstOrDefault()!;
+        }
+
+        OrderDetail IOrderDetailRepository.FindById(string Id, params Expression<Func<Order, object>>[] includes)
+        {
+            throw new NotImplementedException();
         }
     }
 }

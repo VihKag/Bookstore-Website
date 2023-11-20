@@ -152,15 +152,6 @@ namespace bookStore.Services.BookService
             return listBook;
         }
 
-
-
-
-
-        public BookDTO? GetByName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<BookDTO> PaginationBook(int pageNumber, int pageSize)
         {
             throw new NotImplementedException();
@@ -178,6 +169,8 @@ namespace bookStore.Services.BookService
 
         public BookDTO? Update(BookDTO book)
         {
+            
+
             throw new NotImplementedException();
         }
 
