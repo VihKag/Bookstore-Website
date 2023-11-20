@@ -31,7 +31,7 @@ namespace bookStore.Controllers
         }
 
         [HttpGet("id/{id}")]
-        public ActionResult<List<AuthorDTO>> GetById(string id)
+        public ActionResult<AuthorDTO> GetById(string id)
         {
             var author = _authorSevice.GetById(id);
             if (author == null)

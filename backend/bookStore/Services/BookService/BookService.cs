@@ -1,11 +1,8 @@
 ﻿using bookStore.Models;
 using bookStore.Models.DTOs;
 using bookStore.Reponsitory;
-using bookStore.Reponsitory.Implement;
 using bookStore.Repository;
-using bookStore.Repository.Implement;
 using bookStore.Services.ObjectMapping;
-using Humanizer;
 using NanoidDotNet;
 
 namespace bookStore.Services.BookService
@@ -41,6 +38,7 @@ namespace bookStore.Services.BookService
         {
             //dto.Id = Nanoid.Generate(size: 10);
             Book book = _mappingService.GetMapper().Map<Book>(dto);
+            book.Date = dto.Date.Date;
             book.IsDelete = false;
             book.State = true;
             _bookRepository.Create(book);
@@ -96,16 +94,67 @@ namespace bookStore.Services.BookService
             throw new NotImplementedException();
         }
 
-        public Book GetById(string isbn)
+        public BookDTO GetById(string isbn)
         {
             Book entity = _bookRepository.FindById(isbn);
             if (entity == null)
             {
                 return null;
             }
-            //BookDTO dto = _mappingService.GetMapper().Map<BookDTO>(entity);        
-            return entity;
+            
+            BookDTO dto = _mappingService.GetMapper().Map<BookDTO>(entity);
+
+            dto.Date = entity.Date.Date;
+
+
+            List<BookAuthor> authorList = _bookAuthorRepository.FindByCondition(x => x.Isbn == isbn);
+
+            foreach (var item in authorList)
+            {
+                var author = _authorRepository.FindById(item.AuthorId);
+                var au = author.Name;
+                dto.AuthorList.Add(au);
+            }
+
+            List<BookCategory> categoryList = _bookCategoryRepository.FindByCondition(x => x.Isbn == isbn);
+
+            foreach (var item in categoryList)
+            {
+                var category = _categoryRepository.FindByID(item.CateId);
+                var cate = category.Name;
+                dto.CategoryList.Add(cate);
+            }
+
+            List<BookPublisher> publisherList = _bookPublisherRepository.FindByCondition(x => x.Isbn == isbn);
+
+            foreach (var item in publisherList)
+            {
+                var publisher = _publisherRepository.FindByID(item.PubId);
+                var pub = publisher.Name;
+                dto.PublisherList.Add(pub);
+            }
+
+            return dto;
         }
+
+        public List<BookDTO> GetByCate(string cateName)
+        {
+            Category cate = _categoryRepository.FindByName(cateName);
+            var cateId = cate.Id;
+            List<BookDTO> listBook = new List<BookDTO>();
+            List<BookCategory> bookCategory = _bookCategoryRepository.FindByCondition(x => cateId == x.CateId);
+            foreach (var item in bookCategory)
+            {
+                BookDTO dto = GetById(item.Isbn);
+                listBook.Add(dto);
+            }
+
+            return listBook;
+        }
+
+
+
+
 
         public BookDTO? GetByName(string name)
         {
@@ -130,6 +179,48 @@ namespace bookStore.Services.BookService
         public BookDTO? Update(BookDTO book)
         {
             throw new NotImplementedException();
+        }
+
+        public List<BookDTO> GetByAuthor(string authorName)
+        {
+            Author author = _authorRepository.FindByName(authorName);
+            var authorID = author.AuthorId;
+            List<BookDTO> listBook = new List<BookDTO>();
+            List<BookAuthor> bookAuthors = _bookAuthorRepository.FindByCondition(x => authorID == x.AuthorId);
+            foreach (var item in bookAuthors)
+            {
+                BookDTO dto = GetById(item.Isbn);
+                listBook.Add(dto);
+            }
+
+            return listBook;
+        }
+
+        public List<BookDTO> GetByPublisher(string pubName)
+        {
+            Publisher publisher = _publisherRepository.FindByName(pubName);
+            var pubId = publisher.Id;
+            List<BookDTO> listBook = new List<BookDTO>();
+            List<BookPublisher> bookPublishers = _bookPublisherRepository.FindByCondition(x => pubId == x.PubId);
+            foreach (var item in bookPublishers)
+            {
+                BookDTO dto = GetById(item.Isbn);
+                listBook.Add(dto);
+            }
+
+            return listBook;
+        }
+
+        public List<BookDTO> SearchByTitle(string title)
+        {
+            List<BookDTO> listBook = new List<BookDTO>();
+            List<Book> books = _bookRepository.FindByCondition(b => b.Name.Contains(title)).ToList();
+            foreach (var item in books)
+            {
+                BookDTO dto = GetById(item.Isbn);
+                listBook.Add(dto);
+            }
+            return listBook;
         }
     }
 }
