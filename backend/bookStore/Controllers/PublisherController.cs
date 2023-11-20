@@ -30,7 +30,7 @@ namespace bookStore.Controllers
         }
 
         [HttpGet("id/{id}")]
-        public ActionResult<List<PublisherDTO>> GetById(string id)
+        public ActionResult<PublisherDTO> GetById(string id)
         {
             var author = _publisherService.GetById(id);
             if (author == null)

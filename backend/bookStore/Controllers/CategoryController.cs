@@ -34,7 +34,7 @@ namespace bookStore.Controllers
         }
 
         [HttpGet("id/{id}")]
-        public ActionResult<List<CategoryDTO>> GetById(string id)
+        public ActionResult<CategoryDTO> GetById(string id)
         {
             var category = _categoryService.GetById(id);
             if(category == null)
