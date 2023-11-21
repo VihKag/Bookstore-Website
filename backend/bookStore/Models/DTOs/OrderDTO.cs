@@ -10,12 +10,8 @@
 
         public DateTime? OrderDay { get; set; }
 
-        public bool? Status { get; set; }
-
         public string Address { get; set; } = null!;
 
-        public bool? IsDelete { get; set; }
-
-        public virtual List<string> OrderDetailList { get; set; } = new List<string>();
+        public virtual List<OrderBook> OrderBookList { get; set; } = new List<OrderBook>();
     }
 }

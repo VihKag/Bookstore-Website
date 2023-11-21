@@ -3,8 +3,8 @@ using System.Linq.Expressions;
 
 namespace bookStore.Reponsitory
 {
-    public interface IOrderDetailRepository : IRepositoryBase<Order>
+    public interface IOrderDetailRepository : IRepositoryBase<OrderDetail>
     {
-        OrderDetail FindById(string Id, params Expression<Func<Order, object>>[] includes);
+        OrderDetail FindById(string Id, params Expression<Func<OrderDetail, object>>[] includes);
     }
 }

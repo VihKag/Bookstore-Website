@@ -4,6 +4,6 @@ namespace bookStore.Services.OrderService
 {
     public interface IOrderService
     {
-        BookDTO? Create(BookDTO dto);
+        OrderDTO? Create(OrderDTO dto);
     }
 }
