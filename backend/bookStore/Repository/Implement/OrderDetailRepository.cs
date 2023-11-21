@@ -7,26 +7,21 @@ using System.Linq.Expressions;
 
 namespace bookStore.Repository.Implement
 {
-    public class OrderDetailRepository : RepositoryBase<Order>, IOrderDetailRepository
+    public class OrderDetailRepository : RepositoryBase<OrderDetail>, IOrderDetailRepository
     {
         public OrderDetailRepository(DataContext context) : base(context)
         {
         }
 
-        public Order FindById(string Id, params Expression<Func<Order, object>>[] includes)
+        public OrderDetail FindById(string Id, params Expression<Func<OrderDetail, object>>[] includes)
         {
-            IQueryable<Order> query = context.Set<Order>().Where(x => x.Id == Id);
+            IQueryable<OrderDetail> query = context.Set<OrderDetail>().Where(x => x.Id == Id);
 
             foreach (var include in includes)
             {
                 query = query.Include(include);
             }
             return query.AsNoTracking().FirstOrDefault()!;
-        }
-
-        OrderDetail IOrderDetailRepository.FindById(string Id, params Expression<Func<Order, object>>[] includes)
-        {
-            throw new NotImplementedException();
         }
     }
 }
