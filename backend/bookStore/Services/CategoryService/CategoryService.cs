@@ -161,15 +161,6 @@ namespace bookStore.Services.CategoryService
             return dtoList;
         }
 
-        private bool ValidateObject(CategoryDTO dto)
-        {
-            Category entity = _categoryRepository.FindByName(dto.Name);
-            if (entity == null)
-            {
-                return true;
-            }
-            return false;
-        }
 
 
         public void TemporarilyDelete(string id)
