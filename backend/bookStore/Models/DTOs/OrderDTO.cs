@@ -12,6 +12,8 @@
 
         public string Address { get; set; } = null!;
 
+        public bool? Status { get; set; }
+
         public virtual List<OrderBook> OrderBookList { get; set; } = new List<OrderBook>();
     }
 }

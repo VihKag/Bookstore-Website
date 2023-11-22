@@ -4,6 +4,8 @@ using bookStore.Reponsitory;
 using bookStore.Repository;
 using bookStore.Services.ObjectMapping;
 using NanoidDotNet;
+using System.Drawing.Printing;
+using X.PagedList;
 
 namespace bookStore.Services.BookService
 {
@@ -43,13 +45,18 @@ namespace bookStore.Services.BookService
             book.State = true;
             _bookRepository.Create(book);
             _bookRepository.Save();
+            CreateRelationship(dto);
+            return dto;
+        }
 
+        private void CreateRelationship(BookDTO dto)
+        {
             dto.CategoryList.ForEach(cate =>
             {
                 Category category = _categoryRepository.FindByName(cate);
                 string IdcateB = Nanoid.Generate(size: 10);
-                var new_BookCategory = new BookCategory(IdcateB,dto.Isbn,category.Id);
-                new_BookCategory.IsDelete= false;
+                var new_BookCategory = new BookCategory(IdcateB, dto.Isbn, category.Id);
+                new_BookCategory.IsDelete = false;
                 _bookCategoryRepository.Create(new_BookCategory);
                 _bookCategoryRepository.Save();
             });
@@ -72,11 +79,6 @@ namespace bookStore.Services.BookService
                 _bookPublisherRepository.Create(new_BookPublisher);
                 _bookPublisherRepository.Save();
             });
-
-
-            
-
-            return dto;
         }
 
         public bool Delete(string isbn)
@@ -106,38 +108,59 @@ namespace bookStore.Services.BookService
 
             dto.Date = entity.Date.Date;
 
+            dto.AuthorList = GetAuthorsByISBN(isbn);
+            dto.CategoryList = GetCategoriesByISBN(isbn);
+            dto.PublisherList = GetPublishersByISBN(isbn);
 
+            return dto;
+        }
+
+        private List<string> GetAuthorsByISBN(string isbn)
+        {
             List<BookAuthor> authorList = _bookAuthorRepository.FindByCondition(x => x.Isbn == isbn);
+            List<string> authors = new List<string>();
 
             foreach (var item in authorList)
             {
                 var author = _authorRepository.FindById(item.AuthorId);
                 var au = author.Name;
-                dto.AuthorList.Add(au);
+                authors.Add(au);
             }
 
+            return authors;
+        }
+
+        private List<string> GetCategoriesByISBN(string isbn)
+        {
             List<BookCategory> categoryList = _bookCategoryRepository.FindByCondition(x => x.Isbn == isbn);
+            List<string> categories = new List<string>();
 
             foreach (var item in categoryList)
             {
                 var category = _categoryRepository.FindByID(item.CateId);
                 var cate = category.Name;
-                dto.CategoryList.Add(cate);
+                categories.Add(cate);
             }
 
+            return categories;
+        }
+
+        private List<string> GetPublishersByISBN(string isbn)
+        {
             List<BookPublisher> publisherList = _bookPublisherRepository.FindByCondition(x => x.Isbn == isbn);
+            List<string> publishers = new List<string>();
 
             foreach (var item in publisherList)
             {
                 var publisher = _publisherRepository.FindByID(item.PubId);
                 var pub = publisher.Name;
-                dto.PublisherList.Add(pub);
+                publishers.Add(pub);
             }
 
-            return dto;
+            return publishers;
         }
 
-        public List<BookDTO> GetByCate(string cateName)
+        public List<BookDTO> GetByCate(string cateName, int pageNumber, int pageSize)
         {
             Category cate = _categoryRepository.FindByName(cateName);
             var cateId = cate.Id;
@@ -149,13 +172,11 @@ namespace bookStore.Services.BookService
                 listBook.Add(dto);
             }
 
-            return listBook;
+            var pagedBookCategory = listBook.ToPagedList(pageNumber, pageSize);
+            var pagedBookCategoryList = pagedBookCategory.ToList();
+            return pagedBookCategoryList;
         }
 
-        public List<BookDTO> PaginationBook(int pageNumber, int pageSize)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool PermanentlyDelete(string isbn)
         {
@@ -167,14 +188,66 @@ namespace bookStore.Services.BookService
             throw new NotImplementedException();
         }
 
-        public BookDTO? Update(BookDTO book)
+        public BookDTO? Update(BookDTO dto)
         {
-            
+            if (dto.Isbn == null)
+            {
+                return null;
+            }
 
-            throw new NotImplementedException();
+            Book entity = _bookRepository.FindById(dto.Isbn);
+            if (entity == null)
+            {
+                return null;
+            }
+            DeleteBookByISBN(dto.Isbn);
+
+            CreateRelationship(dto);
+
+            entity = _mappingService.GetMapper().Map<Book>(dto);
+
+            _bookRepository.Update(entity);
+            _bookRepository.Save();
+
+            return dto;
+        }
+        public void DeleteBookByISBN(string isbn)
+        {
+            DeletePublishersByISBN(isbn);
+            DeleteCategoriesByISBN(isbn);
+            DeleteAuthorsByISBN(isbn);
         }
 
-        public List<BookDTO> GetByAuthor(string authorName)
+        private void DeletePublishersByISBN(string isbn)
+        {
+            List<BookPublisher> publisherList = _bookPublisherRepository.FindByCondition(x => x.Isbn == isbn);
+
+            foreach (var item in publisherList)
+            {
+                _bookPublisherRepository.Delete(item);
+            }
+        }
+
+        private void DeleteCategoriesByISBN(string isbn)
+        {
+            List<BookCategory> categoryList = _bookCategoryRepository.FindByCondition(x => x.Isbn == isbn);
+
+            foreach (var item in categoryList)
+            {
+                _bookCategoryRepository.Delete(item);
+            }
+        }
+
+        private void DeleteAuthorsByISBN(string isbn)
+        {
+            List<BookAuthor> authorList = _bookAuthorRepository.FindByCondition(x => x.Isbn == isbn);
+
+            foreach (var item in authorList)
+            {
+                _bookAuthorRepository.Delete(item);
+            }
+        }
+        public List<BookDTO> GetByAuthor(string authorName, int pageNumber, int pageSize)
         {
             Author author = _authorRepository.FindByName(authorName);
             var authorID = author.AuthorId;
@@ -186,10 +259,12 @@ namespace bookStore.Services.BookService
                 listBook.Add(dto);
             }
 
-            return listBook;
+            var pagedBookAuthor = listBook.ToPagedList(pageNumber, pageSize);
+            var pagedBookAuthorList = pagedBookAuthor.ToList();
+            return pagedBookAuthorList;
         }
 
-        public List<BookDTO> GetByPublisher(string pubName)
+        public List<BookDTO> GetByPublisher(string pubName, int pageNumber, int pageSize)
         {
             Publisher publisher = _publisherRepository.FindByName(pubName);
             var pubId = publisher.Id;
@@ -201,7 +276,9 @@ namespace bookStore.Services.BookService
                 listBook.Add(dto);
             }
 
-            return listBook;
+            var pagedBookPublisher = listBook.ToPagedList(pageNumber, pageSize);
+            var pagedBookPublisherList = pagedBookPublisher.ToList();
+            return pagedBookPublisherList;
         }
 
         public List<BookDTO> SearchByTitle(string title)

@@ -18,6 +18,8 @@
 
         public string? Language { get; set; }
 
+        public bool? State { get; set; }
+
         //public string? ImageId { get; set; }
 
         public virtual List<string> CategoryList { get; set; } = new List<string>();
