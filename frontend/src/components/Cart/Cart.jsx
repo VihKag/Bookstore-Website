@@ -7,7 +7,6 @@ import pic from '../../assets/image/book1.jpg'
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [cartItemCount, setCartItemCount] = useState(0);
 
   const addToCart = (product) => {
     const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.name === product.name);
@@ -15,7 +14,6 @@ function Cart() {
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingItemIndex].quantity += 1;
       setCartItems(updatedCartItems);
-      setCartItemCount(calculateTotalQuantity());
     } else {
       const newProduct = {
         id: product.id,
@@ -25,7 +23,6 @@ function Cart() {
         quantity: 1,
       };
       setCartItems([...cartItems, newProduct]);
-      setCartItemCount(calculateTotalQuantity());
     }
 
     setTotalPrice(totalPrice + product.price);
