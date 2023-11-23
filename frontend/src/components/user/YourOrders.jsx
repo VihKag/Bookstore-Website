@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import '../user/YourOrder.css'
-import OrderSuccessful from '../Order/OrderSuccessful'
-import { useRecoilState } from 'recoil'
-import { orderSuccessfulProvider } from '../../components/Providers/OrderSuccessfulProvider'
+import React, { useState } from 'react';
+import './YourOrder.css';
+import OrderSuccessful from '../Order/OrderSuccessful';
+import { useRecoilState } from 'recoil';
+import { orderSuccessfulProvider } from '../Providers/OrderSuccessfulProvider';
 
 const YourOrders = () => {
 
@@ -107,4 +107,4 @@ const YourOrders = () => {
     )
 }
 
-export default YourOrders
+export default YourOrders;
