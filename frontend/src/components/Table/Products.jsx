@@ -91,17 +91,15 @@ const Products = () => {
         <div className="flex items-center">
             <select class="block w-52 h-10 mx-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 my-auto">
                 <option selected>Choose category</option>
-                <option value="US">Áo thun</option>
-                <option value="CA">Quẩn dài</option>
-                <option value="FR">Quần jean</option>
-                <option value="DE">Áo khoác</option>
+                <option value="US">Tiểu thuyết</option>
+                <option value="CA">Truyện tranh</option>
+                <option value="FR">Văn học</option>
+                <option value="DE">SGK</option>
             </select>
             <select class="block w-52 h-10 mx-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 my-auto">
-                <option selected>Choose color</option>
-                <option value="US">Đỏ</option>
-                <option value="CA">Xanh rêu</option>
-                <option value="FR">Trắng</option>
-                <option value="DE">Xám</option>
+                <option selected>Choose NXB</option>
+                <option value="US">Kim Đồng</option>
+                <option value="CA">Phương Nam</option>
             </select>
             <button class="w-14 bg-gray-600 rounded-md h-9">
                 <FontAwesomeIcon
@@ -152,7 +150,7 @@ const Products = () => {
               </th>
               <th scope="col" class="px-6 py-3">
                 <div class="flex items-center justify-center">
-                  Color
+                  Author
                   <a href="/#">
                     <svg
                       class="w-3 h-3 ml-1.5"
@@ -245,21 +243,21 @@ const Products = () => {
                     <FontAwesomeIcon
                       icon={faPenToSquare}
                       style={{ color: "#ff9b00" }}
-                      size="xl"
+                      size="md"
                     />
                   </a>
                   <a href="/#" class="mx-2 font-medium text-blue-600">
                     <FontAwesomeIcon
                       icon={faTrash}
                       style={{ color: "#ff0000" }}
-                      size="xl"
+                      size="md"
                     />
                   </a>
                   <a href="/#" class="mx-2 font-medium text-blue-600">
                     <FontAwesomeIcon
                       icon={faEye}
                       style={{ color: "#000000" }}
-                      size="xl"
+                      size="md"
                     />
                   </a>
                 </td>

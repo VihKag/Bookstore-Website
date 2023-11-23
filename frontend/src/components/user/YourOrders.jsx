@@ -83,9 +83,9 @@ const YourOrders = () => {
                                 <td data-label='OrderDate'>{item.date}</td>
                                 <td data-label='Delivery Status'>
                                     <div>
-                                        {item.status == 'Delivered' && <span className='greendot'></span>}
-                                        {item.status == 'On the way' && <span className='yellowdot'></span>}
-                                        {item.status == 'Cancelled' && <span className='reddot'></span>}
+                                        {item.status === 'Delivered' && <span className='greendot'></span>}
+                                        {item.status === 'On the way' && <span className='yellowdot'></span>}
+                                        {item.status === 'Cancelled' && <span className='reddot'></span>}
                                         {item.status}
                                     </div>
                                 </td>

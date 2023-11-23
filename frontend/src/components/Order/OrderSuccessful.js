@@ -85,7 +85,6 @@ const OrderSuccessful = ({ orderid, message, redirecto }) => {
                             }
                         </p>
                     </div>
-
                     <div>
                         <p>Order Subtotal</p>
                         <p>$ {orderdata.SubTotal}</p>
