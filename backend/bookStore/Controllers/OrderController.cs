@@ -26,5 +26,27 @@ namespace bookStore.Controllers
             }
             return Ok(order);
         }
+        [HttpDelete]
+        public ActionResult<bool> Delete(string id)
+        {
+            bool result = _orderService.Delete(id);
+            if (result == false)
+            {
+                return Ok("Thất bại! Hãy kiểm tra lại dữ liệu truyền vào!");
+            }
+
+            return Ok("Đã xóa!");
+        }
+        [HttpPut]
+        public ActionResult<bool> UpdateStatus(string id)
+        {
+            bool result = _orderService.UpdateStatus(id);
+            if (result == false)
+            {
+                return Ok("Thất bại! Hãy kiểm tra lại dữ liệu truyền vào!");
+            }
+
+            return Ok("Duyệt thành công!");
+        }
     }
 }
