@@ -1,18 +1,35 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CardOne from '../Card/CardOne';
-import CardTwo from '../Card/CardTwo';
-import CardThree from '../Card/CardThree';
-import CardFour from '../Card/CardFour';
 import ListTopUser from '../List/ListTopUser';
 import ListTopProduct from '../List/ListTopProduct';
+import CardContext from '../Card/CardContext';
 const Dashboard= () =>{
     return(
         <>
                     <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 mb-4">
-                        <CardOne/>
-                        <CardTwo/>
-                        <CardThree/>
-                        <CardFour/>
+                        <CardContext 
+                            title='ORDERS'
+                            statistics={1444}
+                            percent
+                            time
+                        />
+                        <CardContext 
+                            title='PRODUCTS'
+                            statistics={1444}
+                            percent
+                            time
+                        />
+                        <CardContext 
+                            title='USERS'
+                            statistics={144}
+                            percent
+                            time
+                        />
+                        <CardContext 
+                            title='PAYMENTS'
+                            statistics={1444}
+                            percent
+                            time
+                        />
                     </div>
                     <div className="grid lg:grid-cols-2 gap-4 mb-4">
                     </div>
