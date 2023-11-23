@@ -95,6 +95,7 @@ internal class Program
         builder.Services.AddScoped<IBookPublisherRepository, BookPublisherRepository>();
         builder.Services.AddScoped<IOrderRepository, OrderRepository>();
         builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+        builder.Services.AddScoped<IImageRepository, ImageRepository>();
 
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<IAuthService, AuthService>();

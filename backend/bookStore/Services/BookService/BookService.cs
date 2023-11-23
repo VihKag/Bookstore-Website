@@ -3,6 +3,8 @@ using bookStore.Models.DTOs;
 using bookStore.Reponsitory;
 using bookStore.Repository;
 using bookStore.Services.ObjectMapping;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using NanoidDotNet;
 using System.Drawing.Printing;
 using X.PagedList;
@@ -22,9 +24,19 @@ namespace bookStore.Services.BookService
         private readonly IPublisherRepository _publisherRepository;
         private readonly IBookPublisherRepository _bookPublisherRepository;
 
+        private readonly IImageRepository _imageRepository;
+
         private readonly MappingService _mappingService;
 
-        public BookService(MappingService mappingService, IBookRepository bookRepository, ICategoryRepository categoryRepository, IBookCategoryRepository bookCategoryRepository, IAuthorRepository authorRepository, IBookAuthorRepository bookAuthorRepository, IPublisherRepository publisherRepository, IBookPublisherRepository bookPublisherRepository )
+        private Account account;
+        private Cloudinary cloudinary;
+
+
+        public BookService(MappingService mappingService, 
+                            IBookRepository bookRepository, ICategoryRepository categoryRepository, 
+                            IBookCategoryRepository bookCategoryRepository, IAuthorRepository authorRepository, 
+                            IBookAuthorRepository bookAuthorRepository, IPublisherRepository publisherRepository, 
+                            IBookPublisherRepository bookPublisherRepository, IImageRepository imageRepository)
         {
             _bookRepository = bookRepository;
             _mappingService = mappingService;
@@ -34,6 +46,9 @@ namespace bookStore.Services.BookService
             _bookAuthorRepository= bookAuthorRepository;
             _bookCategoryRepository = bookCategoryRepository;
             _bookPublisherRepository= bookPublisherRepository;
+            _imageRepository= imageRepository;
+            account = new Account("dggnygweb", "337595188235586", "u9JNvp9j9YlTwHcuX9MpXw73uME");
+            cloudinary = new Cloudinary(account);
         }
 
         public BookDTO? Create(BookDTO dto)
@@ -46,6 +61,24 @@ namespace bookStore.Services.BookService
             _bookRepository.Create(book);
             _bookRepository.Save();
             CreateRelationship(dto);
+
+            var uploadParams = new ImageUploadParams
+            {
+                File = new FileDescription(dto.ImagePath),
+                PublicId = Nanoid.Generate(size: 10)
+        };
+
+            var uploadResult = cloudinary.Upload(uploadParams);
+
+            // Lấy URL công khai của hình ảnh đã tải lên
+            var imageUrl = uploadResult.SecureUrl;
+
+            Image image = new Image();
+            image.Isbn = dto.Isbn;
+            image.Name = imageUrl.ToString();
+            _imageRepository.Create(image);
+            _imageRepository.Save();
+
             return dto;
         }
 
@@ -289,7 +322,7 @@ namespace bookStore.Services.BookService
             CreateRelationship(dto);
 
             entity = _mappingService.GetMapper().Map<Book>(dto);
-
+            entity.IsDelete = false;
             _bookRepository.Update(entity);
             _bookRepository.Save();
 

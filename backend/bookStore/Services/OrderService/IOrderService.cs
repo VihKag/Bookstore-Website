@@ -5,5 +5,9 @@ namespace bookStore.Services.OrderService
     public interface IOrderService
     {
         OrderDTO? Create(OrderDTO dto);
+        bool UpdateStatus(string id);
+        bool Delete(string id);
+
+
     }
 }

@@ -48,5 +48,39 @@ namespace bookStore.Services.OrderService
             }
             return dto;
         }
+
+        public bool Delete(string id)
+        {
+            Order order = _oderRepository.FindById(id);
+            if (order == null)
+            {
+                return false;
+            }
+            order.IsDelete = true;
+            _oderRepository.Update(order);
+            _oderRepository.Save();
+
+            List<OrderDetail> orderDetails =  _orderDetailRepository.FindByCondition(x => x.OderId == id);
+            foreach (var item in orderDetails)
+            {
+                item.IsDelete = true;
+                _orderDetailRepository.Update(item);
+                _orderDetailRepository.Save();
+            }
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateStatus(string id)
+        {
+            Order order = _oderRepository.FindById(id);
+            if (order == null)
+            {
+                return false;
+            }
+            order.Status = true;
+            _oderRepository.Update(order);
+            _oderRepository.Save();
+            return true;
+        }
     }
 }
