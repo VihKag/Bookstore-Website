@@ -27,6 +27,27 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
+        [HttpDelete]
+        public ActionResult<bool> Delete(string isbn)
+        {
+            var book = _bookService.Delete(isbn);
+            if (book != true)
+            {
+                return BadRequest("Xóa thất bại do không tồn tại sách hoặc sách đã được ẩn!");
+            }
+            return Ok(book);
+        }
+        [HttpPut("restore")]
+        public ActionResult<bool> Restore(string isbn)
+        {
+            var book = _bookService.Restore(isbn);
+            if (book != true)
+            {
+                return BadRequest("Khôi phục thất bại do không tồn tại sách hoặc sách không bị ẩn!");
+            }
+            return Ok(book);
+        }
+
         [HttpGet("isbn")]
         public ActionResult<Book> GetById(string isbn)
         {

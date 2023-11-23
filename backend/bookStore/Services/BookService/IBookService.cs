@@ -15,7 +15,7 @@ namespace bookStore.Services.BookService
         List<BookDTO> GetByPublisher (string pubName, int pageNumber, int pageSize);
         List<BookDTO> SearchByTitle(string title);
         bool PermanentlyDelete(string isbn);
-        BookDTO? Restore(string isbn);
+        bool Restore(string isbn);
         BookDTO? Update(BookDTO dto);
 
     }
