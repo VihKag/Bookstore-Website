@@ -3,6 +3,7 @@ import logoPNG from '../../assets/image/bookicon.png';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
+
 import SearchBar from "../SearchBar/SearchBar"
 import BookData from "../../Data.json"
 import avatar from '../../assets/image/phuc.png'
@@ -34,9 +35,18 @@ const Header = () => {
                 )}
               </div>
             </div>
-            <a href="/cart" className="flex mr-6 text-sm" id="cart-button">
-              <FontAwesomeIcon icon={faShoppingCart} className="w-6 h-6" />
-            </a>
+            <button
+              type="button"
+              className="relative inline-flex items-center p-3 text-sm font-medium text-center mr-5"
+            >
+              <Link to="/cart" className="flex text-sm">
+                <FontAwesomeIcon icon={faShoppingCart} className="w-6 h-6" />
+                <span className="sr-only">Cart</span>
+              </Link>
+              <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
+                20
+              </div>
+            </button>
             <a href="/wishlist" className="flex mr-6 text-sm" id="wishlist-button">
               <FontAwesomeIcon icon={faHeart} className="w-6 h-6" />
             </a>
@@ -59,9 +69,9 @@ const Header = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/#" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                    <FontAwesomeIcon icon={["fas", "cog"]} className="mr-2" />
-                    Settings
+                  <a href="/user/yourorders" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                    <FontAwesomeIcon icon={["fas", "list"]} className="mr-2" />
+                    Orders
                   </a>
                 </li>
                 <li>

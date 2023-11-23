@@ -75,9 +75,7 @@ public partial class DataContext : DbContext
             entity.Property(e => e.Isbn)
                 .HasMaxLength(36)
                 .HasColumnName("ISBN");
-            entity.Property(e => e.Deminsion)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+            entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.Description)
                 .HasMaxLength(500)
                 .IsUnicode(false);
@@ -89,7 +87,7 @@ public partial class DataContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.Name).HasMaxLength(100);
-            entity.Property(e => e.Weigh)
+            entity.Property(e => e.PageCount)
                 .HasMaxLength(100)
                 .IsUnicode(false);
 
@@ -165,6 +163,7 @@ public partial class DataContext : DbContext
             entity.Property(e => e.PubId)
                 .HasMaxLength(36)
                 .HasColumnName("PubID");
+            entity.Property(e => e.IsDelete).HasColumnName("isDelete");
 
             entity.HasOne(d => d.IsbnNavigation).WithMany(p => p.BookPublishers)
                 .HasForeignKey(d => d.Isbn)

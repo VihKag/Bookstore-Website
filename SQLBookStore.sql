@@ -21,8 +21,8 @@ CREATE TABLE Book (
     Description varchar(500),
 	Price float,
     Quantity int,
-    Deminsion varchar(100),
-    Weigh varchar(100),
+    Date datetime,
+    PageCount varchar(100),
     Language varchar(100),
     ImageID nvarchar(36),
     State bit,
@@ -50,6 +50,7 @@ CREATE TABLE BookPublisher (
     ID nvarchar(36) PRIMARY KEY,
     ISBN nvarchar(36),
     PubID nvarchar(36),
+	isDelete bit,
     FOREIGN KEY (ISBN) REFERENCES Book(ISBN),
     FOREIGN KEY (PubID) REFERENCES Publisher(ID)
 );

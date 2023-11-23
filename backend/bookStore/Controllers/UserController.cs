@@ -22,11 +22,26 @@ namespace bookStore.Controllers
 
 //        [Authorize(Roles = "Admin")]
         [HttpGet]
-        public async Task<ActionResult<List<User>>> GetAllUser()
+        public ActionResult<List<UserDTO>> PaginationUser(int pageNumber, int pageSize)
         {
-            var users = await _userService.GetAllUser();
-            return Ok(users);
+            var pagedUsers = _userService.PaginationUser(pageNumber, pageSize);
+            return Ok(pagedUsers);
         }
+
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(string id)
+        {
+            var result = _userService.Delete(id);
+            if (result == false)
+            {
+                return NotFound("Không tìm thấy User!");
+            }
+            return Ok("Thành công!!!");
+        }
+
+
+
         [HttpGet("{id}")]
 //        [Authorize(Roles = "User")]
         public ActionResult GetByID(string id)
@@ -39,7 +54,7 @@ namespace bookStore.Controllers
             var user = _userService.GetByID(id);
             return Ok(user);
         }
-        [HttpPost("update")]
+        [HttpPut]
 //        [Authorize(Roles = "User")]
         public ActionResult UpdateProfile(UserDTO userDTO)
         {
