@@ -6,6 +6,6 @@ namespace bookStore.Repository
 {
     public interface IImageRepository : IRepositoryBase<Image>
     {
-        Image FindById(string Id, params Expression<Func<Image, object>>[] includes);
+        Image FindById(long? Id, params Expression<Func<Image, object>>[] includes);
     }
 }

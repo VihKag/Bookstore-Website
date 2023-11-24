@@ -184,10 +184,24 @@ namespace bookStore.Services.BookService
             dto.AuthorList = GetAuthorsByISBN(isbn);
             dto.CategoryList = GetCategoriesByISBN(isbn);
             dto.PublisherList = GetPublishersByISBN(isbn);
+            dto.ImageList = GetImageByISBN(isbn);
 
             return dto;
         }
+        private List<string> GetImageByISBN(string isbn)
+        {
+            List<Image> imageList = _imageRepository.FindByCondition(x => x.Isbn == isbn);
+            List<string> images = new List<string>();
 
+            foreach (var item in imageList)
+            {
+                var image = _imageRepository.FindById(item.Id);
+                var pic = image.Name;
+                images.Add(pic);
+            }
+
+            return images;
+        }
         private List<string> GetAuthorsByISBN(string isbn)
         {
             List<BookAuthor> authorList = _bookAuthorRepository.FindByCondition(x => x.Isbn == isbn);

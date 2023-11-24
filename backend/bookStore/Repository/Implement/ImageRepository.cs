@@ -12,9 +12,9 @@ namespace bookStore.Repository.Implement
         {
         }
 
-        public Image FindById(string Id, params Expression<Func<Image, object>>[] includes)
+        public Image FindById(long Id, params Expression<Func<Image, object>>[] includes)
         {
-            IQueryable<Image> query = context.Set<Image>().Where(x => x.Isbn == Id);
+            IQueryable<Image> query = context.Set<Image>().Where(x => x.Id == Id);
 
             foreach (var include in includes)
             {
