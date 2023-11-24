@@ -1,4 +1,5 @@
-﻿using bookStore.Models.DTOs;
+﻿using bookStore.Models;
+using bookStore.Models.DTOs;
 using bookStore.Services.BookService;
 using bookStore.Services.OrderService;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,46 @@ namespace bookStore.Controllers
             }
 
             return Ok("Duyệt thành công!");
+        }
+        [HttpGet("approved")]
+        public ActionResult<List<GetOrderDTO>> GetAllOrderApproved(int pageNumber, int pageSize)
+        {
+            var order = _orderService.GetAllOrderApproved(pageNumber, pageSize);
+            if (order == null)
+            {
+                return Ok("Không lấy được danh sách đơn hàng đã duyệt.");
+            }
+            return Ok(order);
+        }
+        [HttpGet("notapprove")]
+        public ActionResult<List<GetOrderDTO>> GetAllOrderNotYetApprove(int pageNumber, int pageSize)
+        {
+            var order = _orderService.GetAllOrderApproved(pageNumber, pageSize);
+            if (order == null)
+            {
+                return Ok("Không có đơn hàng chưa duyệt.");
+            }
+            return Ok(order);
+        }
+        [HttpGet("byuser")]
+        public ActionResult<List<GetOrderDTO>> GetAllOrderByUser(string UserID, int pageNumber, int pageSize)
+        {
+            var order = _orderService.GetAllOrderByUser( UserID, pageNumber, pageSize);
+            if (order == null)
+            {
+                return Ok("Người dùng không có đơn đặt hàng.");
+            }
+            return Ok(order);
+        }
+        [HttpGet("orderdetail")]
+        public ActionResult<List<GetOrderDetailDTO>> GetAllOrderDetailByOrder(string orderID, int pageNumber, int pageSize)
+        {
+            var order = _orderService.GetAllOrderDetailByOrder(orderID, pageNumber, pageSize);
+            if (order == null)
+            {
+                return Ok("Không lấy được chi tiết đơn hàng.");
+            }
+            return Ok(order);
         }
     }
 }

@@ -1,14 +1,10 @@
 ﻿using bookStore.Models;
 using bookStore.Models.DTOs;
 using bookStore.Reponsitory;
-using bookStore.Reponsitory.Implement;
-using bookStore.Repository;
-using bookStore.Repository.Implement;
 using bookStore.Services.ObjectMapping;
-using CloudinaryDotNet;
 using NanoidDotNet;
-using System.Drawing.Printing;
 using System.Linq.Expressions;
+using X.PagedList;
 
 namespace bookStore.Services.OrderService
 {
@@ -90,6 +86,8 @@ namespace bookStore.Services.OrderService
         public List<GetOrderDTO> GetOrders(Expression<Func<Order, bool>> condition, int pageNumber, int pageSize)
         {
             List<Order> entityList = _oderRepository.FindByCondition(condition);
+            if (entityList == null)
+                return null;
             List<GetOrderDTO> dtoList = new List<GetOrderDTO>();
             foreach (var entity in entityList)
             {
@@ -116,6 +114,8 @@ namespace bookStore.Services.OrderService
         public List<GetOrderDetailDTO> GetAllOrderDetailByOrder(string orderID, int pageNumber, int pageSize)
         {
             List<OrderDetail> entityList = _orderDetailRepository.FindByCondition(x => x.OderId == orderID);
+            if (entityList == null)
+                return null;
             List<GetOrderDetailDTO> dtoList = new List<GetOrderDetailDTO>();
             foreach (var entity in entityList)
             {
