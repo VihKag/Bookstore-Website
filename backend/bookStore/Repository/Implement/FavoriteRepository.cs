@@ -6,21 +6,20 @@ using System.Linq.Expressions;
 
 namespace bookStore.Repository.Implement
 {
-    public class ImageRepository : RepositoryBase<Image>, IImageRepository
+    public class FavoriteRepository : RepositoryBase<Favorite>, IFavoriteRepository
     {
-        public ImageRepository(DataContext context) : base(context)
+        public FavoriteRepository(DataContext context) : base(context)
         {
         }
 
-        public Image FindById(long? Id, params Expression<Func<Image, object>>[] includes)
+        public Favorite FindByID(string ID, params Expression<Func<Favorite, object>>[] includes)
         {
-            IQueryable<Image> query = context.Set<Image>().Where(x => x.Id == Id);
+            IQueryable<Favorite> query = context.Set<Favorite>().Where(x => x.Id == ID);
 
             foreach (var include in includes)
             {
                 query = query.Include(include);
             }
-
             return query.AsNoTracking().FirstOrDefault()!;
         }
     }
