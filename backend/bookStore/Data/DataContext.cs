@@ -77,7 +77,7 @@ public partial class DataContext : DbContext
                 .HasColumnName("ISBN");
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.Description)
-                .HasMaxLength(500)
+                .HasMaxLength(5000)
                 .IsUnicode(false);
             entity.Property(e => e.IsDelete).HasColumnName("isDelete");
             entity.Property(e => e.Language)
@@ -242,11 +242,10 @@ public partial class DataContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK__Image__3214EC278527F758");
 
             entity.ToTable("Image");
-            entity.Property(e => e.Name).HasMaxLength(1000);
             entity.Property(e => e.Isbn)
-                .HasMaxLength(36)
-                .HasColumnName("ISBN");
-
+               .HasMaxLength(36)
+               .HasColumnName("ISBN");
+            entity.Property(e => e.ImagePath).HasMaxLength(500);
             entity.HasOne(d => d.IsbnNavigation).WithMany(p => p.Images)
                 .HasForeignKey(d => d.Isbn)
                 .HasConstraintName("FK__Image__Isbn__5CD6CB2B");
