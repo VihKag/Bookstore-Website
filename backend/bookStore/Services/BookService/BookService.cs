@@ -75,7 +75,7 @@ namespace bookStore.Services.BookService
 
             Image image = new Image();
             image.Isbn = dto.Isbn;
-            image.Name = imageUrl.ToString();
+            image.ImagePath = imageUrl.ToString();
             _imageRepository.Create(image);
             _imageRepository.Save();
 
@@ -196,7 +196,7 @@ namespace bookStore.Services.BookService
             foreach (var item in imageList)
             {
                 var image = _imageRepository.FindById(item.Id);
-                var pic = image.Name;
+                var pic = image.ImagePath;
                 images.Add(pic);
             }
 

@@ -7,7 +7,7 @@ public partial class Image
 {
     public long? Id { get; set; } = null!;
 
-    public string? Name { get; set; }
+    public string? ImagePath { get; set; }
 
     public string? Isbn { get; set; }
 
