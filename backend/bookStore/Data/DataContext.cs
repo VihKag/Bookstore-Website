@@ -77,11 +77,8 @@ public partial class DataContext : DbContext
                 .HasColumnName("ISBN");
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.Description)
-                .HasMaxLength(500)
+                .HasMaxLength(5000)
                 .IsUnicode(false);
-            entity.Property(e => e.ImageId)
-                .HasMaxLength(36)
-                .HasColumnName("ImageID");
             entity.Property(e => e.IsDelete).HasColumnName("isDelete");
             entity.Property(e => e.Language)
                 .HasMaxLength(100)
@@ -90,10 +87,6 @@ public partial class DataContext : DbContext
             entity.Property(e => e.PageCount)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-
-            entity.HasOne(d => d.Image).WithMany(p => p.Books)
-                .HasForeignKey(d => d.ImageId)
-                .HasConstraintName("FK__Book__ImageID__145C0A3F");
         });
 
         modelBuilder.Entity<BookAuthor>(entity =>
@@ -249,11 +242,13 @@ public partial class DataContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK__Image__3214EC278527F758");
 
             entity.ToTable("Image");
-
-            entity.Property(e => e.Id)
-                .HasMaxLength(36)
-                .HasColumnName("ID");
-            entity.Property(e => e.Name).HasMaxLength(1000);
+            entity.Property(e => e.Isbn)
+               .HasMaxLength(36)
+               .HasColumnName("ISBN");
+            entity.Property(e => e.ImagePath).HasMaxLength(500);
+            entity.HasOne(d => d.IsbnNavigation).WithMany(p => p.Images)
+                .HasForeignKey(d => d.Isbn)
+                .HasConstraintName("FK__Image__Isbn__5CD6CB2B");
         });
 
         modelBuilder.Entity<Order>(entity =>

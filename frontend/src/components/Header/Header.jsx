@@ -7,7 +7,7 @@ import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from "../SearchBar/SearchBar"
 import BookData from "../../Data.json"
 import avatar from '../../assets/image/phuc.png'
-const Header = () => {
+const Header = ({ cartItemCount }) => {
   const [showDataResult, setShowDataResult] = useState(false);
 
   return (
@@ -44,7 +44,7 @@ const Header = () => {
                 <span className="sr-only">Cart</span>
               </Link>
               <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
-                20
+                {cartItemCount}
               </div>
             </button>
             <a href="/wishlist" className="flex mr-6 text-sm" id="wishlist-button">

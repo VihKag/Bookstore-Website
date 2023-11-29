@@ -20,10 +20,11 @@
 
         public bool? State { get; set; }
 
-        //public string? ImageId { get; set; }
+        public string? ImagePath { get; set; }
 
         public virtual List<string> CategoryList { get; set; } = new List<string>();
         public virtual List<string> AuthorList { get; set; } = new List<string>();
         public virtual List<string> PublisherList { get; set; } = new List<string>();
+        public virtual List<string> ImageList { get; set; } = new List<string>();
     }
 }

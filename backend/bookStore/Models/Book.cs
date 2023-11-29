@@ -21,8 +21,6 @@ public partial class Book
 
     public string? Language { get; set; }
 
-    public string? ImageId { get; set; }
-
     public bool? State { get; set; }
 
     public bool? IsDelete { get; set; }
@@ -37,7 +35,7 @@ public partial class Book
 
     public virtual ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
 
-    public virtual Image? Image { get; set; }
+    public virtual ICollection<Image> Images { get; set; } = new List<Image>();
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }
