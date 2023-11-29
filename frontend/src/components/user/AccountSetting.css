@@ -1,0 +1,101 @@
+.accountsetting {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.accountsetting .form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.accountsetting .form .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin: 10px;
+}
+
+
+
+.accountsetting .form .form-group label {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.accountsetting .form .form-group input {
+    padding: 10px 20px;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    outline: none;
+}
+
+.accountsetting.form .form-group input:focus {
+    border: 1px solid var(--col1);
+}
+.accountsetting .form button {
+    background-color: var(--col1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px auto;
+    /* Set margin to auto to center the button horizontally */
+}
+.accountsetting .formsetting {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.accountsetting .acc-formsetting-group {
+    width: 60%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 auto 15px;
+    /* Center the content horizontally */
+    text-align: left;
+    /* Align text to the left within the container */
+}
+
+.accountsetting .acc-formsetting-group label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Center items vertically */
+}
+.accountsetting .acc-formsetting-group span {
+    color: #555;
+}
+.accountsetting .form button {
+    background-color: var(--col1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px auto;
+    /* Set margin to auto to center the button horizontally */
+    display: block;
+    /* Ensure the button is a block element to take full width */
+}
+
+.accountsetting .addnew {
+    text-align: center;
+    /* Center the button within the .addnew container */
+}
+
+.accountsetting .addnew button {
+    margin-top: 10px;
+    /* Add some top margin for spacing */
+}

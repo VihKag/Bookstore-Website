@@ -8,7 +8,8 @@ namespace bookStore.Models.DTOs
         public string? Name { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        [JsonIgnore]
         public string? Parent { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string? Description { get; set; }
     }
 }

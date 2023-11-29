@@ -7,10 +7,8 @@ using System.Linq.Expressions;
 
 namespace bookStore.Repository.Implement
 {
-    public class OrderRepository : RepositoryBase<Order>, IOderRepository
+    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
-
-
         public OrderRepository(DataContext context) : base(context)
         {
         }

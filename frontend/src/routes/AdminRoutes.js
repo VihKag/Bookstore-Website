@@ -7,7 +7,6 @@ import TableCustomer from "../components/Table/TableCustomer";
 import TableStaff from "../components/Table/TableStaff";
 import Profile from "../components/Form/Profile";
 import BookForm from "../components/Form/BookForm";
-import SignupPage from "../pages/SignupPage";
 import AddAccount from "../components/Form/AddAccount";
 const AdminRoute = () => {
   return (

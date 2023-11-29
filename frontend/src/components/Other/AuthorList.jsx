@@ -9,10 +9,8 @@ const AuthorList = () => {
     return (
         <div className="w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
             <div className="flex items-center justify-between mb-4">
-                <h5 className="text-2xl font-bold leading-none text-gray-900 dark:text-white">List of authors</h5>
-                <a href="/#" className="text-lg font-medium text-blue-600 hover:underline dark:text-blue-500">
-                    View all
-                </a>
+                <h5 className="text-2xl font-bold leading-none text-gray-900 dark:text-white">Top famous authors</h5>
+
             </div>
             <div className="flow-root">
                 <ul className="divide-y divide-gray-200 dark:divide-gray-700">
