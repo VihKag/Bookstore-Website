@@ -1,14 +1,16 @@
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import './cart.css'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import pic from '../../assets/image/book1.jpg'
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartItemCount, setCartItemCount] = useState(0);
-
+  useEffect(() => {
+    setCartItemCount(calculateTotalQuantity());
+  }, [cartItems]);
   const addToCart = (product) => {
     const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.name === product.name);
     if (existingItemIndex !== -1) {
@@ -16,6 +18,8 @@ function Cart() {
       updatedCartItems[existingItemIndex].quantity += 1;
       setCartItems(updatedCartItems);
       setCartItemCount(calculateTotalQuantity());
+
+  
     } else {
       const newProduct = {
         id: product.id,
@@ -41,11 +45,13 @@ function Cart() {
     return totalQuantity;
   };
 
-  const removeFromCart = (product) => {
-    const updatedCartItems = cartItems.filter((item) => item.id !== product.id);
-    setCartItems(updatedCartItems);
-    setTotalPrice(totalPrice - product.price * product.quantity);
-  };
+    const removeFromCart = (product) => {
+        const updatedCartItems = cartItems.filter((item) => item.id !== product.id);
+        setCartItems(updatedCartItems);
+        setTotalPrice(totalPrice - product.price * product.quantity);
+        setCartItemCount(0); 
+      };
+
 
   const increaseQuantity = (product) => {
     const updatedCartItems = cartItems.map((item) => {
@@ -84,7 +90,7 @@ function Cart() {
   };
   return (
     <>
-      <Header />
+      <Header cartItemCount={cartItemCount} />
       <div className="container-cart">
         <h1 className="cart-title">GIỎ HÀNG</h1>
         <div className="cart-wrapper">
