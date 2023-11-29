@@ -48,7 +48,7 @@ public partial class DataContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Bookstore;Trusted_Connection=True;MultipleActiveResultSets=true;trustServerCertificate=true", builder => builder.EnableRetryOnFailure());
+        => optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Bookstore;Trusted_Connection=True;MultipleActiveResultSets=true;trustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -75,18 +75,27 @@ public partial class DataContext : DbContext
             entity.Property(e => e.Isbn)
                 .HasMaxLength(36)
                 .HasColumnName("ISBN");
-            entity.Property(e => e.Date).HasColumnType("datetime");
-            entity.Property(e => e.Description)
-                .HasMaxLength(5000)
+            entity.Property(e => e.Deminsion)
+                .HasMaxLength(100)
                 .IsUnicode(false);
+            entity.Property(e => e.Description)
+                .HasMaxLength(500)
+                .IsUnicode(false);
+            entity.Property(e => e.ImageId)
+                .HasMaxLength(36)
+                .HasColumnName("ImageID");
             entity.Property(e => e.IsDelete).HasColumnName("isDelete");
             entity.Property(e => e.Language)
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.Name).HasMaxLength(100);
-            entity.Property(e => e.PageCount)
+            entity.Property(e => e.Weigh)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.Image).WithMany(p => p.Books)
+                .HasForeignKey(d => d.ImageId)
+                .HasConstraintName("FK__Book__ImageID__145C0A3F");
         });
 
         modelBuilder.Entity<BookAuthor>(entity =>
@@ -156,7 +165,6 @@ public partial class DataContext : DbContext
             entity.Property(e => e.PubId)
                 .HasMaxLength(36)
                 .HasColumnName("PubID");
-            entity.Property(e => e.IsDelete).HasColumnName("isDelete");
 
             entity.HasOne(d => d.IsbnNavigation).WithMany(p => p.BookPublishers)
                 .HasForeignKey(d => d.Isbn)
@@ -242,13 +250,11 @@ public partial class DataContext : DbContext
             entity.HasKey(e => e.Id).HasName("PK__Image__3214EC278527F758");
 
             entity.ToTable("Image");
-            entity.Property(e => e.Isbn)
-               .HasMaxLength(36)
-               .HasColumnName("ISBN");
-            entity.Property(e => e.ImagePath).HasMaxLength(500);
-            entity.HasOne(d => d.IsbnNavigation).WithMany(p => p.Images)
-                .HasForeignKey(d => d.Isbn)
-                .HasConstraintName("FK__Image__Isbn__5CD6CB2B");
+
+            entity.Property(e => e.Id)
+                .HasMaxLength(36)
+                .HasColumnName("ID");
+            entity.Property(e => e.Name).HasMaxLength(1000);
         });
 
         modelBuilder.Entity<Order>(entity =>

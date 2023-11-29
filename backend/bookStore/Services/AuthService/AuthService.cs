@@ -9,8 +9,6 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using bookStore.Data;
 using bookStore.Models;
-using bookStore.Repository;
-using bookStore.Repository.Implement;
 
 namespace bookStore.Services.AuthService
 {
@@ -33,23 +31,15 @@ namespace bookStore.Services.AuthService
         {
             var jwtHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_configuration.GetSection("JwtConfig:SecretKey").Value);
-            
-
-            string roleID = user.Role;
-            string roleName = _context.Roles.Where(r => r.Id == roleID).Select(r => r.Name).FirstOrDefault();
-
-     
-            var roleClaim = new Claim(ClaimTypes.Role, roleName);
 
             var authClaims = new ClaimsIdentity(new[]
                 {
                     new Claim("Id", user.Id.ToString()),
-                    new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
+                    new Claim(JwtRegisteredClaimNames.Name, user.Username),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
                     new Claim(JwtRegisteredClaimNames.Sub, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToUniversalTime().ToString())
                 });
-            authClaims.AddClaim(roleClaim);
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(authClaims),

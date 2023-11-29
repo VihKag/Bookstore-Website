@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace bookStore.Reponsitory
 {
-    public interface IOrderRepository: IRepositoryBase<Order>
+    public interface IOderRepository: IRepositoryBase<Order>
     {
         Order FindById(string Id, params Expression<Func<Order, object>>[] includes);
     }

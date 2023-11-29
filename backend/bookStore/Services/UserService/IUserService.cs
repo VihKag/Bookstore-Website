@@ -5,13 +5,12 @@ namespace bookStore.Services.UserService
 {
     public interface IUserService
     {
-        List<UserDTO> GetAllUser();
+        Task<List<User>> GetAllUser();
         UserDTO GetByID(string id);
         UserDTO GetByEmail(string email);
-        bool Delete(string id);
+        void Delete(string id);
         UserDTO Update(UserDTO userDTO);
         Task<AuthResult> Register(UserFormDTO dto);
         Task<AuthResult> Login(LoginDTO dto);
-        List<UserDTO> PaginationUser(int pageNumber, int pageSize);
     }
 }

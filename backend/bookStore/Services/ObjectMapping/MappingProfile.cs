@@ -17,27 +17,8 @@ namespace bookStore.Services.ObjectMapping
             CreateMap<RefreshToken, RefreshTokenDTO>();
 
             CreateMap<User, UserDTO>();
+
             CreateMap<UserDTO, User>();
-
-            CreateMap<Author, AuthorDTO>();
-            CreateMap<AuthorDTO, Author>();
-
-            CreateMap<PublisherDTO, Publisher>();
-            CreateMap<Publisher, PublisherDTO>();
-
-            CreateMap<BookDTO, Book>();
-            CreateMap<Book, BookDTO>();
-
-            CreateMap<Order, OrderDTO>();
-            CreateMap<OrderDTO, Order>();
-
-            CreateMap<OrderDetail, OrderDetailDTO>();
-            CreateMap<OrderDetailDTO, OrderDetail>();
-
-            CreateMap<FavoriteDTO, Favorite>();
-
-            CreateMap<EvaluateDTO, Evaluate>();
-
 
             //...Trong quá trình làm phát sinh thêm nhiều map thì bổ sung dần vào đây 
 

@@ -1,8 +1,6 @@
-﻿using bookStore.Models;
-using bookStore.Models.DTOs;
+﻿using bookStore.Models.DTOs;
 using bookStore.Services.CategoryService;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace bookStore.Controllers
 {
@@ -19,12 +17,11 @@ namespace bookStore.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<CategoryDTO>> PaginationCategory(int pageNumber, int pageSize)
+        public ActionResult<List<CategoryDTO>> GetAll()
         {
-            var pagedCategories = _categoryService.PaginationCategory(pageNumber,pageSize);
-            return Ok(pagedCategories);
+            var categories = _categoryService.GetAll();
+            return Ok(categories);
         }
-    
 
         [HttpGet("deleted")]
         public ActionResult<List<CategoryDTO>> GetAllDeleted()
@@ -34,7 +31,7 @@ namespace bookStore.Controllers
         }
 
         [HttpGet("id/{id}")]
-        public ActionResult<CategoryDTO> GetById(string id)
+        public ActionResult<List<CategoryDTO>> GetById(string id)
         {
             var category = _categoryService.GetById(id);
             if(category == null)
