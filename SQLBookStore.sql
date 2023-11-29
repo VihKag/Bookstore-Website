@@ -10,11 +10,6 @@ CREATE TABLE Author (
     isDelete bit
 );
 
-CREATE TABLE Image (
-	ID nvarchar(36) PRIMARY KEY,
-	Name nvarchar(1000)
-);
-
 CREATE TABLE Book (
     ISBN nvarchar(36) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
@@ -24,10 +19,16 @@ CREATE TABLE Book (
     Date datetime,
     PageCount varchar(100),
     Language varchar(100),
-    ImageID nvarchar(36),
     State bit,
-    isDelete bit,
-    FOREIGN KEY (ImageID) REFERENCES Image(ID)
+    isDelete bit
+ 
+);
+
+CREATE TABLE Image (
+	ID bigint PRIMARY KEY IDENTITY(1,1),
+	Name nvarchar(1000),
+	Isbn nvarchar(36),
+	FOREIGN KEY (Isbn) REFERENCES Book(Isbn)
 );
 
 CREATE TABLE BookAuthor (
