@@ -27,6 +27,27 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
+        [HttpDelete]
+        public ActionResult<bool> Delete(string isbn)
+        {
+            var book = _bookService.Delete(isbn);
+            if (book != true)
+            {
+                return BadRequest("Xóa thất bại do không tồn tại sách hoặc sách đã được ẩn!");
+            }
+            return Ok(book);
+        }
+        [HttpPut("restore")]
+        public ActionResult<bool> Restore(string isbn)
+        {
+            var book = _bookService.Restore(isbn);
+            if (book != true)
+            {
+                return BadRequest("Khôi phục thất bại do không tồn tại sách hoặc sách không bị ẩn!");
+            }
+            return Ok(book);
+        }
+
         [HttpGet("isbn")]
         public ActionResult<Book> GetById(string isbn)
         {
@@ -38,9 +59,9 @@ namespace bookStore.Controllers
             return Ok(book);
         }
         [HttpGet("category")]
-        public ActionResult<List<Book>> GetByCate(string cateName)
+        public ActionResult<List<Book>> GetByCate(string cateName, int pageNumber, int pageSize)
         {
-            var book = _bookService.GetByCate(cateName);
+            var book = _bookService.GetByCate(cateName, pageNumber, pageSize);
             if (book == null)
             {
                 return BadRequest("Không có sách thuộc thể loại này!");
@@ -50,9 +71,9 @@ namespace bookStore.Controllers
         }
 
         [HttpGet("author")]
-        public ActionResult<List<Book>> GetByAuthor(string authorName)
+        public ActionResult<List<Book>> GetByAuthor(string authorName, int pageNumber, int pageSize)
         {
-            var book = _bookService.GetByAuthor(authorName);
+            var book = _bookService.GetByAuthor(authorName, pageNumber, pageSize);
             if (book == null)
             {
                 return BadRequest("Không có sách thuộc thể loại này!");
@@ -62,9 +83,9 @@ namespace bookStore.Controllers
         }
 
         [HttpGet("publisher")]
-        public ActionResult<List<Book>> GetByPublisher(string pubName)
+        public ActionResult<List<Book>> GetByPublisher(string pubName, int pageNumber, int pageSize)
         {
-            var book = _bookService.GetByPublisher(pubName);
+            var book = _bookService.GetByPublisher(pubName, pageNumber, pageSize);
             if (book == null)
             {
                 return BadRequest("Không có sách thuộc thể loại này!");
@@ -73,7 +94,16 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
-        
+        [HttpPut]
+        public ActionResult<BookDTO> Update(BookDTO dto)
+        {
+            var book = _bookService.Update(dto);
+            if (book == null)
+            {
+                return BadRequest("Cập nhật thông tin thất bại!");
+            }
+            return Ok(book);
+        }
 
         [HttpGet("search")]
         public ActionResult<List<BookDTO>> SearchByTitle(string title)

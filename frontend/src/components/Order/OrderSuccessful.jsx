@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './OrderSuccessful.css'
 import { useRecoilState } from 'recoil'
-import { orderSuccessfulProvider } from '../../components/Providers/OrderSuccessfulProvider'
+import { orderSuccessfulProvider } from '../Providers/OrderSuccessfulProvider'
 
 const OrderSuccessful = ({ orderid, message, redirecto }) => {
 
@@ -38,7 +38,7 @@ const OrderSuccessful = ({ orderid, message, redirecto }) => {
             <button className='popup__close-btn'
                 onClick={() => {
 
-                    if(redirecto == 'userorders'){
+                    if(redirecto === 'userorders'){
                         window.location.href = '/user/yourorders'
                     }
                     setordersuccesscont(false)
@@ -85,7 +85,6 @@ const OrderSuccessful = ({ orderid, message, redirecto }) => {
                             }
                         </p>
                     </div>
-
                     <div>
                         <p>Order Subtotal</p>
                         <p>$ {orderdata.SubTotal}</p>

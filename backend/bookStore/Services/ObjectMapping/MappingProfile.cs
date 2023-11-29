@@ -28,6 +28,17 @@ namespace bookStore.Services.ObjectMapping
             CreateMap<BookDTO, Book>();
             CreateMap<Book, BookDTO>();
 
+            CreateMap<Order, OrderDTO>();
+            CreateMap<OrderDTO, Order>();
+
+            CreateMap<OrderDetail, OrderDetailDTO>();
+            CreateMap<OrderDetailDTO, OrderDetail>();
+
+            CreateMap<FavoriteDTO, Favorite>();
+
+            CreateMap<EvaluateDTO, Evaluate>();
+
+
             //...Trong quá trình làm phát sinh thêm nhiều map thì bổ sung dần vào đây 
 
         }

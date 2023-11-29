@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import '../user/YourOrder.css'
-import OrderSuccessful from '../Order/OrderSuccessful'
-import { useRecoilState } from 'recoil'
-import { orderSuccessfulProvider } from '../../components/Providers/OrderSuccessfulProvider'
+import React, { useState } from 'react';
+import './YourOrder.css';
+import OrderSuccessful from '../Order/OrderSuccessful';
+import { useRecoilState } from 'recoil';
+import { orderSuccessfulProvider } from '../Providers/OrderSuccessfulProvider';
 
 const YourOrders = () => {
 
@@ -83,9 +83,9 @@ const YourOrders = () => {
                                 <td data-label='OrderDate'>{item.date}</td>
                                 <td data-label='Delivery Status'>
                                     <div>
-                                        {item.status == 'Delivered' && <span className='greendot'></span>}
-                                        {item.status == 'On the way' && <span className='yellowdot'></span>}
-                                        {item.status == 'Cancelled' && <span className='reddot'></span>}
+                                        {item.status === 'Delivered' && <span className='greendot'></span>}
+                                        {item.status === 'On the way' && <span className='yellowdot'></span>}
+                                        {item.status === 'Cancelled' && <span className='reddot'></span>}
                                         {item.status}
                                     </div>
                                 </td>
@@ -107,4 +107,4 @@ const YourOrders = () => {
     )
 }
 
-export default YourOrders
+export default YourOrders;
