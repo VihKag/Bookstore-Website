@@ -23,10 +23,5 @@ namespace bookStore.Repository.Implement
             }
             return query.AsNoTracking().FirstOrDefault()!;
         }
-
-        public Publisher FindByName(string name)
-        {
-            return context.Publishers.FirstOrDefault(c => c.Name == name);
-        }
     }
 }

@@ -6,6 +6,5 @@ namespace bookStore.Reponsitory
     public interface IAuthorRepository : IRepositoryBase<Author>
     {
         Author FindById(string Id, params Expression<Func<Author, object>>[] includes);
-        Author FindByName(string name);
     }
 }

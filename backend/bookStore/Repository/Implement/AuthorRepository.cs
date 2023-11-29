@@ -24,10 +24,5 @@ namespace bookStore.Repository.Implement
 
             return query.AsNoTracking().FirstOrDefault()!;
         }
-
-        public Author FindByName(string name)
-        {
-            return context.Authors.FirstOrDefault(c => c.Name == name);
-        }
     }
 }

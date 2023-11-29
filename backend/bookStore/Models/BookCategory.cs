@@ -16,11 +16,4 @@ public partial class BookCategory
     public virtual Category? Cate { get; set; }
 
     public virtual Book? IsbnNavigation { get; set; }
-
-    public BookCategory(string id, string? isbn, string? cateId)
-    {
-        Id = id;
-        Isbn = isbn;
-        CateId = cateId;
-    }
 }

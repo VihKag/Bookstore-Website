@@ -16,12 +16,4 @@ public partial class BookAuthor
     public virtual Author? Author { get; set; }
 
     public virtual Book? IsbnNavigation { get; set; }
-
-    public BookAuthor(string id, string? authorId, string? isbn)
-    {
-        Id = id;
-        Isbn = isbn;
-        AuthorId = authorId;
-        
-    }
 }

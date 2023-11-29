@@ -22,11 +22,6 @@ namespace bookStore.Reponsitory.Implement
 
             return query.AsNoTracking().FirstOrDefault()!;
         }
-
-        public Book FindByName(string name)
-        {
-            return context.Books.FirstOrDefault(c => c.Name == name);
-        }
     }
 }
 
