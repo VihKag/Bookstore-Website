@@ -34,7 +34,7 @@ namespace bookStore.Services.CategoryService
             return dto;
         }
 
-        public CategoryDTO? Update(CategoryDTO dto)
+        public CategoryDTO? Update(CategoryDTO dto, string cateID)
         {
             if (dto.Id == null)
             {

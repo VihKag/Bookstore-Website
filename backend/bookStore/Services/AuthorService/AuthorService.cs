@@ -140,7 +140,7 @@ namespace bookStore.Services.AuthorService
             return dto;
         }
 
-        public AuthorDTO? Update(AuthorDTO dto)
+        public AuthorDTO? Update(AuthorDTO dto, string authorID)
         {
             if (dto.AuthorId == null)
             {

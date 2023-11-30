@@ -18,7 +18,7 @@ namespace bookStore.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpGet]
+        [HttpGet("admin")]
         public ActionResult<List<CategoryDTO>> PaginationCategory(int pageNumber, int pageSize)
         {
             var pagedCategories = _categoryService.PaginationCategory(pageNumber,pageSize);
@@ -26,14 +26,14 @@ namespace bookStore.Controllers
         }
     
 
-        [HttpGet("deleted")]
+        [HttpGet("deleted-category")]
         public ActionResult<List<CategoryDTO>> GetAllDeleted()
         {
             var categories = _categoryService.GetAllDeleted();
             return Ok(categories);
         }
 
-        [HttpGet("id/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<CategoryDTO> GetById(string id)
         {
             var category = _categoryService.GetById(id);
@@ -56,7 +56,7 @@ namespace bookStore.Controllers
         }
 
 
-        [HttpPost("restore")]
+        [HttpPost("{id}/restore")]
         public ActionResult<CategoryDTO> Restore(string id)
         {
             var category = _categoryService.Restore(id);
@@ -78,10 +78,10 @@ namespace bookStore.Controllers
             return Ok(category);
         }
 
-        [HttpPut]
-        public ActionResult<CategoryDTO> Update(CategoryDTO categoryDTO)
+        [HttpPut("{cateID}")]
+        public ActionResult<CategoryDTO> Update(CategoryDTO categoryDTO, string cateID)
         {
-            var category = _categoryService.Update(categoryDTO);
+            var category = _categoryService.Update(categoryDTO,cateID);
             if(category == null) 
             {
                 return BadRequest("Tên danh mục đã tồn tại hoặc ID không đúng!");
@@ -89,7 +89,7 @@ namespace bookStore.Controllers
             return Ok(category);
         }
 
-        [HttpDelete("{id}")]
+        [HttpPut("{id}/isDelete")]
         public ActionResult Delete(string id)
         {
             var result = _categoryService.Delete(id);
@@ -100,7 +100,7 @@ namespace bookStore.Controllers
             return Ok("Thành công!!!");
         }
 
-        [HttpDelete("{id}/permanently-delete")]
+        [HttpDelete("{id}")]
         public ActionResult PermanentlyDelete(string id)
         {
             var result = _categoryService.PermanentlyDelete(id);

@@ -7,7 +7,7 @@ namespace bookStore.Controllers
 {
     [Route("api/book")]
     [ApiController]
-    public class BookController: ControllerBase
+    public class BookController : ControllerBase
     {
         private readonly IBookService _bookService;
 
@@ -27,7 +27,24 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
-        [HttpDelete]
+        [HttpGet("admin")]
+        public ActionResult <List<BookDTO>> GetAll(int pageNumber, int pageSize)
+        { 
+            var book = _bookService.GetAll(pageNumber, pageSize);
+            if (book == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+            return Ok(book);
+        }
+        [HttpGet("client")]
+        public ActionResult<List<BookDTO>> GetAllNotDelete(int pageNumber, int pageSize)
+        {
+            var book = _bookService.GetAll(pageNumber, pageSize);
+            return Ok(book);
+        }
+
+        [HttpPut("{isbn}/isDelete")]
         public ActionResult<bool> Delete(string isbn)
         {
             var book = _bookService.Delete(isbn);
@@ -37,7 +54,7 @@ namespace bookStore.Controllers
             }
             return Ok(book);
         }
-        [HttpPut("restore")]
+        [HttpPut("{isbn}/restore")]
         public ActionResult<bool> Restore(string isbn)
         {
             var book = _bookService.Restore(isbn);
@@ -48,7 +65,7 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
-        [HttpGet("isbn")]
+        [HttpGet("{isbn}")]
         public ActionResult<Book> GetById(string isbn)
         {
             var book = _bookService.GetById(isbn);
@@ -58,7 +75,7 @@ namespace bookStore.Controllers
             }
             return Ok(book);
         }
-        [HttpGet("category")]
+        [HttpGet("cate/{cateName}")]
         public ActionResult<List<Book>> GetByCate(string cateName, int pageNumber, int pageSize)
         {
             var book = _bookService.GetByCate(cateName, pageNumber, pageSize);
@@ -70,7 +87,7 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
-        [HttpGet("author")]
+        [HttpGet("author/{authorName}")]
         public ActionResult<List<Book>> GetByAuthor(string authorName, int pageNumber, int pageSize)
         {
             var book = _bookService.GetByAuthor(authorName, pageNumber, pageSize);
@@ -82,7 +99,7 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
-        [HttpGet("publisher")]
+        [HttpGet("publisher/{pubName}")]
         public ActionResult<List<Book>> GetByPublisher(string pubName, int pageNumber, int pageSize)
         {
             var book = _bookService.GetByPublisher(pubName, pageNumber, pageSize);
@@ -94,10 +111,10 @@ namespace bookStore.Controllers
             return Ok(book);
         }
 
-        [HttpPut]
-        public ActionResult<BookDTO> Update(BookDTO dto)
+        [HttpPut("{isbn}")]
+        public ActionResult<BookDTO> Update(BookDTO dto, string isbn)
         {
-            var book = _bookService.Update(dto);
+            var book = _bookService.Update(dto, isbn);
             if (book == null)
             {
                 return BadRequest("Cập nhật thông tin thất bại!");

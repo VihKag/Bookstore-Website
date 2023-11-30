@@ -15,7 +15,7 @@ namespace bookStore.Controllers
             _authorSevice = authorSevice;
         }
 
-        [HttpGet]
+        [HttpGet("admin")]
         public ActionResult<List<AuthorDTO>> PaginationAuthor(int pageNumber, int pageSize)
         {
             var pagedAuthors = _authorSevice.PaginationAuthor(pageNumber, pageSize);
@@ -23,14 +23,14 @@ namespace bookStore.Controllers
         }
 
 
-        [HttpGet("deleted")]
+        [HttpGet("deleted-author")]
         public ActionResult<List<AuthorDTO>> GetAllDeleted()
         {
             var authors = _authorSevice.GetAllDeleted();
             return Ok(authors);
         }
 
-        [HttpGet("id/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<AuthorDTO> GetById(string id)
         {
             var author = _authorSevice.GetById(id);
@@ -53,7 +53,7 @@ namespace bookStore.Controllers
         }
 
 
-        [HttpPost("restore")]
+        [HttpPost("{id}/restore")]
         public ActionResult<AuthorDTO> Restore(string id)
         {
             var author = _authorSevice.Restore(id);
@@ -75,10 +75,10 @@ namespace bookStore.Controllers
             return Ok(author);
         }
 
-        [HttpPut]
-        public ActionResult<AuthorDTO> Update(AuthorDTO authorDTO)
+        [HttpPut("{authID}")]
+        public ActionResult<AuthorDTO> Update(AuthorDTO authorDTO, string authID)
         {
-            var author = _authorSevice.Update(authorDTO);
+            var author = _authorSevice.Update(authorDTO, authID);
             if (author == null)
             {
                 return BadRequest("Tên tác giả đã tồn tại hoặc ID không đúng!");
@@ -86,7 +86,7 @@ namespace bookStore.Controllers
             return Ok(author);
         }
 
-        [HttpDelete("{id}")]
+        [HttpPut("{id}/isDelete")]
         public ActionResult Delete(string id)
         {
             var result = _authorSevice.Delete(id);
@@ -97,7 +97,7 @@ namespace bookStore.Controllers
             return Ok("Thành công!!!");
         }
 
-        [HttpDelete("{id}/permanently-delete")]
+        [HttpDelete("{id}")]
         public ActionResult PermanentlyDelete(string id)
         {
             var result = _authorSevice.PermanentlyDelete(id);

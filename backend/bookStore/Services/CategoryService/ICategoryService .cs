@@ -14,7 +14,7 @@ namespace bookStore.Services.CategoryService
         CategoryDTO? GetByName(string name);
         bool PermanentlyDelete(string id);
         CategoryDTO? Restore(string id);
-        CategoryDTO? Update(CategoryDTO dto);
+        CategoryDTO? Update(CategoryDTO dto, string cateID);
 
     }
 }

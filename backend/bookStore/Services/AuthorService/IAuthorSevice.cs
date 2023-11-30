@@ -12,7 +12,7 @@ namespace bookStore.Services.AuthorService
         AuthorDTO? GetByName(string name);
         bool PermanentlyDelete(string id);
         AuthorDTO? Restore(string id);
-        AuthorDTO? Update(AuthorDTO dto);
+        AuthorDTO? Update(AuthorDTO dto, string authorID);
         List<AuthorDTO> PaginationAuthor(int pageNumber, int pageSize);
     }
 }

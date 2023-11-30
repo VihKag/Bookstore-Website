@@ -140,7 +140,7 @@ namespace bookStore.Services.PublisherService
             return dto;
         }
 
-        public PublisherDTO? Update(PublisherDTO dto)
+        public PublisherDTO? Update(PublisherDTO dto, string pubID)
         {
             if (dto.Id == null)
             {

@@ -15,7 +15,7 @@ public partial class Book
 
     public int? Quantity { get; set; }
 
-    public DateTime Date { get; set; }
+    public DateTime? Date { get; set; }
 
     public string? PageCount { get; set; }
 
