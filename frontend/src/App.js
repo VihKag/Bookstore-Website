@@ -17,29 +17,31 @@ import PrivacyPage from "./pages/PrivacyPage";
 import SecurityPage from "./pages/SecurityPage";
 import AdminRoute from "./routes/AdminRoutes";
 import UserProfile from "./components/user/UserProfile";
+import { CartProvider } from "../../frontend/src/components/Cart/CartContext.jsx";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category" element={<Category />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/service" element={<ServicePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/testimonial" element={<Testimonial />} />
-        <Route path="/terms" element={<TermPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/security" element={<SecurityPage />} />
-
-        <Route path="/admin/*" element={<AdminRoute />} />
-        <Route path="/user/:activepage" element={<UserProfile />} />
-      </Routes>
+      <CartProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/category" element={<Category />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/service" element={<ServicePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/wishlist" element={<WishlistPage />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/testimonial" element={<Testimonial />} />
+            <Route path="/terms" element={<TermPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/security" element={<SecurityPage />} />
+            <Route path="/admin/*" element={<AdminRoute />} />
+            <Route path="/user/:activepage" element={<UserProfile />} />
+          </Routes>
+      </CartProvider>
     </Router>
   );
 }
