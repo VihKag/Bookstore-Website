@@ -15,7 +15,7 @@ import Testimonial from "./pages/Testimonial";
 import TermPage from "./pages/TermPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import SecurityPage from "./pages/SecurityPage";
-import AdminRoute from "./routes/AdminRoutes";
+import AdminRoute from "./routes/Admin";
 import UserProfile from "./components/User/UserProfile";
 
 function App() {
