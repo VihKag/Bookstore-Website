@@ -154,17 +154,7 @@ function ProductDetail() {
               </button>
             </div>
 
-            {/* Social links
-            <div className="flex items-center">
-              <p className="mr-2">Share At:</p>
-              <a
-                href="#"
-                className="flex items-center justify-center w-8 h-8 border border-gray-700 rounded-full text-sm transition duration-500 ease hover:bg-black hover:border-transparent hover:text-white"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a> */}
-            {/* Add other social icons similarly */}
-            {/* </div> */}
+            
           </div>
         </div>
       </div>

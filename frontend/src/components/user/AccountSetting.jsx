@@ -11,6 +11,7 @@ const AccountSetting = () => {
         name: 'Thai Phuc',
         phone: '0987654321',
         email: 'thaiphuc@gmail.com',
+        date: '26/04/2002',
         gender: 'Male',
     });
 
@@ -49,6 +50,11 @@ const AccountSetting = () => {
                     <div className='acc-formsetting-group'>
                         <label htmlFor='email'>
                             Email: <span>{userData.email}</span>
+                        </label>
+                    </div>
+                    <div className='acc-formsetting-group'>
+                        <label htmlFor='date'>
+                            Date of birth: <span>{userData.date}</span>
                         </label>
                     </div>
                     <div className='acc-formsetting-group'>
@@ -95,6 +101,15 @@ const AccountSetting = () => {
                                 onChange={(e) => handleInputChange(e, 'email')}
                             />
                         </div>
+                        <div className='form-group'>
+                            <label htmlFor='date'>Date of birth</label>
+                            <input
+                                type='date'
+                                value={userData.date}
+                                onChange={(e) => handleInputChange(e, 'date')}
+                            />
+                        </div>
+
 
                         <div className='form-group'>
                             <label htmlFor='gender'>Gender</label>
