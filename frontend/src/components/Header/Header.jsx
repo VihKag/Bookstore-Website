@@ -3,7 +3,6 @@ import logoPNG from '../../assets/image/bookicon.png';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
-
 import SearchBar from "../SearchBar/SearchBar"
 import BookData from "../../Data.json"
 import avatar from '../../assets/image/phuc.png'
@@ -65,7 +64,7 @@ const Header = ({ cartItemCount }) => {
                 <li>
                   <a href="/user/accountsettings" className="block flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                     <FontAwesomeIcon icon={["fas", "user"]} className="mr-2" />
-                    Dashboard
+                    Profile
                   </a>
                 </li>
                 <li>
