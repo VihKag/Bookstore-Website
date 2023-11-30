@@ -15,7 +15,7 @@ import Testimonial from "./pages/Testimonial";
 import TermPage from "./pages/TermPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import SecurityPage from "./pages/SecurityPage";
-import AdminRoute from "./routes/AdminRoutes";
+import AdminRoute from "./routes/Admin.js";
 import UserProfile from "./components/user/UserProfile";
 import { CartProvider } from "../../frontend/src/components/Cart/CartContext.jsx";
 
