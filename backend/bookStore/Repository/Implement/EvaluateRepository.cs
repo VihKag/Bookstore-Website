@@ -1,21 +1,20 @@
 ﻿using bookStore.Data;
 using bookStore.Models;
-using bookStore.Reponsitory;
 using bookStore.Reponsitory.Implement;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace bookStore.Repository.Implement
 {
-    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
+    public class EvaluateRepository : RepositoryBase<Evaluate>, IEvaluateRepository
     {
-        public OrderRepository(DataContext context) : base(context)
-        {
+        public EvaluateRepository(DataContext context) : base(context)
+        { 
         }
 
-        public Order FindById(string Id, params Expression<Func<Order, object>>[] includes)
+        public Evaluate FindByID(string ID, params Expression<Func<Evaluate, object>>[] includes)
         {
-            IQueryable<Order> query = context.Set<Order>().Where(x => x.Id == Id);
+            IQueryable<Evaluate> query = context.Set<Evaluate>().Where(x => x.Id == ID);
 
             foreach (var include in includes)
             {

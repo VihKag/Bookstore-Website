@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
-
+import Select from 'react-select';
 const BookForm = () => {
+  const cateOptions = [
+    { value: 'cate_1', label: 'Category 1' },
+    { value: 'cate_2', label: 'Category 2' },
+    { value: 'cate_3', label: 'Category 3' },
+  ];
     const [formData, setFormData] = useState({
-        productdetail_id: '',
-        warehouse_id: '',
-        product_id: '',
+        ibsn: '',
+        book_name: '',
+        page_number:'',
+        author: '',
+        language: '',
+        dcription:'',
         stock_quantity: 0,
-        import_date: '',
-        selectedSize: '',
-        selectedColor: '',
+        category: [],
         images: [],
-        imageTypes: [],
         price: 0,
       });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -21,85 +25,45 @@ const BookForm = () => {
       [name]: value,
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Gửi formData lên server hoặc thực hiện các tác vụ khác ở đây
     console.log(formData);
   };
-  const handleSizeChange = (e) => {
-    setFormData({
-      ...formData,
-      selectedSize: e.target.value,
-    });
-  };
-
-  const handleColorChange = (e) => {
-    setFormData({
-      ...formData,
-      selectedColor: e.target.value,
-    });
-  };
-  const handleImageChange = (e) => {
-    const selectedImages = Array.from(e.target.files);
-    const imageTypes = selectedImages.map((image) => '');
-    setFormData({
-      ...formData,
-      images: selectedImages,
-      imageTypes,
-    });
-  };
-  const handleImageTypeChange = (e, index) => {
-    const updatedImageTypes = [...formData.imageTypes];
-    updatedImageTypes[index] = e.target.value;
-    setFormData({
-      ...formData,
-      imageTypes: updatedImageTypes,
-    });
-  };
-
-  const handlePriceChange = (e) => {
-    setFormData({
-      ...formData,
-      price: e.target.value,
-    });
-  };
-
 
   return (
     <div className="container mx-auto">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="productdetail_id" className="block text-gray-700">Product Detail ID</label>
+          <label htmlFor="ibsn" className="block text-gray-700">IBSN</label>
           <input
             type="text"
-            id="productdetail_id"
-            name="productdetail_id"
-            value={formData.productdetail_id}
+            id="ibsn"
+            name="ibsn"
+            value={formData.ibsn}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="warehouse_id" className="block text-gray-700">Warehouse ID</label>
+          <label htmlFor="book_name" className="block text-gray-700">Book name</label>
           <input
             type="text"
-            id="warehouse_id"
-            name="warehouse_id"
-            value={formData.warehouse_id}
+            id="book_name"
+            name="book_name"
+            value={formData.book_name}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="product_id" className="block text-gray-700">Product ID</label>
+          <label htmlFor="author" className="block text-gray-700">Author</label>
           <input
             type="text"
-            id="product_id"
-            name="product_id"
-            value={formData.product_id}
+            id="author"
+            name="author"
+            value={formData.author}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
@@ -116,56 +80,58 @@ const BookForm = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-
+        
         <div className="mb-4">
-          <label htmlFor="import_date" className="block text-gray-700">Import Date</label>
+          <label htmlFor="language" className="block text-gray-700">Language</label>
           <input
             type="text"
-            id="import_date"
-            name="import_date"
-            value={formData.import_date}
+            id="language"
+            name="language"
+            value={formData.language}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="size_id" className="block text-gray-700">Size</label>
-          <select
-            id="size_id"
-            name="size_id"
-            value={formData.selectedSize}
-            onChange={handleSizeChange}
+          <label htmlFor="page_number" className="block text-gray-700">Page numer</label>
+          <input
+            type="number"
+            id="page_number"
+            name="page_number"
+            value={formData.page_number}
+            onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
-          >
-            <option value="">Chọn Size</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            {/* Thêm các tùy chọn size khác ở đây */}
-          </select>
-          {formData.selectedSize && (
-            <div className="text-gray-500">Size đã chọn: {formData.selectedSize}</div>
-          )}
+          />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="color_id" className="block text-gray-700">Color</label>
+          <label htmlFor="category" className="block text-gray-700">
+            Category
+          </label>
+          <Select
+            isMulti
+            name="category"
+            options={cateOptions}
+            handleChange={(selectedOptions)=>handleChange('category', selectedOptions.map((option)=>option.value))}
+            className="basic-multi-select"
+            classNamePrefix="select"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="nxb_id" className="block text-gray-700">Nhà xuất bản</label>
           <select
-            id="color_id"
-            name="color_id"
-            value={formData.selectedColor}
-            onChange={handleColorChange}
+            id="nxb_id"
+            name="nxb_id"
+            value={formData.category}
+            onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           >
-            <option value="">Chọn Color</option>
-            <option value="Đen">Đen</option>
-            <option value="Trắng">Trắng</option>
-            {/* Thêm các tùy chọn color khác ở đây */}
+            <option value="">Chọn NXB</option>
+            <option value="Đen">A</option>
+            <option value="Trắng">B</option>
           </select>
-          {formData.selectedColor && (
-            <div className="text-gray-500">Color đã chọn: {formData.selectedColor}</div>
-          )}
         </div>
 
         <div className="mb-4">
@@ -175,7 +141,7 @@ const BookForm = () => {
             id="price"
             name="price"
             value={formData.price}
-            onChange={handlePriceChange}
+            onChange={(e) => handleChange('price', e.target.value)}
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
@@ -186,33 +152,9 @@ const BookForm = () => {
             type="file"
             id="images"
             name="images"
-            onChange={handleImageChange}
-            multiple // Cho phép chọn nhiều ảnh
+            onChange={(e)=>handleChange('images', e.target.value)}
+            multiple 
           />
-          {formData.images.length > 0 && (
-            <div className="text-gray-500">Số ảnh đã chọn: {formData.images.length}</div>
-          )}
-
-          {formData.images.map((image, index) => (
-            <div key={index} className="mt-4">
-              <label htmlFor={`imageType${index}`} className="block text-gray-700">
-                Loại ảnh {index + 1}
-              </label>
-              <select
-                id={`imageType${index}`}
-                name={`imageType${index}`}
-                value={formData.imageTypes[index]}
-                onChange={(e) => handleImageTypeChange(e, index)}
-                className="w-full p-2 border border-gray-300 rounded"
-              >
-                <option value="">Chọn loại ảnh</option>
-                <option value="1">Loại 1</option>
-                <option value="2">Loại 2</option>
-                <option value="3">Loại 3</option>
-                {/* Thêm các tùy chọn loại ảnh khác ở đây */}
-              </select>
-            </div>
-          ))}
         </div>
 
         <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Create Product Detail</button>

@@ -11,6 +11,7 @@ function Cart() {
   useEffect(() => {
     setCartItemCount(calculateTotalQuantity());
   }, [cartItems]);
+
   const addToCart = (product) => {
     const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.name === product.name);
     if (existingItemIndex !== -1) {
@@ -18,8 +19,6 @@ function Cart() {
       updatedCartItems[existingItemIndex].quantity += 1;
       setCartItems(updatedCartItems);
       setCartItemCount(calculateTotalQuantity());
-
-  
     } else {
       const newProduct = {
         id: product.id,
@@ -30,6 +29,7 @@ function Cart() {
       };
       setCartItems([...cartItems, newProduct]);
       setCartItemCount(calculateTotalQuantity());
+
     }
 
     setTotalPrice(totalPrice + product.price);

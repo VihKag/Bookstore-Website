@@ -10,15 +10,13 @@ namespace bookStore.Services.BookService
         List<BookDTO> GetAll();
         List<BookDTO> GetAllDeleted();
         BookDTO? GetById(string isbn);
-        List<BookDTO> GetByCate(string cateName);
-        List<BookDTO> GetByAuthor(string authorName);
-        List<BookDTO> GetByPublisher (string pubName);
+        List<BookDTO> GetByCate(string cateName, int pageNumber, int pageSize);
+        List<BookDTO> GetByAuthor(string authorName, int pageNumber, int pageSize);
+        List<BookDTO> GetByPublisher (string pubName, int pageNumber, int pageSize);
         List<BookDTO> SearchByTitle(string title);
-        BookDTO? GetByName(string name);
         bool PermanentlyDelete(string isbn);
-        BookDTO? Restore(string isbn);
+        bool Restore(string isbn);
         BookDTO? Update(BookDTO dto);
-        List<BookDTO> PaginationBook(int pageNumber, int pageSize);
 
     }
 }

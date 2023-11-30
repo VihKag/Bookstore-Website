@@ -7,15 +7,15 @@ using System.Linq.Expressions;
 
 namespace bookStore.Repository.Implement
 {
-    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
+    public class OrderDetailRepository : RepositoryBase<OrderDetail>, IOrderDetailRepository
     {
-        public OrderRepository(DataContext context) : base(context)
+        public OrderDetailRepository(DataContext context) : base(context)
         {
         }
 
-        public Order FindById(string Id, params Expression<Func<Order, object>>[] includes)
+        public OrderDetail FindById(string Id, params Expression<Func<OrderDetail, object>>[] includes)
         {
-            IQueryable<Order> query = context.Set<Order>().Where(x => x.Id == Id);
+            IQueryable<OrderDetail> query = context.Set<OrderDetail>().Where(x => x.Id == Id);
 
             foreach (var include in includes)
             {

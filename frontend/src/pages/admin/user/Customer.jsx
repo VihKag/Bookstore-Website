@@ -1,5 +1,5 @@
-import logoUsser from "../../assets/icon/user-01.png";
-const TableCustomer = () => {
+import logoUsser from "../../../assets/icon/user-01.png";
+const Customer = () => {
     const userProfile =[
         { name: "Khang", username:"Khang121", email: "Khang1@gmail.com" , logo:logoUsser , role:"Admin", phone: "0123456789"},
         { name: "Khang", username:"Khang11", email: "Khang2@gmail.com" , logo:logoUsser, role:"Manager" , phone: "0123456789"},
@@ -112,4 +112,4 @@ const TableCustomer = () => {
         </>
     );
 }
-export default TableCustomer;
+export default Customer;

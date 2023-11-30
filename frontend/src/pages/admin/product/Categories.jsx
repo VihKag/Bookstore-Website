@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import CateModal from "../Modal/CateModal";
-import Pagination from "../Other/Pagination";
+import CateModal from "../../../components/Modal/CateModal";
+import Pagination from "../../../components/Pagination/Pagination";
 const ParentCategories = () => {
   const data = [
     { id: "ABC1", category: "Áo sơ mi nam" },

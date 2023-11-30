@@ -5,9 +5,11 @@ namespace bookStore.Models;
 
 public partial class Image 
 {
-    public string Id { get; set; } = null!;
+    public long? Id { get; set; } = null!;
 
-    public string? Name { get; set; }
+    public string? ImagePath { get; set; }
 
-    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
+    public string? Isbn { get; set; }
+
+    public virtual Book? IsbnNavigation { get; set; }
 }
