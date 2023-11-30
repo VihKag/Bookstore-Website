@@ -1,22 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import {get} from '../../utils/ApiUtils';
+import { API_CATEGORY } from '../../api/Api';
 const BookForm = () => {
+  useEffect(()=>{
+    const categories = get(API_CATEGORY.getCategory);
+    console.log(categories);
+  },[]);
+
   const cateOptions = [
-    { value: 'cate_1', label: 'Category 1' },
-    { value: 'cate_2', label: 'Category 2' },
-    { value: 'cate_3', label: 'Category 3' },
+    { value: 'cate_1', label: 'categoryList 1' },
+    { value: 'cate_2', label: 'categoryList 2' },
+    { value: 'cate_3', label: 'categoryList 3' },
+  ];
+  const authOptions = [
+    { value: 'auth_1', label: 'categoryList 1' },
+    { value: 'auth_2', label: 'categoryList 2' },
+    { value: 'auth_3', label: 'categoryList 3' },
+  ];
+  const pubOptions = [
+    { value: 'cate_1', label: 'categoryList 1' },
+    { value: 'cate_2', label: 'categoryList 2' },
+    { value: 'cate_3', label: 'categoryList 3' },
   ];
     const [formData, setFormData] = useState({
         ibsn: '',
-        book_name: '',
-        page_number:'',
-        author: '',
-        language: '',
-        dcription:'',
-        stock_quantity: 0,
-        category: [],
-        images: [],
+        name: '',
+        description:'',
         price: 0,
+        quantity: 0,
+        pageCount:'',
+        language: '',
+        imagePath: '',
+        categoryList: [],
+        authorList: [],     
       });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,43 +63,45 @@ const BookForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="book_name" className="block text-gray-700">Book name</label>
+          <label htmlFor="name" className="block text-gray-700">Sách</label>
           <input
             type="text"
-            id="book_name"
-            name="book_name"
-            value={formData.book_name}
+            id="name"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="author" className="block text-gray-700">Author</label>
-          <input
-            type="text"
-            id="author"
-            name="author"
-            value={formData.author}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+          <label htmlFor="authorList" className="block text-gray-700">
+            Tác giả
+          </label>
+          <Select
+            isMulti
+            name="authorList"
+            options={authOptions}
+            handleChange={(selectedOptions)=>handleChange('authorList', selectedOptions.map((option)=>option.value))}
+            className="basic-multi-select"
+            classNamePrefix="select"
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="stock_quantity" className="block text-gray-700">Stock Quantity</label>
+          <label htmlFor="quantity" className="block text-gray-700">Số lượng</label>
           <input
             type="number"
-            id="stock_quantity"
-            name="stock_quantity"
-            value={formData.stock_quantity}
+            id="quantity"
+            name="quantity"
+            value={formData.quantity}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
         
         <div className="mb-4">
-          <label htmlFor="language" className="block text-gray-700">Language</label>
+          <label htmlFor="language" className="block text-gray-700">Ngôn ngữ</label>
           <input
             type="text"
             id="language"
@@ -94,44 +113,43 @@ const BookForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="page_number" className="block text-gray-700">Page numer</label>
+          <label htmlFor="pageCount" className="block text-gray-700">Số trang</label>
           <input
             type="number"
-            id="page_number"
-            name="page_number"
-            value={formData.page_number}
+            id="pageCount"
+            name="pageCount"
+            value={formData.pageCount}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="category" className="block text-gray-700">
-            Category
+          <label htmlFor="categoryList" className="block text-gray-700">
+            Thể loại
           </label>
           <Select
             isMulti
-            name="category"
+            name="categoryList"
             options={cateOptions}
-            handleChange={(selectedOptions)=>handleChange('category', selectedOptions.map((option)=>option.value))}
+            handleChange={(selectedOptions)=>handleChange('categoryList', selectedOptions.map((option)=>option.value))}
             className="basic-multi-select"
             classNamePrefix="select"
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="nxb_id" className="block text-gray-700">Nhà xuất bản</label>
-          <select
-            id="nxb_id"
-            name="nxb_id"
-            value={formData.category}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
-          >
-            <option value="">Chọn NXB</option>
-            <option value="Đen">A</option>
-            <option value="Trắng">B</option>
-          </select>
+          <label htmlFor="publisherList" className="block text-gray-700">
+            Nhà xuất bản
+          </label>
+          <Select
+            isMulti
+            name="publisherList"
+            options={pubOptions}
+            handleChange={(selectedOptions)=>handleChange('publisherList', selectedOptions.map((option)=>option.value))}
+            className="basic-multi-select"
+            classNamePrefix="select"
+          />
         </div>
 
         <div className="mb-4">
@@ -147,17 +165,16 @@ const BookForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="images" className="block text-gray-700">Ảnh</label>
+          <label htmlFor="imagePath" className="block text-gray-700">Ảnh</label>
           <input
             type="file"
-            id="images"
-            name="images"
-            onChange={(e)=>handleChange('images', e.target.value)}
+            id="imagePath"
+            name="imagePath"
+            onChange={(e)=>handleChange('imagePath', e.target.value)}
             multiple 
           />
         </div>
-
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Create Product Detail</button>
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Thêm sách</button>
       </form>
     </div>
   );
