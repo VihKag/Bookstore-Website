@@ -3,11 +3,10 @@ import logoPNG from '../../assets/image/bookicon.png';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
-
 import SearchBar from "../SearchBar/SearchBar"
 import BookData from "../../Data.json"
 import avatar from '../../assets/image/phuc.png'
-const Header = () => {
+const Header = ({ cartItemCount }) => {
   const [showDataResult, setShowDataResult] = useState(false);
 
   return (
@@ -44,7 +43,7 @@ const Header = () => {
                 <span className="sr-only">Cart</span>
               </Link>
               <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
-                20
+                {cartItemCount}
               </div>
             </button>
             <a href="/wishlist" className="flex mr-6 text-sm" id="wishlist-button">
@@ -65,7 +64,7 @@ const Header = () => {
                 <li>
                   <a href="/user/accountsettings" className="block flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                     <FontAwesomeIcon icon={["fas", "user"]} className="mr-2" />
-                    Dashboard
+                    Profile
                   </a>
                 </li>
                 <li>

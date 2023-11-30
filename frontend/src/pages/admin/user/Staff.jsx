@@ -1,5 +1,5 @@
-import logoUsser from "../../assets/icon/user-01.png";
-const UserCustomer = () => {
+import logoUsser from "../../../assets/icon/user-01.png";
+const Staff = () => {
     const userProfile =[
         { name: "Khang", username:"Khang121", email: "Khang1@gmail.com" , logo:logoUsser , role:"Admin", phone: "0123456789"},
         { name: "Khang", username:"Khang11", email: "Khang2@gmail.com" , logo:logoUsser, role:"Manager" , phone: "0123456789"},
@@ -8,18 +8,18 @@ const UserCustomer = () => {
     ];
     return (
         <>
-            <div className="text-xl font-semibold">CUSTOMER</div>
+            <div className="text-xl font-semibold">STAFF</div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">               
                 <div className="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
                     <div>                       
-                        <button id="dropdownActionButtonCustomer" data-dropdown-toggle="dropdownActionCustomer" className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
+                        <button id="dropdownActionButtonSale" data-dropdown-toggle="dropdownActionSale" className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
                             <span className="sr-only">Action button</span>
                             Action
                             <svg className="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
                             </svg>
                         </button>
-                        <div id="dropdownActionCustomer" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <div id="dropdownActionSale" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
                                 <li>
                                     <a href="/#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Block</a>
@@ -65,6 +65,9 @@ const UserCustomer = () => {
                                 Phone
                             </th>
                             <th scope="col" className="px-6 py-3">
+                                Position
+                            </th>
+                            <th scope="col" className="px-6 py-3">
                                 Status
                             </th>
                             <th scope="col" className="px-6 py-3">
@@ -97,6 +100,9 @@ const UserCustomer = () => {
                                     {user.phone}
                                 </td>
                                 <td className="px-6 py-4">
+                                    {user.role}
+                                </td>
+                                <td className="px-6 py-4">
                                     <div className="flex items-center">
                                         <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
                                     </div>
@@ -112,4 +118,4 @@ const UserCustomer = () => {
         </>
     );
 }
-export default UserCustomer;
+export default Staff;

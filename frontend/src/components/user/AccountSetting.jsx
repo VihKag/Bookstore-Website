@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AccountSetting.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const UserAddress = () => {
-    const [show, setShow] = React.useState(false);
+const AccountSetting = () => {
+    const [show, setShow] = useState(false);
+    const [userData, setUserData] = useState({
+        name: 'Thai Phuc',
+        phone: '0987654321',
+        email: 'thaiphuc@gmail.com',
+        date: '26/04/2002',
+        gender: 'Male',
+    });
+
+    const handleInputChange = (e, field) => {
+        setUserData({
+            ...userData,
+            [field]: e.target.value,
+        });
+    };
+
+    const handleSave = () => {
+        // Add logic to save updated user data, e.g., make an API call
+
+        // Show toast
+        toast.success('User information updated successfully');
+
+        // Close the edit mode
+        setShow(false);
+    };
 
     return (
         <div className='accountsetting'>
@@ -13,26 +39,27 @@ const UserAddress = () => {
                 <div className='formsetting'>
                     <div className='acc-formsetting-group'>
                         <label htmlFor='name'>
-                            Your name: <span > Thai Phuc</span>
-
+                            Your name: <span>{userData.name}</span>
                         </label>
                     </div>
                     <div className='acc-formsetting-group'>
                         <label htmlFor='phone'>
-                            Phone/Mobile: <span > 0987654321 </span>
-
+                            Phone/Mobile: <span>{userData.phone}</span>
                         </label>
                     </div>
                     <div className='acc-formsetting-group'>
                         <label htmlFor='email'>
-                            Email: <span > thaiphuc@gmail.com </span>
-
+                            Email: <span>{userData.email}</span>
+                        </label>
+                    </div>
+                    <div className='acc-formsetting-group'>
+                        <label htmlFor='date'>
+                            Date of birth: <span>{userData.date}</span>
                         </label>
                     </div>
                     <div className='acc-formsetting-group'>
                         <label htmlFor='gender'>
-                            Gender: <span > Male</span>
-
+                            Gender: <span>{userData.gender}</span>
                         </label>
                     </div>
                 </div>
@@ -50,35 +77,59 @@ const UserAddress = () => {
                     <div className='form'>
                         <div className='form-group'>
                             <label htmlFor='name'>Your name</label>
-                            <input type="text" />
+                            <input
+                                type='text'
+                                value={userData.name}
+                                onChange={(e) => handleInputChange(e, 'name')}
+                            />
                         </div>
 
                         <div className='form-group'>
                             <label htmlFor='phone'>Phone/mobile</label>
-                            <input type="text" />
+                            <input
+                                type='text'
+                                value={userData.phone}
+                                onChange={(e) => handleInputChange(e, 'phone')}
+                            />
                         </div>
 
                         <div className='form-group'>
                             <label htmlFor='email'>Email</label>
-                            <input type="email" />
+                            <input
+                                type='email'
+                                value={userData.email}
+                                onChange={(e) => handleInputChange(e, 'email')}
+                            />
                         </div>
+                        <div className='form-group'>
+                            <label htmlFor='date'>Date of birth</label>
+                            <input
+                                type='date'
+                                value={userData.date}
+                                onChange={(e) => handleInputChange(e, 'date')}
+                            />
+                        </div>
+
 
                         <div className='form-group'>
                             <label htmlFor='gender'>Gender</label>
-                            <input type="text" />
+                            <input
+                                type='text'
+                                value={userData.gender}
+                                onChange={(e) => handleInputChange(e, 'gender')}
+                            />
                         </div>
                     </div>
 
-                    <button
-                        className='mainbutton1'
-                        onClick={() => setShow(false)}
-                    >
+                    <button className='mainbutton1' onClick={handleSave}>
                         Save
                     </button>
                 </div>
             )}
+
+            <ToastContainer />
         </div>
     );
 };
 
-export default UserAddress;
+export default AccountSetting;

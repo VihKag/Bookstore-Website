@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer2 from "../Footer/footer2";
@@ -10,11 +10,13 @@ import ChangePassword from "./ChangePassword";
 import YourOrders from "./YourOrders";
 import UserAddress from "./UserAddress";
 const UserProfile = () => {
+  const [cartItemCount] = useState(0);
+
   const { activepage } = useParams();
   //   alert(activepage);
   return (
     <div className="userprofile">
-      <Header />
+      <Header cartItemCount={cartItemCount} />
       <BreadcrumbUser />
       <div className="userprofilein">
         <div className="left">

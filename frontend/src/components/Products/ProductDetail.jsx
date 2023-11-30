@@ -32,7 +32,6 @@ function ProductDetail() {
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="max-w-screen-xl mx-auto p-8 bg-white shadow-lg rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left section */}
           <div className="img-display overflow-hidden">
             <div className="img-container" style={{ height: "500px" }}>
               <img
@@ -42,12 +41,9 @@ function ProductDetail() {
               />
             </div>
           </div>
-          {/* Right section */}
           <div className="flex flex-col">
-            {/* Product details */}
             <h2 className="text-3xl font-bold mb-2">ĐẮC NHÂN TÂM</h2>
             <p className="text-1xl text-gray-500 mb-2">Đã bán 12.5k sản phẩm</p>
-            {/* Product rating */}
             <div className="flex items-center mb-2">
               <FontAwesomeIcon icon={faStar} className="text-yellow-500" />
               <FontAwesomeIcon icon={faStar} className="text-yellow-500" />
@@ -60,7 +56,6 @@ function ProductDetail() {
               <span className="ml-2 text-gray-700">4.7(21)</span>
             </div>
 
-            {/* Product price */}
             <div className="mb-2">
               <p className="text-1.5xl">
                 <span className="text-black">Giá cũ: </span>
@@ -159,17 +154,7 @@ function ProductDetail() {
               </button>
             </div>
 
-            {/* Social links
-            <div className="flex items-center">
-              <p className="mr-2">Share At:</p>
-              <a
-                href="#"
-                className="flex items-center justify-center w-8 h-8 border border-gray-700 rounded-full text-sm transition duration-500 ease hover:bg-black hover:border-transparent hover:text-white"
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a> */}
-            {/* Add other social icons similarly */}
-            {/* </div> */}
+            
           </div>
         </div>
       </div>

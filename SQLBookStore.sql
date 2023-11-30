@@ -21,10 +21,13 @@ CREATE TABLE Book (
     Language varchar(100),
     State bit,
     isDelete bit
+ 
 );
 
 CREATE TABLE Image (
 	ID bigint PRIMARY KEY IDENTITY(1,1),
+	Name nvarchar(1000),
+	Isbn nvarchar(36),
 	Isbn nvarchar(36),
 	ImagePath nvarchar(1000),
 	FOREIGN KEY (Isbn) REFERENCES Book(Isbn)
