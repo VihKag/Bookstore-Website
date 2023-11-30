@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import imgFashion from "../../assets/icon/tshirt.png";
-import {
-  faEye,
-  faFilter,
-  faPenToSquare,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
-import Pagination from "../Other/Pagination";
+import { useEffect, useState } from 'react';
+import { faEye, faFilter, faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
+import imgFashion from "../../../assets/icon/tshirt.png";
+import Pagination from "../../../components/Pagination/Pagination";
+// import {get} from '../../utils/ApiUtilstren';
+// import { API_BOOK } from "../../../api/Api";
 const Products = () => {
+  // const [useData, setData] = useState([]);
+  // useEffect(() =>{
+  //     get(API_BOOK)
+  // },[])
   const data = [
     {
       id: "sp1",
