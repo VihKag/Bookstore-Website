@@ -171,5 +171,26 @@ namespace bookStore.Services.PublisherService
             var pagedPublishersList = pagedPublishers.ToList();
             return pagedPublishersList;
         }
+
+        public List<PublisherDTO> GetAllNotDeleted()
+        {
+            List<Publisher> entityList = _publisherRepository.FindByCondition(x => x.IsDelete == false);
+            List<PublisherDTO> dtoList = new List<PublisherDTO>();
+            foreach (Publisher entity in entityList)
+            {
+                PublisherDTO dto = _mappingService.GetMapper().Map<PublisherDTO>(entity);
+                dtoList.Add(dto);
+            }
+
+            return dtoList;
+        }
+
+        public List<PublisherDTO> PaginationNotDeleted(int pageNumber, int pageSize)
+        {
+            var allnotdeleted = GetAllNotDeleted();
+            var pagedPublishers = allnotdeleted.ToPagedList(pageNumber, pageSize);
+            var pagedPublishersList = pagedPublishers.ToList();
+            return pagedPublishersList;
+        }
     }
 }

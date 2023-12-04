@@ -21,12 +21,17 @@ namespace bookStore.Controllers
             var pagedAuthors = _authorSevice.PaginationAuthor(pageNumber, pageSize);
             return Ok(pagedAuthors);
         }
-
-
-        [HttpGet("deleted-author")]
-        public ActionResult<List<AuthorDTO>> GetAllDeleted()
+        [HttpGet("client")]
+        public ActionResult<List<AuthorDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var authors = _authorSevice.GetAllDeleted();
+            var pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber, pageSize);
+            return Ok(pagedAuthors);
+        }
+
+        [HttpGet("list")]
+        public ActionResult<List<AuthorDTO>> GetAllNotDeleted()
+        {
+            var authors = _authorSevice.GetAllNotDeleted();
             return Ok(authors);
         }
 

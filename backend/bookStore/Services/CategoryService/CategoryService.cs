@@ -147,7 +147,25 @@ namespace bookStore.Services.CategoryService
 
             return dto;
         }
+        public List<CategoryDTO> GetAllNotDeleted()
+        {
+            List<Category> entityList = _categoryRepository.FindByCondition(x => x.IsDelete == false);
+            List<CategoryDTO> dtoList = new List<CategoryDTO>();
+            foreach (Category entity in entityList)
+            {
+                CategoryDTO dto = _mappingService.GetMapper().Map<CategoryDTO>(entity);
+                dtoList.Add(dto);
+            }
 
+            return dtoList;
+        }
+        public  List<CategoryDTO> PaginationNotDeleted(int pageNumber, int pageSize)
+        {
+            var allnotdelected = GetAllNotDeleted();
+            var pagedCategories = allnotdelected.ToPagedList(pageNumber, pageSize);
+            var pagedCategoriesList = pagedCategories.ToList();
+            return pagedCategoriesList;
+        }
         public List<CategoryDTO> GetAllDeleted()
         {
             List<Category> entityList = _categoryRepository.FindByCondition(x => x.IsDelete == true);

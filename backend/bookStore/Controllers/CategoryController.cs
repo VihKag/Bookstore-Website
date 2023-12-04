@@ -24,12 +24,17 @@ namespace bookStore.Controllers
             var pagedCategories = _categoryService.PaginationCategory(pageNumber,pageSize);
             return Ok(pagedCategories);
         }
-    
 
-        [HttpGet("deleted-category")]
-        public ActionResult<List<CategoryDTO>> GetAllDeleted()
+        [HttpGet("client")]
+        public ActionResult<List<CategoryDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var categories = _categoryService.GetAllDeleted();
+            var pagedCategories = _categoryService.PaginationNotDeleted(pageNumber, pageSize);
+            return Ok(pagedCategories);
+        }
+        [HttpGet("list")]
+        public ActionResult<List<CategoryDTO>> GetAllNotDeleted()
+        {
+            var categories = _categoryService.GetAllNotDeleted();
             return Ok(categories);
         }
 

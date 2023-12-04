@@ -7,7 +7,8 @@ namespace bookStore.Services.PublisherService
         PublisherDTO? Create(PublisherDTO dto);
         bool Delete(string id);
         List<PublisherDTO> GetAll();
-        List<PublisherDTO> GetAllDeleted();
+        List<PublisherDTO> GetAllNotDeleted();
+        List<PublisherDTO> PaginationNotDeleted(int pageNumber, int pageSize);
         PublisherDTO? GetById(string id);
         PublisherDTO? GetByName(string name);
         bool PermanentlyDelete(string id);
