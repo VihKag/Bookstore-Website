@@ -71,6 +71,17 @@ namespace bookStore.Controllers
             return Ok(user);
         }
 
+        [HttpPut]
+        public bool UpdatePassword(string password, string userId)
+        {
+            var update = UpdatePassword(password, userId);
+            if (update == false)
+            {
+                return ("Cập nhật mật khẩu không thành công!");
+            }
+            return ("Đã cập nhật mật khẩu!");
+        }
+
 
     }
 }

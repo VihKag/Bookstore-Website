@@ -305,5 +305,18 @@ namespace bookStore.Services.UserService
             return true;
 
         }
+
+        public bool UpdatePassword(string password, string userId)
+        {
+            var user = _userRepository.FindById(userId);
+            if (user != null)
+            {
+                user.Password = password;
+                _userRepository.Update(user);
+                _userRepository.Save();
+                return true;
+            }
+            return false;
+        }
     }
 }
