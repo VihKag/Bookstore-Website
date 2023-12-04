@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import googleIcon from "../assets/image/ic_gg.jpg";
 import facebookIcon from "../assets/image/ic_fb.png";
@@ -6,26 +6,48 @@ import { login } from "../api/AuthApi";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
 const LoginPage = () => {
   const [open, setOpen] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+  const usenavigate = useNavigate();
 
   const toggle = () => {
     setOpen(!open);
   };
-    const usenavigate = useNavigate();
-    const handleSubmit = async (prop) =>{
-      prop.preventDefault();
-      const username = prop.target.username.value;
-      const password = prop.target.password.value;
-      console.log("Username:", username);
-      console.log("Password:", password);   
-      const success = await login({ username, password });
-      if (success) {
-          usenavigate('/');
-      }else{
-        usenavigate('/login');
-      }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Validate the form
+    const validationErrors = {};
+    if (!username) {
+      validationErrors.username = "Vui lòng nhập tên người dùng";
     }
+    if (!password) {
+      validationErrors.password = "Vui lòng nhập mật khẩu";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      // If there are validation errors, set the errors state and return
+      setErrors(validationErrors);
+      return;
+    }
+
+    // Clear previous errors
+    setErrors({});
+
+    // Perform login
+    const success = await login({ username, password });
+    if (success) {
+      usenavigate('/');
+    } else {
+      usenavigate('/login');
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} id="form-login">
       <div
@@ -45,31 +67,35 @@ const LoginPage = () => {
             <input
               type="text"
               name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="text-sm w-full border-2 border-gray-100 rounded-xl py-2 px-4 mt-1 mb-1 bg-transparent"
               placeholder="Nhập tên người dùng"
             />
+            {errors.username && <p className="text-red-500 text-sm mt-1">{errors.username}</p>}
           </div>
           <div className="mt-2">
             <label className="text-md font-medium">Mật khẩu</label>
-            <section>
-        <div className="w-5/5 mx-auto relative">
-          <div className="w-full">
-            <input
-              name="password"
-              type={open === false ? "password" : "text"}
-              placeholder="Nhập mật khẩu"
-              className=" text-sm w-full border-2 border-gray-100 rounded-xl  py-2 px-4 mt-1 mb-1 bg-transparent"
-            />
-          </div>
-          <div className="text-sm absolute top-4 right-5">
-            {open === false ? (
-              <FontAwesomeIcon icon={faEye} onClick={toggle} />
-            ) : (
-              <FontAwesomeIcon icon={faEyeSlash} onClick={toggle} />
-            )}
-          </div>
-        </div>
-      </section>
+            <div className="w-5/5 mx-auto relative">
+              <div className="w-full">
+                <input
+                  name="password"
+                  type={open === false ? "password" : "text"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Nhập mật khẩu"
+                  className=" text-sm w-full border-2 border-gray-100 rounded-xl  py-2 px-4 mt-1 mb-1 bg-transparent"
+                />
+              </div>
+              {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+              <div className="text-sm absolute top-4 right-5">
+                {open === false ? (
+                  <FontAwesomeIcon icon={faEye} onClick={toggle} />
+                ) : (
+                  <FontAwesomeIcon icon={faEyeSlash} onClick={toggle} />
+                )}
+              </div>
+            </div>
           </div>
           <div className="mt-4 flex justify-between items-center">
             <div>
