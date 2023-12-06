@@ -13,5 +13,6 @@ namespace bookStore.Services.UserService
         Task<AuthResult> Register(UserFormDTO dto);
         Task<AuthResult> Login(LoginDTO dto);
         List<UserDTO> PaginationUser(int pageNumber, int pageSize);
+        bool UpdatePassword(string password, string userId);
     }
 }

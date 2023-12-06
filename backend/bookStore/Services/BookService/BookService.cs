@@ -61,7 +61,7 @@ namespace bookStore.Services.BookService
             _bookRepository.Save();
             CreateRelationship(dto);
 
-            var uploadParams = new ImageUploadParams
+            /*var uploadParams = new ImageUploadParams
             {
                 File = new FileDescription(dto.ImagePath),
                 PublicId = Nanoid.Generate(size: 10)
@@ -70,17 +70,35 @@ namespace bookStore.Services.BookService
             var uploadResult = cloudinary.Upload(uploadParams);
 
             // Lấy URL công khai của hình ảnh đã tải lên
-            var imageUrl = uploadResult.SecureUrl;
+            var imageUrl = uploadResult.SecureUrl;*/
+
+            var ImagePath = UploadImage(dto.Image, dto.Isbn);
 
             Image image = new Image();
             image.Isbn = dto.Isbn;
-            image.ImagePath = imageUrl.ToString();
+            image.ImagePath = ImagePath;
             _imageRepository.Create(image);
             _imageRepository.Save();
 
             return dto;
         }
+        public string UploadImage(IFormFile imageFile, string isbn)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+                return null;
 
+            using var stream = imageFile.OpenReadStream();
+
+            var uploadParams = new ImageUploadParams
+            {
+                File = new FileDescription(imageFile.FileName, stream),
+                Folder = isbn // Thay đổi tên folder theo nhu cầu
+            };
+
+            var uploadResult = cloudinary.Upload(uploadParams);
+
+            return uploadResult.SecureUrl.ToString();
+        }
         private void CreateRelationship(BookDTO dto)
         {
             dto.CategoryList.ForEach(cate =>
