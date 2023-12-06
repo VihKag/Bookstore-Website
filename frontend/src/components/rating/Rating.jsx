@@ -26,7 +26,7 @@ const Rating = () => {
 
         <div className="comment-container">
             <div>
-                <h2 className="text-xl">Đánh giá</h2>
+                <h2 className="text-xl">Evaluate</h2>
                 <div>
                     {[...Array(5)].map((_, i) => {
                         const ratingValue = i + 1;
@@ -44,31 +44,31 @@ const Rating = () => {
             </div>
             <div></div>
             <div>
-                <h2 className="text-xl">Bình luận của bạn</h2>
+                <h2 className="text-xl">Comment</h2>
                 <form className="rating" onSubmit={handleSubmit}>
                     <textarea
                         rows="4"
                         cols="50"
                         value={comment}
                         onChange={handleCommentChange}
-                        placeholder="Nhập bình luận của bạn..."
+                        placeholder="Type your comment..."
                         
                     />
                     <br />
-                    <button className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 px-6 rounded-xl bg-[#0dd3b7] text-white text-lg font-medium comment-send-button" type="submit">Gửi</button>
+                    <button className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 px-6 rounded-xl bg-[#0dd3b7] text-white text-lg font-medium comment-send-button" type="submit">Send</button>
                 </form>
             </div>
            
         </div>
          <div className="islogin-form">
                 <div className="login-text mt-6 ">
-                    <p>Đăng nhập để gửi bình luận</p>
+                    <p>Sign in to comment </p>
                 </div>
                 <div className="login-button-container">
-                    <Link to="/login" className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 px-6 rounded-xl bg-[#0dd3b7] text-white text-m font-medium comment-send-button">Đăng nhập</Link>
+                    <Link to="/login" className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 px-6 rounded-xl bg-[#0dd3b7] text-white text-m font-medium comment-send-button">Sign in</Link>
                 </div>
                 <div className="signup-text">
-                    <p className="font-medium text-base">Bạn chưa có tài khoản? <Link to="/signup" className="text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1">Đăng ký</Link></p>
+                    <p className="font-medium text-base">Don't you have account? <Link to="/signup" className="text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1">Register</Link></p>
                 </div>
             </div>
             </div>
