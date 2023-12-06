@@ -29,18 +29,53 @@ namespace bookStore.Controllers
 
         [HttpGet("admin")]
         public ActionResult <List<BookDTO>> GetAll(int pageNumber, int pageSize)
-        { 
-            var book = _bookService.GetAll(pageNumber, pageSize);
+        {
+            var book = new List<BookDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    book = _bookService.GetAll(1, 10);
+                    break;
+                case (0, _):
+                    book = _bookService.GetAll(1, pageSize);
+                    break;
+                case (_, 0):
+                    book = _bookService.GetAll(pageNumber, 10);
+                    break;
+                default:
+                    book = _bookService.GetAll(pageNumber, pageSize);
+                    break;
+            }
             if (book == null)
             {
                 return BadRequest("Không lấy được danh sách");
             }
             return Ok(book);
+
         }
         [HttpGet("client")]
         public ActionResult<List<BookDTO>> GetAllNotDelete(int pageNumber, int pageSize)
         {
-            var book = _bookService.GetAll(pageNumber, pageSize);
+            var book = new List<BookDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    book = _bookService.GetAllNotDelete(1, 10);
+                    break;
+                case (0, _):
+                    book = _bookService.GetAllNotDelete(1, pageSize);
+                    break;
+                case (_, 0):
+                    book = _bookService.GetAllNotDelete(pageNumber, 10);
+                    break;
+                default:
+                    book = _bookService.GetAllNotDelete(pageNumber, pageSize);
+                    break;
+            }
+            if (book == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
             return Ok(book);
         }
 
@@ -78,34 +113,80 @@ namespace bookStore.Controllers
         [HttpGet("cate/{cateName}")]
         public ActionResult<List<Book>> GetByCate(string cateName, int pageNumber, int pageSize)
         {
-            var book = _bookService.GetByCate(cateName, pageNumber, pageSize);
+            var book = new List<BookDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    book = _bookService.GetByCate(cateName, 1, 10);
+                    break;
+                case (0, _):
+                    book = _bookService.GetByCate(cateName, 1, pageSize);
+                    break;
+                case (_, 0):
+                    book = _bookService.GetByCate(cateName, pageNumber, 1);
+                    break;
+                default:
+                    book = _bookService.GetByCate(cateName, pageNumber, pageSize);
+                    break;
+            }
             if (book == null)
             {
                 return BadRequest("Không có sách thuộc thể loại này!");
             }
-            
+
             return Ok(book);
         }
-
         [HttpGet("author/{authorName}")]
         public ActionResult<List<Book>> GetByAuthor(string authorName, int pageNumber, int pageSize)
         {
-            var book = _bookService.GetByAuthor(authorName, pageNumber, pageSize);
+            var book = new List<BookDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    book = _bookService.GetByAuthor(authorName, 1, 10);
+                    break;
+                case (0, _):
+                    book = _bookService.GetByAuthor(authorName, 1, pageSize);
+                    break;
+                case (_, 0):
+                    book = _bookService.GetByAuthor(authorName, pageNumber, 10);
+                    break;
+                default:
+                    book = _bookService.GetByAuthor(authorName, pageNumber, pageSize);
+                    break;
+            }
+            book = _bookService.GetByAuthor(authorName, pageNumber, pageSize);
             if (book == null)
             {
-                return BadRequest("Không có sách thuộc thể loại này!");
+                return BadRequest("Không có sách thuộc tác giả này!");
             }
-
             return Ok(book);
         }
 
         [HttpGet("publisher/{pubName}")]
         public ActionResult<List<Book>> GetByPublisher(string pubName, int pageNumber, int pageSize)
         {
-            var book = _bookService.GetByPublisher(pubName, pageNumber, pageSize);
+            var book = new List<BookDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    book = _bookService.GetByPublisher(pubName, 1, 10);
+                    break;
+                case (0, _):
+                    book = _bookService.GetByPublisher(pubName, 1, pageSize);
+                    break;
+                case (_, 0):
+                    book = _bookService.GetByPublisher(pubName, pageNumber, 10);
+                    break;
+                default:
+                    book = _bookService.GetByPublisher(pubName, pageNumber, pageSize);
+                    break;
+            }
+
+            book = _bookService.GetByPublisher(pubName, pageNumber, pageSize);
             if (book == null)
             {
-                return BadRequest("Không có sách thuộc thể loại này!");
+                return BadRequest("Không có sách thuộc nhà xuất bản này!");
             }
 
             return Ok(book);
