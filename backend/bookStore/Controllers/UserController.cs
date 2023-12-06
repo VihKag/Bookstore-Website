@@ -54,7 +54,7 @@ namespace bookStore.Controllers
             var user = _userService.GetByID(id);
             return Ok(user);
         }
-        [HttpPut]
+        [HttpPut("updateprofile/{id}")]
 //        [Authorize(Roles = "User")]
         public ActionResult UpdateProfile(UserDTO userDTO)
         {
@@ -71,15 +71,15 @@ namespace bookStore.Controllers
             return Ok(user);
         }
 
-        [HttpPut]
-        public bool UpdatePassword(string password, string userId)
+        [HttpPut("updatepass/{id}")]
+        public ActionResult UpdatePassword(string password, string userId)
         {
-            var update = UpdatePassword(password, userId);
+            var update = _userService.UpdatePassword(password, userId);
             if (update == false)
             {
-                return ("Cập nhật mật khẩu không thành công!");
+                return BadRequest("Cập nhật mật khẩu không thành công!");
             }
-            return ("Đã cập nhật mật khẩu!");
+            return Ok("Đã cập nhật mật khẩu!");
         }
 
 
