@@ -5,8 +5,8 @@ import backgroundImage from "../assets/image/bg.gif";
 function Signup() {
   const backgroundStyle = {
     backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: "cover", // Đảm bảo hình ảnh được hiển thị đầy đủ trong phần nền
-    backgroundPosition: "center", // Đặt vị trí hiển thị của hìnhs ảnh
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   };
 
   return (
