@@ -37,20 +37,20 @@ function Cart() {
 
   const calculateTotalQuantity = () => {
     let totalQuantity = 0;
-  
+
     cartItems.forEach((item) => {
       totalQuantity += item.quantity;
     });
-  
+
     return totalQuantity;
   };
 
-    const removeFromCart = (product) => {
-        const updatedCartItems = cartItems.filter((item) => item.id !== product.id);
-        setCartItems(updatedCartItems);
-        setTotalPrice(totalPrice - product.price * product.quantity);
-        setCartItemCount(0); 
-      };
+  const removeFromCart = (product) => {
+    const updatedCartItems = cartItems.filter((item) => item.id !== product.id);
+    setCartItems(updatedCartItems);
+    setTotalPrice(totalPrice - product.price * product.quantity);
+    setCartItemCount(0);
+  };
 
 
   const increaseQuantity = (product) => {
@@ -92,11 +92,11 @@ function Cart() {
     <>
       <Header cartItemCount={cartItemCount} />
       <div className="container-cart">
-        <h1 className="cart-title">GIỎ HÀNG</h1>
+        <h1 className="cart-title">YOUR CART</h1>
         <div className="cart-wrapper">
           <div className="cart-items-wrapper">
             {cartItems.length === 0 ? (
-              <p className="empty-cart"> Giỏ hàng trống! Hãy lựa chọn các sản phẩm bạn mong muốn và thêm vào giỏ hàng!</p>
+              <p className="empty-cart"> Your cart is empty! Please choose products you desire and add them to your cart!</p>
             ) : (
               <ul className="cart-items">
                 {cartItems.map((item) => (
@@ -118,7 +118,7 @@ function Cart() {
                       </button>
                     </div>
                     <button className="remove-btn" onClick={() => removeFromCart(item)}>
-                      Xóa
+                      Delete
                     </button>
                   </li>
                 ))}
@@ -126,28 +126,28 @@ function Cart() {
             )}
           </div>
           <div className="order-summary">
-            <h2>Tóm tắt đơn hàng</h2>
-<p className="cart-info">Số lượng sản phẩm: {calculateTotalQuantity()}</p>
-            <p className="total-cart">Tổng tiền: {totalPrice}đ</p>
+            <h2>Order Summary</h2>
+            <p className="cart-info">Quantity of items: {calculateTotalQuantity()}</p>
+            <p className="total-cart">Total amount: {totalPrice}đ</p>
             {/* Thêm các thông tin khác của đơn hàng */}
-            <button onClick={handleCheckout}>Thanh toán</button>
+            <button onClick={handleCheckout}>Checkout</button>
           </div>
         </div>
-        <h2>Danh sách sản phẩm</h2>
+        <h2>Product list</h2>
         <ul className="product-list">
           <li className="product-list-item">
-            <button onClick={() => addToCart({ id: 1, image: 'assets/image/book1.jpg', name: 'Sản phẩm 1', price: 100000 })}>
-              Thêm vào giỏ hàng
+            <button onClick={() => addToCart({ id: 1, image: 'assets/image/book1.jpg', name: 'Product 1', price: 100000 })}>
+              Add to cart
             </button>
           </li>
           <li className="product-list-item">
-            <button onClick={() => addToCart({ id: 2, image: 'assets/image/book1.jpg', name: 'Sản phẩm 2', price: 200000 })}>
-              Thêm vào giỏ hàng
+            <button onClick={() => addToCart({ id: 2, image: 'assets/image/book1.jpg', name: 'Product 2', price: 200000 })}>
+              Add to cart
             </button>
           </li>
           <li className="product-list-item">
-            <button onClick={() => addToCart({ id: 3, image: 'assets/image/book1.jpg', name: 'Sản phẩm 3', price: 300000 })}>
-              Thêm vào giỏ hàng
+            <button onClick={() => addToCart({ id: 3, image: 'assets/image/book1.jpg', name: 'Product 3', price: 300000 })}>
+              Add to cart
             </button>
           </li>
         </ul>
