@@ -55,7 +55,6 @@ namespace bookStore.Services.BookService
         {
             //dto.Id = Nanoid.Generate(size: 10);
             Book book = _mappingService.GetMapper().Map<Book>(dto);
-            book.Date = dto.Date.Date;
             book.IsDelete = false;
             book.State = true;
             _bookRepository.Create(book);
@@ -159,14 +158,41 @@ namespace bookStore.Services.BookService
             return true;
         }
 
-        public List<BookDTO> GetAll()
+        public List<BookDTO> GetAll(int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+            List<Book> bookList = _bookRepository.FindAll();
+
+            List<BookDTO> books = new List<BookDTO>();
+
+            foreach (var item in bookList)
+            {
+                string bookID = item.Isbn;
+                BookDTO bookDTO = GetById(bookID);
+                books.Add(bookDTO);
+            }
+           var pagedBookList = GetPagedItems(books, pageNumber, pageSize);
+           return pagedBookList;
         }
 
-        public List<BookDTO> GetAllDeleted()
+        public List<BookDTO> GetAllNotDelete(int pageNumber, int pageSize)
         {
-            throw new NotImplementedException();
+            List<Book> bookList = _bookRepository.FindByCondition(x => x.IsDelete == false);
+
+            List<BookDTO> books = new List<BookDTO>();
+
+            foreach (var item in bookList)
+            {
+                BookDTO dto = _mappingService.GetMapper().Map<BookDTO>(item);
+                books.Add(dto);
+            }
+            var pagedBookList = GetPagedItems(books, pageNumber, pageSize);
+            return pagedBookList;
+        }
+        public List<T> GetPagedItems<T>(List<T> itemList, int pageNumber, int pageSize)
+        {
+            var pagedList = itemList.ToPagedList(pageNumber, pageSize);
+            var pagedItemList = pagedList.ToList();
+            return pagedItemList;
         }
 
         public BookDTO GetById(string isbn)
@@ -178,8 +204,6 @@ namespace bookStore.Services.BookService
             }
             
             BookDTO dto = _mappingService.GetMapper().Map<BookDTO>(entity);
-
-            dto.Date = entity.Date.Date;
 
             dto.AuthorList = GetAuthorsByISBN(isbn);
             dto.CategoryList = GetCategoriesByISBN(isbn);
@@ -263,9 +287,7 @@ namespace bookStore.Services.BookService
                     listBook.Add(dto);
                 }
             }
-
-            var pagedBookCategory = listBook.ToPagedList(pageNumber, pageSize);
-            var pagedBookCategoryList = pagedBookCategory.ToList();
+            var pagedBookCategoryList = GetPagedItems(listBook, pageNumber, pageSize);
             return pagedBookCategoryList;
         }
 
@@ -319,19 +341,19 @@ namespace bookStore.Services.BookService
             return true;
         }
 
-        public BookDTO? Update(BookDTO dto)
+        public BookDTO? Update(BookDTO dto, string isbn)
         {
-            if (dto.Isbn == null)
+            if (isbn == null)
             {
                 return null;
             }
 
-            Book entity = _bookRepository.FindById(dto.Isbn);
+            Book entity = _bookRepository.FindById(isbn);
             if (entity == null)
             {
                 return null;
             }
-            DeleteBookByISBN(dto.Isbn);
+            DeleteBookByISBN(isbn);
 
             CreateRelationship(dto);
 
@@ -393,8 +415,7 @@ namespace bookStore.Services.BookService
                 }
             }
 
-            var pagedBookAuthor = listBook.ToPagedList(pageNumber, pageSize);
-            var pagedBookAuthorList = pagedBookAuthor.ToList();
+            var pagedBookAuthorList = GetPagedItems(listBook, pageNumber, pageSize);
             return pagedBookAuthorList;
         }
 
@@ -412,9 +433,7 @@ namespace bookStore.Services.BookService
                     listBook.Add(dto);
                 }
             }
-
-            var pagedBookPublisher = listBook.ToPagedList(pageNumber, pageSize);
-            var pagedBookPublisherList = pagedBookPublisher.ToList();
+            var pagedBookPublisherList = GetPagedItems(listBook, pageNumber, pageSize);
             return pagedBookPublisherList;
         }
 

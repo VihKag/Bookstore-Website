@@ -9,12 +9,13 @@ namespace bookStore.Services.CategoryService
         bool Delete(string id);
         List<CategoryDTO> GetAll();
         List<CategoryDTO> PaginationCategory(int pageNumber, int pageSize);
-        List<CategoryDTO> GetAllDeleted();
+        List<CategoryDTO> GetAllNotDeleted();
+        List<CategoryDTO> PaginationNotDeleted(int pageNumber, int pageSize);
         CategoryDTO? GetById(string id);
         CategoryDTO? GetByName(string name);
         bool PermanentlyDelete(string id);
         CategoryDTO? Restore(string id);
-        CategoryDTO? Update(CategoryDTO dto);
+        CategoryDTO? Update(CategoryDTO dto, string cateID);
 
     }
 }

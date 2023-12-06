@@ -77,6 +77,7 @@ namespace bookStore.Services.AuthorService
             return dtoList;
         }
 
+
         public AuthorDTO? GetById(string id)
         {
             Author entity = _authorRepository.FindById(id);
@@ -140,7 +141,7 @@ namespace bookStore.Services.AuthorService
             return dto;
         }
 
-        public AuthorDTO? Update(AuthorDTO dto)
+        public AuthorDTO? Update(AuthorDTO dto, string authorID)
         {
             if (dto.AuthorId == null)
             {
@@ -167,6 +168,27 @@ namespace bookStore.Services.AuthorService
             var allAuthors = GetAll();
 
             var pagedAuthors = allAuthors.ToPagedList(pageNumber, pageSize);
+            var pagedAuthorsList = pagedAuthors.ToList();
+            return pagedAuthorsList;
+        }
+
+        public List<AuthorDTO> GetAllNotDeleted()
+        {
+            List<Author> entityList = _authorRepository.FindByCondition(x => x.IsDelete == false);
+            List<AuthorDTO> dtoList = new List<AuthorDTO>();
+            foreach (Author entity in entityList)
+            {
+                AuthorDTO dto = _mappingService.GetMapper().Map<AuthorDTO>(entity);
+                dtoList.Add(dto);
+            }
+
+            return dtoList;
+        }
+
+        public List<AuthorDTO> PaginationNotDeleted(int pageNumber, int pageSize)
+        {
+            var allNotDeleted = GetAllNotDeleted();
+            var pagedAuthors = allNotDeleted.ToPagedList(pageNumber, pageSize);
             var pagedAuthorsList = pagedAuthors.ToList();
             return pagedAuthorsList;
         }

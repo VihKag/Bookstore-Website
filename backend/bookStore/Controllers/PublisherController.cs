@@ -15,21 +15,26 @@ namespace bookStore.Controllers
             _publisherService = publisherService;
         }
 
-        [HttpGet]
+        [HttpGet("admin")]
         public ActionResult<List<PublisherDTO>> PaginationPublishers(int pageNumber, int pageSize)
         {
             var pagedPublishers = _publisherService.PaginationPublisher(pageNumber, pageSize);
             return Ok(pagedPublishers);
         }
-
-        [HttpGet("deleted")]
-        public ActionResult<List<PublisherDTO>> GetAllDeleted()
+        [HttpGet("client")]
+        public ActionResult<List<PublisherDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var authors = _publisherService.GetAllDeleted();
+            var pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber, pageSize);
+            return Ok(pagedPublishers);
+        }
+        [HttpGet("list")]
+        public ActionResult<List<PublisherDTO>> GetAllNotDeleted()
+        {
+            var authors = _publisherService.GetAllNotDeleted();
             return Ok(authors);
         }
 
-        [HttpGet("id/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<PublisherDTO> GetById(string id)
         {
             var author = _publisherService.GetById(id);
@@ -52,7 +57,7 @@ namespace bookStore.Controllers
         }
 
 
-        [HttpPost("restore")]
+        [HttpPost("{id}/restore")]
         public ActionResult<PublisherDTO> Restore(string id)
         {
             var author = _publisherService.Restore(id);
@@ -74,10 +79,10 @@ namespace bookStore.Controllers
             return Ok(author);
         }
 
-        [HttpPut]
-        public ActionResult<PublisherDTO> Update(PublisherDTO PublisherDTO)
+        [HttpPut("{pubID}")]
+        public ActionResult<PublisherDTO> Update(PublisherDTO PublisherDTO, string pubID)
         {
-            var author = _publisherService.Update(PublisherDTO);
+            var author = _publisherService.Update(PublisherDTO, pubID);
             if (author == null)
             {
                 return BadRequest("Tên nhà xuất bản đã tồn tại hoặc ID không đúng!");
@@ -85,7 +90,7 @@ namespace bookStore.Controllers
             return Ok(author);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}/isDelete")]
         public ActionResult Delete(string id)
         {
             var result = _publisherService.Delete(id);
@@ -96,7 +101,7 @@ namespace bookStore.Controllers
             return Ok("Thành công!!!");
         }
 
-        [HttpDelete("{id}/permanently-delete")]
+        [HttpDelete("{id}")]
         public ActionResult PermanentlyDelete(string id)
         {
             var result = _publisherService.PermanentlyDelete(id);
