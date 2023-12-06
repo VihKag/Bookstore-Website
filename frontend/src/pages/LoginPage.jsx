@@ -57,25 +57,25 @@ const LoginPage = () => {
             "0px 1px 2px rgba(0, 0, 0, 0.05), 0px -1px 2px rgba(0, 0, 0, 0.05), 1px 0px 2px rgba(0, 0, 0, 0.05), -1px 0px 2px rgba(0, 0, 0, 0.05)",
         }}
       >
-        <h1 className="text-3xl font-semibold text-center mb-4">Đăng Nhập</h1>
+        <h1 className="text-3xl font-semibold text-center mb-4">Sign in</h1>
         <p className="font-medium text-lg text-gray-500 mt-2 mb-4 ">
-          Xin chào! Mời bạn đăng nhập tài khoản
+          Wellcome!! Please sign in your account
         </p>
         <div className="mt-2">
           <div>
-            <label className="text-md font-medium">Tài khoản</label>
+            <label className="text-md font-medium">Username</label>
             <input
               type="text"
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="text-sm w-full border-2 border-gray-100 rounded-xl py-2 px-4 mt-1 mb-1 bg-transparent"
-              placeholder="Nhập tên người dùng"
+              placeholder="Type your username"
             />
             {errors.username && <p className="text-red-500 text-sm mt-1">{errors.username}</p>}
           </div>
           <div className="mt-2">
-            <label className="text-md font-medium">Mật khẩu</label>
+            <label className="text-md font-medium">Password</label>
             <div className="w-5/5 mx-auto relative">
               <div className="w-full">
                 <input
@@ -83,7 +83,7 @@ const LoginPage = () => {
                   type={open === false ? "password" : "text"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Nhập mật khẩu"
+                  placeholder="Type your password"
                   className=" text-sm w-full border-2 border-gray-100 rounded-xl  py-2 px-4 mt-1 mb-1 bg-transparent"
                 />
               </div>
@@ -101,32 +101,32 @@ const LoginPage = () => {
             <div>
               <input type="checkbox" id="remember" />
               <label className="ml-2 font-medium text-base" htmlFor="remember">
-                Ghi nhớ mật khẩu
+                Remember me
               </label>
             </div>
             <button className="font-medium text-base text-[#0dd3b7] hover:underline hover:scale-[1.03]">
-              Quên mật khẩu?
+              Forget password?
             </button>
           </div>
           <div className="mt-4 flex flex-col gap-y-4">
             <button type="submit" className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all py-2 rounded-xl bg-[#0dd3b7] text-white text-lg font-bold">
-              Đăng nhập
+              Sign in
             </button>
             <button className="text-md flex justify-center items-center rounded-xl py-2 border-2 border-gray-100 gap-2 active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all text-lg font-semibold">
               <img src={googleIcon} alt="Google Icon" className="w-8 h-8 mr-1" />
-              Đăng nhập với Google
+              Sign in with Google
             </button>
 
             <button className="text-md flex justify-center rounded-xl py-2 border-2 border-gray-100 items-center gap-2 active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all text-lg font-semibold">
               <img src={facebookIcon} alt="Facebook Icon" className="w-8 h-8 mr-1" />
-              Đăng nhập với Facebook
+              Sign in with Facebook
             </button>
 
           </div>
           <div className="mt-6 flex justify-center items-center">
-            <p className="font-medium text-base">Bạn chưa có tài khoản? </p>
+            <p className="font-medium text-base">Don't you have account? </p>
             <Link to="/signup" className="text-[#0dd3b7] hover:underline hover:scale-[1.03] ml-1.5">
-              Đăng ký
+              Register here
             </Link>
           </div>
         </div>
