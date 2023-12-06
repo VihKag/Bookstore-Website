@@ -54,7 +54,7 @@
 }
 
 .popup__close-btn:hover {
-    background-color: var(--col1);
+    background-color: white;
     color: white;
 }
 
@@ -147,7 +147,7 @@
 
 
 .confirmationcont .c3 table thead tr {
-    background-color: var(--col1);
+    background-color: #00d3b7;
     color: white;
 }
 
@@ -162,6 +162,7 @@
     font-size: 15px;
     font-weight: 300;
     color: var(--col2);
+    text-align: center;
 }
 
 .confirmationcont .c3 table p {

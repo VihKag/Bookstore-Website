@@ -67,7 +67,7 @@ const YourOrders = () => {
             <table className='yourorderstable'>
                 <thead>
                     <tr>
-                        <th scope='col'>Oder ID</th>
+                        <th scope='col'>Order ID</th>
                         <th scope='col'>Date</th>
                         <th scope='col'>Status</th>
                         <th scope='col'>Total</th>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './contact.css'; // Assuming you have the styles in a file named ContactForm.css
 import Header from '../Header/Header';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import pic1 from "../../assets/image/shape.png"
@@ -9,7 +11,16 @@ import pic3 from "../../assets/image/email.png"
 import pic4 from "../../assets/image/phone.png"
 
 function ContactPage() {
+    const [cartItemCount] = useState(0);
+
     const [focused, setFocused] = useState(false);
+    const [formData, setFormData] = useState({
+
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+    });
 
     const handleFocus = () => {
         setFocused(true);
@@ -21,11 +32,40 @@ function ContactPage() {
         }
     };
 
-    return (
-       
-<div>
-    <Header/>
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Add logic to handle form submission, e.g., make an API call
+        try {
+            // Mock API call
+            await submitFormToApi(formData);
+
+            // Show success toast
+            toast.success('Message sent successfully');
+        } catch (error) {
+            // Show error toast
+            toast.error('Error sending message. Please try again later.');
+        }
+    };
+
+    // Mock API function (replace with actual API call)
+    const submitFormToApi = async (data) => {
+        // Implement your API call logic here
+        // For example, you can use fetch or axios to send data to your server
+        console.log('Form data submitted:', data);
+    };
+
+    return (
+
+        <div>
+            <Header cartItemCount={cartItemCount} />
             <div className="container-contact">
                 <span className="big-circle"></span>
                 <img src={pic1} className="square" alt="" />
@@ -120,7 +160,7 @@ function ContactPage() {
                                     className="input"
                                     onFocus={handleFocus}
                                     onBlur={handleBlur}
-                                                                        required
+                                    required
 
                                 ></textarea>
                                 <label>Message</label>
@@ -130,6 +170,7 @@ function ContactPage() {
                         </form>
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         </div>
     );

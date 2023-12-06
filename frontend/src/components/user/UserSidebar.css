@@ -4,26 +4,50 @@
     display: flex;
     flex-direction: column;
 }
-.usersidebar .s1 , .usersidebar .s2{
-        display: flex;
-        align-items: center;
-        gap:10px;
-        padding: 20px;
+
+.usersidebar .s1,
+.usersidebar .s2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
 }
+
 .usersidebar-icon {
-width: 30px;
-height: 30px;
-color: gray;
+    width: 30px;
+    height: 30px;
+    color: gray;
 }
-.usersidebar .s1:hover{
+
+.usersidebar .s1:hover {
     background-color: #00d3b7;
     border-radius: 5px;
     cursor: pointer;
-    color:white;
+    color: white;
 }
+
 .usersidebar .s2 {
     background-color: #00d3b7;
     border-radius: 5px;
     cursor: pointer;
     color: white;
+}
+
+@media (max-width: 800px) {
+
+    .usersidebar .s1,
+    .usersidebar .s2 {
+        padding: 15px;
+        /* Adjust padding for smaller screens */
+    }
+
+    .usersidebar-icon {
+        width: 20px;
+        /* Adjust icon size for smaller screens */
+        height: 20px;
+    }
+
+    .usersidebar span {
+        font-size: 12px;
+    }
 }

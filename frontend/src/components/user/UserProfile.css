@@ -24,3 +24,38 @@
     border-radius: 5px;
     min-height: 50vh;
 }
+.mainbutton1 {
+    background: none;
+    border: 1px solid #00d3b7;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 1rem;
+    cursor: pointer;
+    color: #00d3b7;
+}
+
+.mainbutton1:hover {
+    background-color: #00d3b7;
+    color: white;
+    transform: scale(1, 1);
+    transition: all 0.6s ease-in-out;
+    margin-top: 10px;
+    /* Add margin-top to center the button below the input fields */
+}
+
+.span1 {
+    color: red;
+}
+.mainhead1 {
+    color: #00d3b7;
+    font-size: 30px;
+    font-weight: 300;
+    padding: 5px 10px;
+}
+
+.styleone {
+    text-decoration: none;
+    color: inherit;
+}
