@@ -3,7 +3,7 @@ const Profile = ()=>{
     return(
         <>
             <div className="mb-8 border p-4">
-                <div className="text-2xl p-2 bg-gray-900 text-white my-2 rounded-sm">Thông tin người dùng</div>
+                <div className="text-2xl p-2 bg-gray-900 text-white my-2 rounded-sm">User Profile</div>
                 <div className="md:grid-cols-2 lg:grid-cols-3 grid">
                     <div className="col-span-1 mx-4">
                         <div className="my-4">
