@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logodb from "../../assets/icon/fasshonelogo.png";
+import logodb from '../../assets/image/bookicon.png';
 import { Link, Outlet } from "react-router-dom";
 import { faBook, faCartShopping, faCirclePlus, faUser, faUserPlus, faUserTie, faUsers } from "@fortawesome/free-solid-svg-icons";
 const DashboardNav = () => {
@@ -41,7 +41,7 @@ const DashboardNav = () => {
                   ></path>
                 </svg>
               </button>
-              <a href="/home" className="flex ml-2 md:mr-24">
+              <a href="/admin/profile" className="flex ml-2 md:mr-24">
                 <img src={logodb} className="h-8 mr-3" alt="Logo" />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                 PKQ Bookstore                  
@@ -86,21 +86,15 @@ const DashboardNav = () => {
                   <ul className="py-1" role="none">
                     <li>
                       <a
-                        href="/#"
+                        href="/admin/profile"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
-                        Dashboard
+                        Profile
                       </a>
                     </li>
                     <li>
-                      <a
-                        href="/#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Settings
-                      </a>
+                     
                     </li>
                     <li>
                       <a
@@ -135,15 +129,7 @@ const DashboardNav = () => {
                 <span className="ml-3">Dashboard</span>
               </Link>
             </li>
-            <li>
-              <Link
-                to="/admin/profile"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 group"
-              >
-                <FontAwesomeIcon icon="fa-solid fa-address-card" />
-                <span className="flex-1 ml-3 whitespace-nowrap">Profile</span>
-              </Link>
-            </li>
+            
             <li>
               <Link
                 to="/admin/category"
@@ -245,7 +231,18 @@ const DashboardNav = () => {
                 ))}
               </ul>
             </div>
+            <li>
+              <Link
+                to="/#"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 group"
+              >
+                <FontAwesomeIcon icon="sign-out-alt" />
 
+                <span className="flex-1 ml-3 whitespace-nowrap">
+                  Sign out
+                </span>
+              </Link>
+            </li>
           </ul>
         </div>
       </aside>
