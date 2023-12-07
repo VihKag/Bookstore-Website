@@ -3,16 +3,21 @@ import Select from 'react-select';
 import {get} from '../../utils/ApiUtils';
 import { API_CATEGORY } from '../../api/Api';
 const BookForm = () => {
+  const [cateOptions, setCateOptions]= useState([]);
   useEffect(()=>{
-    const categories = get(API_CATEGORY.getCategory);
-    console.log(categories);
-  },[]);
-
-  const cateOptions = [
-    { value: 'cate_1', label: 'categoryList 1' },
-    { value: 'cate_2', label: 'categoryList 2' },
-    { value: 'cate_3', label: 'categoryList 3' },
-  ];
+    get(API_CATEGORY.crudCategory+`/list`)
+        .then((data)=>{
+          const formattedData = data.map(item => ({
+            value: item.id, 
+            label: item.name,  
+          }));
+            setCateOptions(formattedData);
+            console.log(formattedData);
+        })
+        .catch((error) => {
+            console.error('Error getting data:', error);
+        });
+}, []);
   const authOptions = [
     { value: 'auth_1', label: 'categoryList 1' },
     { value: 'auth_2', label: 'categoryList 2' },
@@ -32,6 +37,7 @@ const BookForm = () => {
         pageCount:'',
         language: '',
         imagePath: '',
+        publisherList:[],
         categoryList: [],
         authorList: [],     
       });
@@ -60,7 +66,7 @@ const BookForm = () => {
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
-        </div>
+        </div> 
 
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700">Sách</label>
@@ -99,7 +105,7 @@ const BookForm = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        
+ 
         <div className="mb-4">
           <label htmlFor="language" className="block text-gray-700">Ngôn ngữ</label>
           <input
@@ -162,6 +168,18 @@ const BookForm = () => {
             onChange={(e) => handleChange('price', e.target.value)}
             className="w-full p-2 border border-gray-300 rounded"
           />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="description" className="block text-gray-700">Mô tả</label>
+          {/* <input
+            type="text"
+            id="description"
+            name="description"
+            onChange={(e)=>handleChange('description', e.target.value)}
+            multiple 
+          /> */}
+          <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
         </div>
 
         <div className="mb-4">

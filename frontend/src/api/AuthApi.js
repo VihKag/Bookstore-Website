@@ -15,13 +15,15 @@ const login = async ({username, password})=>{
 const signup = async ({ username, name, phone, email, password}) => {
     try {
       console.log("step 1");
-      await axios.post(API_SIGNUP, {
+      const response = await axios.post(API_SIGNUP, {
         username,
         name,
         phone,
         email,
         password,   
       });
+      const { token } = response.data;
+      localStorage.setItem('token',token);
       return true;
     } catch (error) {
       console.log("Signup failed", error);

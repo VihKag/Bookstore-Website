@@ -16,7 +16,7 @@ import TermPage from "./pages/TermPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import SecurityPage from "./pages/SecurityPage";
 import AdminRoute from "./routes/Admin.js";
-import UserProfile from "./components/user/UserProfile";
+import UserProfile from "./components/User/UserProfile";
 import { CartProvider } from "../../frontend/src/components/Cart/CartContext.jsx";
 
 function App() {
