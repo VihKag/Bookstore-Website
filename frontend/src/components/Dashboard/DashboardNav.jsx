@@ -51,25 +51,25 @@ const DashboardNav = () => {
             <div className="flex items-center">
               <button
                 type="button"
-                className="relative inline-flex items-center p-1 text-sm font-medium text-center mr-2"
+                className="relative inline-flex items-center p-2 text-sm font-medium text-center mr-2"
               >
                 <Link to="/" className="flex text-sm">
-                  <FontAwesomeIcon icon="fa-solid fa-bell"  className="w-6 h-6" />
+                  <FontAwesomeIcon icon="fa-solid fa-bell" className="w-6 h-6" />
                   <span className="sr-only">Cart</span>
                 </Link>
-                <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
-                  20                    
-                  </div>
+                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
+                  20
+                </div>
               </button>
               <button
                 type="button"
-                className="relative inline-flex items-center p-2 text-sm font-medium text-center mr-3"
+                className="relative inline-flex items-center p-2 text-sm font-medium text-center"
               >
                 <Link to="/" className="flex text-sm">
-                  <FontAwesomeIcon icon="fa-solid fa-message"  className="w-5 h-5" />
+                  <FontAwesomeIcon icon="fa-solid fa-message" className="w-6 h-6" />
                   <span className="sr-only">Cart</span>
                 </Link>
-                <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
+                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
                   20
                 </div>
               </button>
