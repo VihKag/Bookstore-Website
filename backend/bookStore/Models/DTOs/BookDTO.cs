@@ -20,7 +20,7 @@
 
         public bool? State { get; set; }
 
-        public IFormFile Image { get; set; }
+       public IFormFile Image { get; set; }
 
         public virtual List<string> CategoryList { get; set; } = new List<string>();
         public virtual List<string> AuthorList { get; set; } = new List<string>();
