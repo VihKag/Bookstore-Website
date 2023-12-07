@@ -3,7 +3,7 @@ const Profile = ()=>{
     return(
         <>
             <div className="mb-8 border p-4">
-                <div className="text-2xl p-2 bg-gray-900 text-white my-2 rounded-sm">User Profile</div>
+                <div className="text-2xl p-2 bg-[#00d3b7] text-white my-2 rounded-sm">User Profile</div>
                 <div className="md:grid-cols-2 lg:grid-cols-3 grid">
                     <div className="col-span-1 mx-4">
                         <div className="my-4">
@@ -40,7 +40,7 @@ const Profile = ()=>{
                     <div className="col-span-1 flex justify-center">
                         <div className="m-2">
                             <img className="border p-1 mb-2 w-72" src={user} alt="user"/>
-                            <button className="w-full p-2 bg-blue-500 text-white font-medium rounded-sm hover:scale-105">Change picture</button>
+                            <button className="w-full p-2 bg-[#00d3b7] text-white font-medium rounded-sm hover:scale-105">Change picture</button>
                         </div>
                     </div>
                 </div>

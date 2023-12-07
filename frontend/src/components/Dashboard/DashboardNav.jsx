@@ -1,17 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logodb from '../../assets/image/bookicon.png';
 import { Link, Outlet } from "react-router-dom";
-import { faBook, faCartShopping, faCirclePlus, faUser, faUserPlus, faUserTie, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faCartShopping, faShoppingCart,faCirclePlus, faUser, faUserPlus, faUserTie, faUsers } from "@fortawesome/free-solid-svg-icons";
 const DashboardNav = () => {
   const userProfile = { name: "Khang", email: "Khang@gmail.com" };
   const btnUser = [
-    {name : "Customers", link: "/admin/customers", icon: <FontAwesomeIcon icon={faUsers} />},
-    {name : "Staffs", link: "/admin/staffs", icon: <FontAwesomeIcon icon={faUserTie} />},
-    {name : "Add account", link: "/admin/add_account", icon: <FontAwesomeIcon icon={faUserPlus} />},
+    { name: "Customers", link: "/admin/customers", icon: <FontAwesomeIcon icon={faUsers} /> },
+    { name: "Staffs", link: "/admin/staffs", icon: <FontAwesomeIcon icon={faUserTie} /> },
+    { name: "Add account", link: "/admin/add_account", icon: <FontAwesomeIcon icon={faUserPlus} /> },
   ];
   const btnProduct = [
-    {name : "Products", link: "/admin/products", icon: <FontAwesomeIcon icon={faBook} />},
-    {name : "Add Product", link: "/admin/add_product", icon: <FontAwesomeIcon icon={faCirclePlus} />},
+    { name: "Products", link: "/admin/products", icon: <FontAwesomeIcon icon={faBook} /> },
+    { name: "Add Product", link: "/admin/add_product", icon: <FontAwesomeIcon icon={faCirclePlus} /> },
   ];
   return (
     <>
@@ -44,13 +44,38 @@ const DashboardNav = () => {
               <a href="/admin/profile" className="flex ml-2 md:mr-24">
                 <img src={logodb} className="h-8 mr-3" alt="Logo" />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                PKQ Bookstore                  
+                  PKQ Bookstore
                 </span>
               </a>
             </div>
             <div className="flex items-center">
+              <button
+                type="button"
+                className="relative inline-flex items-center p-1 text-sm font-medium text-center mr-2"
+              >
+                <Link to="/" className="flex text-sm">
+                  <FontAwesomeIcon icon="fa-solid fa-bell"  className="w-6 h-6" />
+                  <span className="sr-only">Cart</span>
+                </Link>
+                <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
+                  20                    
+                  </div>
+              </button>
+              <button
+                type="button"
+                className="relative inline-flex items-center p-2 text-sm font-medium text-center mr-3"
+              >
+                <Link to="/" className="flex text-sm">
+                  <FontAwesomeIcon icon="fa-solid fa-message"  className="w-5 h-5" />
+                  <span className="sr-only">Cart</span>
+                </Link>
+                <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
+                  20
+                </div>
+              </button>
               <div className="flex items-center ml-3">
                 <div>
+                 
                   <button
                     type="button"
                     className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -94,7 +119,7 @@ const DashboardNav = () => {
                       </a>
                     </li>
                     <li>
-                     
+
                     </li>
                     <li>
                       <a
@@ -129,7 +154,7 @@ const DashboardNav = () => {
                 <span className="ml-3">Dashboard</span>
               </Link>
             </li>
-            
+
             <li>
               <Link
                 to="/admin/category"
@@ -156,7 +181,7 @@ const DashboardNav = () => {
                 to="/admin/createaccount"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 group"
               >
-                <FontAwesomeIcon icon="fa-solid fa-file-circle-plus" />
+                <FontAwesomeIcon icon="user-plus" />
                 <span className="flex-1 ml-3 whitespace-nowrap">
                   Create Account
                 </span>
@@ -169,65 +194,65 @@ const DashboardNav = () => {
               >
                 <FontAwesomeIcon icon="fa-solid fa-file-circle-plus" />
                 <span className="flex-1 ml-3 whitespace-nowrap">
-                    Invoices
+                  Invoices
                 </span>
               </Link>
             </li>
 
             <div id="accordion-flush" data-accordion="collapse" className="items-center text-gray-900 rounded-lg transition-all" data-inactive-classes="text-gray-900">
               <h2 id="accordion-flush-heading-2">
-                <button type="button" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 focus:bg-gray-200 group w-full justify-between" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">                  
+                <button type="button" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 focus:bg-gray-200 group w-full justify-between" data-accordion-target="#accordion-flush-body-2" aria-expanded="false" aria-controls="accordion-flush-body-2">
                   <div>
                     <FontAwesomeIcon icon={faCartShopping} className="mr-4" />
                     <span>Product</span>
                   </div>
                   <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5"/>
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5" />
                   </svg>
                 </button>
               </h2>
               <ul className="hidden" id="accordion-flush-body-2">
-                {btnProduct.map((btn,index)=>(
+                {btnProduct.map((btn, index) => (
                   <li key={index}>
-                  <Link
-                    to={btn.link}
-                    className="flex items-center p-2 my-2 mx-2 text-gray-900 rounded-lg hover:bg-gray-100 focus:bg-gray-200"
-                  >
-                    {btn.icon}
-                    <span className="flex-1 ml-3 whitespace-nowrap">
+                    <Link
+                      to={btn.link}
+                      className="flex items-center p-2 my-2 mx-2 text-gray-900 rounded-lg hover:bg-gray-100 focus:bg-gray-200"
+                    >
+                      {btn.icon}
+                      <span className="flex-1 ml-3 whitespace-nowrap">
                         {btn.name}
-                    </span>
-                  </Link>
-                </li>
+                      </span>
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
-            
+
             <div id="accordion-flush" data-accordion="collapse" className="items-center text-gray-900 rounded-lg transition-all" data-inactive-classes="text-gray-900">
               <h2 id="accordion-flush-heading-1">
                 <button type="button" className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 focus:bg-gray-200 group w-full justify-between" data-accordion-target="#accordion-flush-body-1" aria-expanded="false" aria-controls="accordion-flush-body-1">
                   <div>
-                    <FontAwesomeIcon icon={faUser}className="mr-4" />
+                    <FontAwesomeIcon icon={faUser} className="mr-4" />
                     <span>User</span>
                   </div>
                   <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5"/>
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5" />
                   </svg>
                 </button>
               </h2>
               <ul className="hidden" id="accordion-flush-body-1">
-                {btnUser.map((btn,index)=>(
+                {btnUser.map((btn, index) => (
                   <li key={index}>
-                  <Link
-                    to={btn.link}
-                    className="flex items-center p-2 my-2 mx-2 text-gray-900 rounded-lg hover:bg-gray-100 focus:bg-gray-200"
-                  >
-                    {btn.icon}
-                    <span className="flex-1 ml-3 whitespace-nowrap">
+                    <Link
+                      to={btn.link}
+                      className="flex items-center p-2 my-2 mx-2 text-gray-900 rounded-lg hover:bg-gray-100 focus:bg-gray-200"
+                    >
+                      {btn.icon}
+                      <span className="flex-1 ml-3 whitespace-nowrap">
                         {btn.name}
-                    </span>
-                  </Link>
-                </li>
+                      </span>
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
