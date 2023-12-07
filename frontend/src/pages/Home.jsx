@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import banner1 from "../assets/banner/banner1.jpg";
@@ -13,6 +13,8 @@ import BookContainer from "../components/Container/BookContainer";
 import AuthorList from "../components/Other/AuthorList";
 import FeaturedBook from "../components/Other/FeatureBook";
 const Home = () => {
+  const [cartItemCount] = useState(0);
+
   const icontab = [
     { label: 'Discounts', img: './path' },
     { label: 'Cashback', img: './path' },
@@ -96,7 +98,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header cartItemCount={cartItemCount} />
       <div className="mx-auto container h-full">
         <div className="homebanner">
           <div className="hidden sm:flex mb-2 mt-2">
