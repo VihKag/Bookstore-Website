@@ -17,8 +17,9 @@ namespace bookStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult<BookDTO> Create(BookDTO bookDTO)
+        public ActionResult<BookDTO> Create([FromForm] BookDTO bookDTO)
         {
+
             var book = _bookService.Create(bookDTO);
             if (book == null)
             {

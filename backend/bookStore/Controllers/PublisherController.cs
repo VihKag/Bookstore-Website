@@ -18,13 +18,45 @@ namespace bookStore.Controllers
         [HttpGet("admin")]
         public ActionResult<List<PublisherDTO>> PaginationPublishers(int pageNumber, int pageSize)
         {
-            var pagedPublishers = _publisherService.PaginationPublisher(pageNumber, pageSize);
+            var pagedPublishers = new List<PublisherDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    pagedPublishers = _publisherService.PaginationPublisher(1, 10);
+                    break;
+                case (0, _):
+                    pagedPublishers = _publisherService.PaginationPublisher(1, pageSize);
+                    break;
+                case (_, 0):
+                    pagedPublishers = _publisherService.PaginationPublisher(pageNumber, 10);
+                    break;
+                default:
+                    pagedPublishers = _publisherService.PaginationPublisher(pageNumber, pageSize);
+                    break;
+            }
+             
             return Ok(pagedPublishers);
         }
         [HttpGet("client")]
         public ActionResult<List<PublisherDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber, pageSize);
+            var pagedPublishers = new List<PublisherDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    pagedPublishers = _publisherService.PaginationNotDeleted(1, 10);
+                    break;
+                case (0, _):
+                    pagedPublishers = _publisherService.PaginationNotDeleted(1, pageSize);
+                    break;
+                case (_, 0):
+                    pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber, 10);
+                    break;
+                default:
+                    pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber, pageSize);
+                    break;
+            }
+             
             return Ok(pagedPublishers);
         }
         [HttpGet("list")]

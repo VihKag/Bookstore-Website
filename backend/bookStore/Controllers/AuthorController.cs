@@ -18,13 +18,45 @@ namespace bookStore.Controllers
         [HttpGet("admin")]
         public ActionResult<List<AuthorDTO>> PaginationAuthor(int pageNumber, int pageSize)
         {
-            var pagedAuthors = _authorSevice.PaginationAuthor(pageNumber, pageSize);
+            var pagedAuthors = new List<AuthorDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    pagedAuthors = _authorSevice.PaginationAuthor(1, 10);
+                    break;
+                case (0, _):
+                    pagedAuthors = _authorSevice.PaginationAuthor(1, pageSize);
+                    break;
+                case (_, 0):
+                    pagedAuthors = _authorSevice.PaginationAuthor(pageNumber, 10);
+                    break;
+                default:
+                    pagedAuthors = _authorSevice.PaginationAuthor(pageNumber, pageSize);
+                    break;
+            }
+             
             return Ok(pagedAuthors);
         }
         [HttpGet("client")]
         public ActionResult<List<AuthorDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber, pageSize);
+            var pagedAuthors = new List<AuthorDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    pagedAuthors = _authorSevice.PaginationNotDeleted(1, 10);
+                    break;
+                case (0, _):
+                    pagedAuthors = _authorSevice.PaginationNotDeleted(1, pageSize);
+                    break;
+                case (_, 0):
+                    pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber, 10);
+                    break;
+                default:
+                    pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber, pageSize);
+                    break;
+            }
+             
             return Ok(pagedAuthors);
         }
 
