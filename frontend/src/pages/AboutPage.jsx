@@ -12,7 +12,7 @@ const AboutPage = () => {
         {
             icon: faUser,
             title: "Team members",
-            content: "Our team consists of three members from the Faculty of Information Technology, specializing in Software Engineering at the Ho Chi Minh City University of Technical Education: Thai Hoang Phuc, Pham Nguyen Phu Qui, and Nguyen Vinh Khan "
+            content: "Our team consists of three members from the Faculty of Information Technology, specializing in Software Engineering at the Ho Chi Minh City University of Technical Education: Thai Hoang Phuc, Pham Nguyen Phu Qui, and Nguyen Vinh Khang "
 
         },
         {
