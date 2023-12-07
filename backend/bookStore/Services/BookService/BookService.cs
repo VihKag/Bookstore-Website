@@ -73,12 +73,12 @@ namespace bookStore.Services.BookService
             // Lấy URL công khai của hình ảnh đã tải lên
             var imageUrl = uploadResult.SecureUrl;*/
 
-            var ImagePath = UploadImage(dto.Image, dto.Isbn);
+            var ImagePath = UploadImage(dto.Image,dto.Isbn);
 
-            Image image = new Image();
-            image.Isbn = dto.Isbn;
-            image.ImagePath = ImagePath;
-            _imageRepository.Create(image);
+            Image pic = new Image();
+            pic.Isbn = dto.Isbn;
+            pic.ImagePath = ImagePath;
+            _imageRepository.Create(pic);
             _imageRepository.Save();
 
             return dto;

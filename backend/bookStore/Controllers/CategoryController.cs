@@ -21,14 +21,46 @@ namespace bookStore.Controllers
         [HttpGet("admin")]
         public ActionResult<List<CategoryDTO>> PaginationCategory(int pageNumber, int pageSize)
         {
-            var pagedCategories = _categoryService.PaginationCategory(pageNumber,pageSize);
+            var pagedCategories = new List<CategoryDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    pagedCategories = _categoryService.PaginationCategory(1, 10);
+                    break;
+                case (0, _):
+                    pagedCategories = _categoryService.PaginationCategory(1, pageSize);
+                    break;
+                case (_, 0):
+                    pagedCategories = _categoryService.PaginationCategory(pageNumber, 10);
+                    break;
+                default:
+                    pagedCategories = _categoryService.PaginationCategory(pageNumber, pageSize);
+                    break;
+            }
+             
             return Ok(pagedCategories);
         }
 
         [HttpGet("client")]
         public ActionResult<List<CategoryDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var pagedCategories = _categoryService.PaginationNotDeleted(pageNumber, pageSize);
+            var pagedCategories = new List<CategoryDTO>();
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    pagedCategories = _categoryService.PaginationNotDeleted(1, 10);
+                    break;
+                case (0, _):
+                    pagedCategories = _categoryService.PaginationNotDeleted(1, pageSize);
+                    break;
+                case (_, 0):
+                    pagedCategories = _categoryService.PaginationNotDeleted(pageNumber, 10);
+                    break;
+                default:
+                    pagedCategories = _categoryService.PaginationNotDeleted(pageNumber, pageSize);
+                    break;
+            }
+             
             return Ok(pagedCategories);
         }
         [HttpGet("list")]
