@@ -13,7 +13,6 @@ const UserProfile = () => {
   const [cartItemCount] = useState(0);
 
   const { activepage } = useParams();
-  //   alert(activepage);
   return (
     <div className="userprofile">
       <Header cartItemCount={cartItemCount} />
