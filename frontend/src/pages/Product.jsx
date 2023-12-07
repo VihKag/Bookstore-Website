@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header/Header";
 import ProductDetail from "../components/Products/ProductDetail";
 import Rating from "../components/rating/Rating";
-import Detail from "../components/Products/Detail";
 import Footer from "../components/Footer/Footer";
 import Rating2 from "../components/rating/rating2";
 import ReviewArticle from "../components/rating/review";
 import Breadcrumb from "../components/Other/Breadcrumb";
 const Product = () => {
+    const [cartItemCount] = useState(0);
+
     return (
         <div >
-            <Header />
+            <Header cartItemCount={cartItemCount} />
             <Breadcrumb />
             <ProductDetail />
-            <Detail />
             <Rating2 />
             <ReviewArticle />
             <Rating />

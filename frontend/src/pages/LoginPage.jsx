@@ -24,10 +24,10 @@ const LoginPage = () => {
     // Validate the form
     const validationErrors = {};
     if (!username) {
-      validationErrors.username = "Vui lòng nhập tên người dùng";
+      validationErrors.username = "Please enter a username";
     }
     if (!password) {
-      validationErrors.password = "Vui lòng nhập mật khẩu";
+      validationErrors.password = "Please enter a password";
     }
 
     if (Object.keys(validationErrors).length > 0) {

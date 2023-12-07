@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import Header from '../components/Header/Header';
 import Footer2 from '../components/Footer/footer2';
 import avt from "../assets/image/phuc.png"
@@ -7,9 +7,11 @@ import avt3 from "../assets/image/avt3.jpg"
 import avt4 from "../assets/image/avt4.png"
 
 const Testimonial = () => {
+    const [cartItemCount] = useState(0);
+
     return (
         <div>
-            <Header />
+            <Header cartItemCount={cartItemCount} />
             <h1 className='text-center text-4xl font-bold mt-4'>TESTIMONIALS</h1>
             <div className="grid mb-8 mt-4 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
                 {/* Testimonial 1 */}

@@ -5,7 +5,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 const ReviewArticle = () => {
     return (
         <article>
-            <h1 className='ml-4 text-xl font-bold mb-2 mt-2'>Bình luận</h1>
+            <h1 className='ml-4 text-xl font-bold mb-2 mt-2'>User Comments</h1>
             <div className="flex items-center mb-4 space-x-4 ml-4 ">
                 <img className="w-10 h-10 rounded-full" src={pic} alt="" />
                 <div class="flex items-center space-y-1 font-medium dark:text-white">

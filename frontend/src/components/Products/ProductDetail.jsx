@@ -22,13 +22,12 @@ function ProductDetail() {
   }, []);
 
   function slideImage(displayWidth) {
-    document.querySelector(".img-showcase").style.transform = `translateX(${
-      -(1 - 1) * displayWidth
-    }px)`;
+    document.querySelector(".img-showcase").style.transform = `translateX(${-(1 - 1) * displayWidth
+      }px)`;
   }
 
   return (
-    
+
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="max-w-screen-xl mx-auto p-8 bg-white shadow-lg rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -43,7 +42,7 @@ function ProductDetail() {
           </div>
           <div className="flex flex-col">
             <h2 className="text-3xl font-bold mb-2">ĐẮC NHÂN TÂM</h2>
-            <p className="text-1xl text-gray-500 mb-2">Đã bán 12.5k sản phẩm</p>
+            <p className="text-1xl text-gray-500 mb-2">Sold 12.5k products</p>
             <div className="flex items-center mb-2">
               <FontAwesomeIcon icon={faStar} className="text-yellow-500" />
               <FontAwesomeIcon icon={faStar} className="text-yellow-500" />
@@ -58,11 +57,11 @@ function ProductDetail() {
 
             <div className="mb-2">
               <p className="text-1.5xl">
-                <span className="text-black">Giá cũ: </span>
+                <span className="text-black">Old price: </span>
                 <span className="text-blue-500 line-through">257.00VND</span>
               </p>
               <p className="text-1.5xl">
-                Giá mới: <span className="text-red-500 mr-1">249.000VND</span>
+                New price: <span className="text-red-500 mr-1">249.000VND</span>
                 <span
                   style={{
                     backgroundColor: "red",
@@ -81,7 +80,7 @@ function ProductDetail() {
             {/* Product description */}
             <div className="mb-1">
               <h2 className="text-xl font-semibold mb-1">
-                Thông tin sản phẩm:
+                Product details:
               </h2>
               <p className="text-m text-justify text-gray-700 mb-1">
                 Hiện nay có một sự hiểu nhầm đã xảy ra. Tuy Đắc Nhân Tâm là tựa
@@ -103,9 +102,9 @@ function ProductDetail() {
                   className="text-gray-700 mr-2"
                   style={{ color: "#0dd3b7" }}
                 />
-                Tác giả:{" "}
+                Author:{" "}
                 <span className="text-gray-700 font-semibold">
-                   Dale Carnegie
+                  Dale Carnegie
                 </span>
               </li>
               <li className="mb-1 flex items-center">
@@ -114,7 +113,7 @@ function ProductDetail() {
                   className="text-gray-700 mr-2"
                   style={{ color: "#0dd3b7" }}
                 />
-                Nhà xuất bản:{" "}
+                Publisher:{" "}
                 <span className="text-gray-700 font-semibold">
                   Nhà Xuất Bản Tổng hợp TP.HCM
                 </span>
@@ -125,9 +124,9 @@ function ProductDetail() {
                   className="text-gray-700 mr-2"
                   style={{ color: "#0dd3b7" }}
                 />
-                Kích thước:{" "}
+                Quantity:{" "}
                 <span className="text-gray-700 font-semibold">
-                  14.1 x 0.5cm{" "}
+                  100{" "}
                 </span>
               </li>
               <li className="mb-1 flex items-center">
@@ -136,7 +135,7 @@ function ProductDetail() {
                   className="text-gray-700 mr-2"
                   style={{ color: "#0dd3b7" }}
                 />
-                Số trang:{" "}
+                Page count:{" "}
                 <span className="text-gray-700 font-semibold">320</span>
               </li>
             </ul>
@@ -144,22 +143,21 @@ function ProductDetail() {
             {/* Purchase buttons */}
             <div className="flex mt-2 mb-4">
               <button className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all bg-[#DBDBDB] text-black py-2 px-4 rounded hover:opacity-75 flex items-center shadow">
-                <FontAwesomeIcon icon={faShoppingCart} className="mr-2" /> Thêm
-                vào giỏ hàng
+                <FontAwesomeIcon icon={faShoppingCart} className="mr-2" /> Add to your cart
               </button>
 
               <button className="active:scale-[.98] active:duration-75 hover:scale-[1.03] ease-in-out transition-all bg-[#DBDBDB] text-black py-2 px-4 rounded hover:opacity-75 flex items-center ml-4 shadow">
-                <FontAwesomeIcon icon={faHeart} className="mr-2" /> Thêm vào yêu
-                thích
+                <FontAwesomeIcon icon={faHeart} className="mr-2" /> Add to wishlist
+
               </button>
             </div>
 
-            
+
           </div>
         </div>
       </div>
     </div>
-  
+
   );
 }
 

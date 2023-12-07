@@ -6,32 +6,34 @@ import Footer2 from "../components/Footer/footer2";
 
 const AboutPage = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [cartItemCount] = useState(0);
 
     const cardData = [
         {
             icon: faUser,
-            title: "Thành viên nhóm",
-            content: "Nhóm của chúng tôi gồm 3 thành viên thuộc khoa Công nghệ thông tin chuyên ngành Công nghệ phần mềm đại học Sư phạm kĩ thuật Thành phố Hồ Chí Minh : Thái Hoàng Phúc - Phạm Nguyễn Phú Quí  Nguyễn Vinh Khang "
+            title: "Team members",
+            content: "Our team consists of three members from the Faculty of Information Technology, specializing in Software Engineering at the Ho Chi Minh City University of Technical Education: Thai Hoang Phuc, Pham Nguyen Phu Qui, and Nguyen Vinh Khan "
 
         },
         {
             icon: faBook,
-            title: "Cam Kết",
-            content: "Chúng tôi tự hào về việc cung cấp cho bạn một thư viện sách phong phú, từ những cuốn sách bán chạy nhất đến những tác phẩm văn học kinh điển và sách giáo trình chuyên sâu. Đội ngũ biên tập của chúng tôi luôn chọn lựa kỹ lưỡng để đảm bảo rằng mỗi cuốn sách bạn mua đều là một kiệt tác đáng đọc."
+            title: "Commitment",
+            content: "We take pride in providing you with a rich library of books, ranging from bestsellers to classic literary works and in-depth textbooks.Our editorial team carefully selects each book to ensure that every purchase you make is a worthwhile and enjoyable masterpiece."
         },
         {
             icon: faPhone,
-            title: "Hỗ trợ",
-            content: "Nếu bạn có bất kỳ câu hỏi nào hoặc cần sự tư vấn về sách, đừng ngần ngại liên hệ với chúng tôi. Đội ngũ hỗ trợ khách hàng của chúng tôi luôn sẵn lòng giúp đỡ bạn. Chúng tôi tin rằng việc bạn tìm thấy cuốn sách đúng đắn có thể thay đổi cả cuộc đời bạn."
+            title: "Support",
+            content: "If you have any questions or need advice on books, please don't hesitate to contact us. Our customer support team is always ready to assist you. We believe that finding the right book can be life-changing, and we are here to help you in that journey."
         }
     ];
 
     return (
         <>
-            <Header />
+            <Header cartItemCount={cartItemCount} />
             <div className="text-center">
                 <h1 className="text-4xl font-bold mt-4 mb-3 mx-8 ">About us</h1>
-                <p className="text-m mt-4 mb-6 mx-8">Chào mừng bạn đến với PKQ BookStore - nơi kết nối niềm đam mê đọc sách với sự tiện lợi của mua sắm trực tuyến! Chúng tôi là đội ngũ cung cấp tài nguyên cho những người đam mê sách, nơi mà trí tưởng tượng bay bổng và kiến thức không bao giờ bị giới hạn.</p>
+                <p className="text-m mt-4 mb-6 mx-8">
+                    Welcome to PKQ BookStore - where we connect the passion for reading with the convenience of online shopping! We are a team dedicated to providing resources for book enthusiasts, a place where imagination soars, and knowledge knows no bounds.</p>
                 <div className="flex justify-around p-3 mx-8 card-container">
                     {cardData.map((card, index) => (
                         <div
@@ -54,7 +56,7 @@ const AboutPage = () => {
                         </div>
                     ))}
                 </div>
-                <p className="text-m mt-6 mb-4 mx-8 text-justify">Xin chân thành cảm ơn bạn đã đến với PKQ BookStore. Chúng tôi hy vọng rằng mỗi cuốn sách bạn mua sẽ mang đến cho bạn những giây phút đọc sách tràn ngập niềm vui và sự sáng tạo. Hãy bắt đầu hành trình khám phá với chúng tôi và để chúng tôi làm nơi bạn tìm thấy những câu chuyện tuyệt vời !!! </p>
+                <p className="text-m mt-6 mb-4 mx-8 text-justify">Thank you sincerely for visiting PKQ BookStore. We hope that each book you purchase will bring you moments of joy and creativity in your reading journey. Begin your exploration with us and let us be the place where you discover fantastic stories!!! </p>
             </div>
             <Footer2 />
         </>

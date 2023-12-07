@@ -6,55 +6,57 @@ import { faFolder } from "@fortawesome/free-regular-svg-icons";
 import Footer2 from "../components/Footer/footer2";
 const ServicePage = () => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [cartItemCount] = useState(0);
 
     const cardData = [
         {
             icon: faLock,
-            title: "Bảo Mật ",
-            content: "Đảm bảo rằng trang web của bạn tuân thủ các tiêu chuẩn bảo mật như SSL để bảo vệ dữ liệu cá nhân và tài khoản người dùng."
+            title: "Security",
+            content: "Ensure that your website adheres to security standards such as SSL to protect personal data and user accounts."
         },
         {
             icon: faIdCard,
-            title: "Thanh Toán An Toàn",
-            content: "Tích hợp các cổng thanh toán an toàn để cho phép khách hàng thanh toán bằng thẻ tín dụng, thẻ ghi nợ, hoặc các phương thức thanh toán trực tuyến"
+            title: "Secure Payments",
+            content: "Integrate secure payment gateways to allow customers to pay with credit cards, debit cards, or online payment methods."
         },
         {
             icon: faMagnifyingGlass,
-            title: "Tìm Kiếm Hiệu Quả",
-            content: "Tích hợp chức năng tìm kiếm mạnh mẽ, cho phép người dùng tìm sách dựa trên tiêu chí như tên tác giả, tựa sách, thể loại, hoặc từ khoá. "
+            title: "Efficient Search",
+            content: "Incorporate a powerful search function, allowing users to find books based on criteria such as author names, book titles, genres, or keywords."
         },
-        // Thêm 3 card mới
+        // Add 3 new cards
         {
             icon: faBook,
-            title: "Thông Tin Sách Chi Tiết",
-            content: "Cung cấp thông tin chi tiết về sách bao gồm ảnh bìa, mô tả sách, thông tin tác giả và nhà xuất bản."
+            title: "Detailed Book Information",
+            content: "Provide detailed information about books, including cover images, book descriptions, author information, and publishers."
         },
         {
             icon: faFolder,
-            title: "Quản Lý Đơn Hàng",
-            content: "Hệ thống quản lý đơn hàng giúp bạn theo dõi các đơn đặt hàng, cập nhật trạng thái đơn hàng, và gửi thông báo vận chuyển và theo dõi vận đơn đến khách hàng."
+            title: "Order Management",
+            content: "The order management system helps you track orders, update order status, and send shipping notifications, as well as track shipments to customers."
         },
         {
             icon: faPhone,
-            title: "Chăm Sóc Khách Hàng",
-            content: "Cung cấp dịch vụ chăm sóc khách hàng qua email, chat trực tuyến hoặc điện thoại. Hỗ trợ người dùng giải đáp thắc mắc, giúp đỡ về sản phẩm và xử lý các vấn đề phát sinh."
+            title: "Customer Care",
+            content: "Offer customer care services via email, online chat, or phone. Support users in resolving queries, provide assistance with products, and handle arising issues."
         },
     ];
 
+
     return (
         <>
-            <Header />
+            <Header cartItemCount={cartItemCount} />
             <div className="text-center">
                 <h1 className="text-4xl font-bold mt-4 mb-2 mx-4 ">Our Service</h1>
-                <p className="text-xl mb-2 mx-4 ">Chào mừng bạn đến với dịch vụ của PKQ Bookstore!!!</p>
+                <p className="text-xl mb-2 mx-4 ">Welcome to the services of PKQ Bookstore!</p>
                 <div className="flex justify-around p-3 mx-4 flex-wrap">
                     {cardData.map((card, index) => (
                         <div
                             key={index}
                             className="max-w-sm rounded overflow-hidden shadow-lg mb-4"
                             style={{
-                                backgroundColor: hoveredIndex === index ? "#0dd3b7" : "white", // Màu nền khi hover
-                                transition: "background-color 0.3s ease" // Hiệu ứng chuyển đổi màu nền
+                                backgroundColor: hoveredIndex === index ? "#0dd3b7" : "white", 
+                                transition: "background-color 0.3s ease" 
                             }}
                             onMouseEnter={() => setHoveredIndex(index)}
                             onMouseLeave={() => setHoveredIndex(null)}
