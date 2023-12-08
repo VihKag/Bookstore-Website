@@ -1,33 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import {get} from '../../utils/ApiUtils';
-import { API_CATEGORY } from '../../api/Api';
+import { API_AUTHOR, API_CATEGORY, API_PUBLISHER } from '../../api/Api';
 const BookForm = () => {
   const [cateOptions, setCateOptions]= useState([]);
+  const [authOptions, setAuthOptions]= useState([]);
+  const [pubOptions, setPubOptions] = useState([]);
   useEffect(()=>{
     get(API_CATEGORY.crudCategory+`/list`)
-        .then((data)=>{
-          const formattedData = data.map(item => ({
-            value: item.id, 
-            label: item.name,  
-          }));
-            setCateOptions(formattedData);
-            console.log(formattedData);
-        })
-        .catch((error) => {
-            console.error('Error getting data:', error);
-        });
+      .then((data)=>{
+        const formattedData = data.map(item => ({
+          value: item.id, 
+          label: item.name,  
+        }));
+        setCateOptions(formattedData);
+        console.log(formattedData);
+      })
+      .catch((error) => {
+        console.error('Error getting data:', error);
+      });
+    get(API_AUTHOR.crudAuthor+`/list`)
+      .then((data)=>{
+        const formattedData = data.map(item => ({
+          value: item.id, 
+          label: item.name,  
+        }));
+          setAuthOptions(formattedData);
+          console.log(formattedData);
+      })
+      .catch((error) => {
+        console.error('Error getting data:', error);
+      });
+      get(API_PUBLISHER.crudPublisher+`/list`)
+      .then((data)=>{
+        const formattedData = data.map(item => ({
+          value: item.id, 
+          label: item.name,  
+        }));
+          setPubOptions(formattedData);
+          console.log(formattedData);
+      })
+      .catch((error) => {
+        console.error('Error getting data:', error);
+      });
 }, []);
-  const authOptions = [
-    { value: 'auth_1', label: 'categoryList 1' },
-    { value: 'auth_2', label: 'categoryList 2' },
-    { value: 'auth_3', label: 'categoryList 3' },
-  ];
-  const pubOptions = [
-    { value: 'cate_1', label: 'categoryList 1' },
-    { value: 'cate_2', label: 'categoryList 2' },
-    { value: 'cate_3', label: 'categoryList 3' },
-  ];
     const [formData, setFormData] = useState({
         ibsn: '',
         name: '', 
