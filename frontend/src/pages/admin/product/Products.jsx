@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from 'react';
 import { faEye, faFilter, faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
-import imgFashion from "../../../assets/icon/tshirt.png";
+import imgFashion from "../../../assets/image/book1.jpg";
 import Pagination from "../../../components/Pagination/Pagination";
 // import {get} from '../../utils/ApiUtilstren';
 // import { API_BOOK } from "../../../api/Api";
@@ -13,45 +13,45 @@ const Products = () => {
   const data = [
     {
       id: "sp1",
-      name: "T-shirt",
-      color: "Blue",
-      category: "Clothing",
+      name: "Đắc nhân tâm",
+      color: "Dale canergie",
+      category: "Seft-help",
       quantity: 50,
       price: 19.99,
       image: imgFashion,
     },
     {
       id: "sp2",
-      name: "Jeans",
-      color: "Black",
-      category: "Clothing",
+      name: "Đắc nhân tâm",
+      color: "Dale canergie",
+      category: "Seft-help",
       quantity: 30,
       price: 49.99,
       image: imgFashion,
     },
     {
       id: "sp3",
-      name: "Sneakers",
-      color: "White",
-      category: "Shoes",
+      name: "Đắc nhân tâm",
+      color: "Dale canergie",
+      category: "Seft-help",
       quantity: 40,
       price: 59.99,
       image: imgFashion,
     },
     {
       id: "sp4",
-      name: "Suit",
-      color: "Gray",
-      category: "Clothing",
+      name: "Đắc nhân tâm",
+      color: "Dale canergie",
+      category: "Seft-help",
       quantity: 20,
       price: 199.99,
       image: imgFashion,
     },
     {
       id: "sp5",
-      name: "Dress Shirt",
-      color: "Light Blue",
-      category: "Clothing",
+      name: "Đắc nhân tâm",
+      color: "Dale canergie",
+      category: "Seft-help",
       quantity: 60,
       price: 29.99,
       image: imgFashion,

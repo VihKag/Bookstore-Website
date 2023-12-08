@@ -2,8 +2,8 @@ import logoUsser from "../../../assets/icon/user-01.png";
 const Customer = () => {
     const userProfile =[
         { name: "Khang", username:"Khang121", email: "Khang1@gmail.com" , logo:logoUsser , role:"Admin", phone: "0123456789"},
-        { name: "Khang", username:"Khang11", email: "Khang2@gmail.com" , logo:logoUsser, role:"Manager" , phone: "0123456789"},
-        { name: "Khang", username:"Khang191", email: "Khang3@gmail.com" , logo:logoUsser, role:"Staff", phone: "0123456789" },
+        { name: "phúc", username:"Khang11", email: "Khang2@gmail.com" , logo:logoUsser, role:"Manager" , phone: "0123456789"},
+        { name: "quí", username:"Khang191", email: "Khang3@gmail.com" , logo:logoUsser, role:"Staff", phone: "0123456789" },
         { name: "Khang", username:"Khang19", email: "Khang4@gmail.com" , logo:logoUsser, role:"Warehouse", phone: "0123456789" },
     ];
     return (

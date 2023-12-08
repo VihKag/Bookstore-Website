@@ -8,7 +8,6 @@ import BookData from "../../Data.json"
 import avatar from '../../assets/image/phuc.png'
 const Header = ({ cartItemCount }) => {
   const [showDataResult, setShowDataResult] = useState(false);
-
   return (
     <>
       <nav className="bg-gray-100 border-gray-200 dark:bg-gray-900">
@@ -20,7 +19,6 @@ const Header = ({ cartItemCount }) => {
 
           <div className="flex items-center md:order-2">
             <div className="mr-10 md:ml-0">
-              {/* Wrap SearchBar and data result with a container */}
               <div className="searchInputs dataResultContainer">
                 <SearchBar
                   placeholder="Type to search..."
