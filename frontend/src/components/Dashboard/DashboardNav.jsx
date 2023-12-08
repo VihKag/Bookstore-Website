@@ -70,7 +70,7 @@ const DashboardNav = () => {
                   <span className="sr-only">Cart</span>
                 </Link>
                 <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-red-500 rounded-full -top-1 -end-1 dark:border-gray-900">
-                  20
+                  10
                 </div>
               </button>
               <div className="flex items-center ml-3">
