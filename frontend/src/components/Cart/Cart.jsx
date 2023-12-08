@@ -10,7 +10,8 @@ function Cart() {
   const [cartItemCount, setCartItemCount] = useState(0);
   useEffect(() => {
     setCartItemCount(calculateTotalQuantity());
-  }, [cartItems]);
+
+  }, []);
 
   const addToCart = (product) => {
     const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.name === product.name);
