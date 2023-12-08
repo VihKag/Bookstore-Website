@@ -69,7 +69,7 @@ const BookForm = () => {
         </div> 
 
         <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700">Sách</label>
+          <label htmlFor="name" className="block text-gray-700">Book</label>
           <input
             type="text"
             id="name"
@@ -82,7 +82,7 @@ const BookForm = () => {
 
         <div className="mb-4">
           <label htmlFor="authorList" className="block text-gray-700">
-            Tác giả
+            Author
           </label>
           <Select
             isMulti
@@ -95,7 +95,7 @@ const BookForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="quantity" className="block text-gray-700">Số lượng</label>
+          <label htmlFor="quantity" className="block text-gray-700">Quantity</label>
           <input
             type="number"
             id="quantity"
@@ -107,7 +107,7 @@ const BookForm = () => {
         </div>
  
         <div className="mb-4">
-          <label htmlFor="language" className="block text-gray-700">Ngôn ngữ</label>
+          <label htmlFor="language" className="block text-gray-700">Language</label>
           <input
             type="text"
             id="language"
@@ -119,7 +119,7 @@ const BookForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="pageCount" className="block text-gray-700">Số trang</label>
+          <label htmlFor="pageCount" className="block text-gray-700">Page count</label>
           <input
             type="number"
             id="pageCount"
@@ -132,7 +132,7 @@ const BookForm = () => {
 
         <div className="mb-4">
           <label htmlFor="categoryList" className="block text-gray-700">
-            Thể loại
+            Categories
           </label>
           <Select
             isMulti
@@ -146,7 +146,7 @@ const BookForm = () => {
 
         <div className="mb-4">
           <label htmlFor="publisherList" className="block text-gray-700">
-            Nhà xuất bản
+            Publisher
           </label>
           <Select
             isMulti
@@ -159,7 +159,7 @@ const BookForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="price" className="block text-gray-700">Giá tiền</label>
+          <label htmlFor="price" className="block text-gray-700">Price</label>
           <input
             type="number"
             id="price"
@@ -171,7 +171,7 @@ const BookForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="description" className="block text-gray-700">Mô tả</label>
+          <label htmlFor="description" className="block text-gray-700">Description</label>
           {/* <input
             type="text"
             id="description"
@@ -183,7 +183,7 @@ const BookForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="imagePath" className="block text-gray-700">Ảnh</label>
+          <label htmlFor="imagePath" className="block text-gray-700">Image</label>
           <input
             type="file"
             id="imagePath"
@@ -192,7 +192,7 @@ const BookForm = () => {
             multiple 
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Thêm sách</button>
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Add book</button>
       </form>
     </div>
   );
