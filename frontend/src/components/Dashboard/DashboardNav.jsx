@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logodb from '../../assets/image/bookicon.png';
 import { Link, Outlet } from "react-router-dom";
-import { faBook, faCartShopping, faShoppingCart,faCirclePlus, faUser, faUserPlus, faUserTie, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faCartShopping,faCirclePlus, faUser, faUserPlus, faUserTie, faUsers } from "@fortawesome/free-solid-svg-icons";
 const DashboardNav = () => {
   const userProfile = { name: "Khang", email: "Khang@gmail.com" };
   const btnUser = [
