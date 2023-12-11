@@ -1,62 +1,70 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from 'react';
-import { faEye, faFilter, faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
-import imgFashion from "../../../assets/image/book1.jpg";
+import { useEffect, useState,useMemo } from 'react';
+import {faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../../../components/Pagination/Pagination";
-// import {get} from '../../utils/ApiUtilstren';
-// import { API_BOOK } from "../../../api/Api";
+import { requestSort, sortData } from '../../../utils/sortUtils';
+import {get} from '../../../utils/ApiUtils';
+import { API_BOOK } from "../../../api/Api";
+import { NavLink } from "react-router-dom";
 const Products = () => {
-  // const [useData, setData] = useState([]);
-  // useEffect(() =>{
-  //     get(API_BOOK)
-  // },[])
-  const data = [
-    {
-      id: "sp1",
-      name: "Đắc nhân tâm",
-      color: "Dale canergie",
-      category: "Seft-help",
-      quantity: 50,
-      price: 19.99,
-      image: imgFashion,
-    },
-    {
-      id: "sp2",
-      name: "Đắc nhân tâm",
-      color: "Dale canergie",
-      category: "Seft-help",
-      quantity: 30,
-      price: 49.99,
-      image: imgFashion,
-    },
-    {
-      id: "sp3",
-      name: "Đắc nhân tâm",
-      color: "Dale canergie",
-      category: "Seft-help",
-      quantity: 40,
-      price: 59.99,
-      image: imgFashion,
-    },
-    {
-      id: "sp4",
-      name: "Đắc nhân tâm",
-      color: "Dale canergie",
-      category: "Seft-help",
-      quantity: 20,
-      price: 199.99,
-      image: imgFashion,
-    },
-    {
-      id: "sp5",
-      name: "Đắc nhân tâm",
-      color: "Dale canergie",
-      category: "Seft-help",
-      quantity: 60,
-      price: 29.99,
-      image: imgFashion,
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [usePage,setPage]= useState({
+    totalPages: 0,
+    currentPage: 1,
+    pageSize: 10,
+});  
+  const [sortConfig, setSortConfig] = useState({
+    key: '',
+    direction: '',
+  });
+  useEffect(() =>{
+    const fetchData = async(page)=>{
+      try {
+          const response = await get(API_BOOK.crudBook + `/admin/?page=${usePage.currentPage}`);
+          setProducts(response.content);
+          console.log(response.content);
+          const filteredData = filterData(products, searchTerm, selectedCategory);
+          setFilteredProducts(filteredData);
+          const pageInfor = {
+            totalPages: response.totalPages,
+            currentPage: response.number,
+            pageSize: response.size,
+          }
+          setPage(pageInfor);
+      }catch(e) {
+          console.error('Lỗi trong quá trình lấy dữ liệu từ API:', e);
+      }
+    } 
+    fetchData(usePage.currentPage);
+  },[usePage.currentPage,searchTerm, selectedCategory,products])
+  const handlePageChange = (newPage) => {
+    setPage({
+      ...usePage,
+      currentPage: newPage,
+    });
+  };
+  const handleSort = (key) => {
+    requestSort(key, sortConfig, setSortConfig);
+  };
+  //Sort row in table
+  const sortedProducts = useMemo(() => {
+    return sortData(filteredProducts, sortConfig);
+  }, [filteredProducts , sortConfig]);
+  const filterData = (data, searchTerm, selectedCategory) => {
+    if (!searchTerm && selectedCategory==='') {
+      return data;
+    }
+    const filtered = data.filter(product =>
+      (searchTerm && product.productName.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (selectedCategory && product.category === selectedCategory)
+    );
+  
+    return filtered;
+  };
   return (
     <>
       <div className="flex items-center justify-between mb-4\">
@@ -87,29 +95,26 @@ const Products = () => {
               id="table-search"
               class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Search for items"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </div>
         <div className="flex items-center">
-            <select class="block w-52 h-10 mx-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 my-auto">
-                <option selected>Choose category</option>
-                <option value="US">Tiểu thuyết</option>
-                <option value="CA">Truyện tranh</option>
-                <option value="FR">Văn học</option>
-                <option value="DE">SGK</option>
+        <select 
+              className="block w-52 h-10 mx-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 my-auto"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}>                
+                <option value=''>Choose category</option>
+                {category.map((item, index) => (
+                      <option key={index} 
+                        value={item.categoryName}
+                        >
+                        {item.categoryName}
+                      </option>
+                ))}
+
             </select>
-            <select class="block w-52 h-10 mx-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 my-auto">
-                <option selected>Choose NXB</option>
-                <option value="US">Kim Đồng</option>
-                <option value="CA">Phương Nam</option>
-            </select>
-            <button class="w-14 bg-gray-600 rounded-md h-9">
-                <FontAwesomeIcon
-                  icon={faFilter}
-                  style={{ color: "#ffffff" }}
-                  size="xl"
-                />
-            </button>
         </div>
         
       </div>
@@ -121,9 +126,9 @@ const Products = () => {
               <th scope="col" class="px-6 py-3">
                 <div class="flex items-center justify-center">
                   ID
-                  <a href="/#">
+                  <button onClick={() => handleSort('productId')}>
                     <svg
-                      class="w-3 h-3 ml-1.5"
+                      className="w-3 h-3 ml-1.5"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -131,15 +136,15 @@ const Products = () => {
                     >
                       <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3">
                 <div class="flex items-center">
                   Productname
-                  <a href="/#">
+                  <button onClick={() => handleSort('productName')}>
                     <svg
-                      class="w-3 h-3 ml-1.5"
+                      className="w-3 h-3 ml-1.5"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -147,7 +152,7 @@ const Products = () => {
                     >
                       <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3">
@@ -169,9 +174,9 @@ const Products = () => {
               <th scope="col" class="px-6 py-3">
                 <div class="flex items-center justify-center">
                   Category
-                  <a href="/#">
+                  <button onClick={() => handleSort('category')}>
                     <svg
-                      class="w-3 h-3 ml-1.5"
+                      className="w-3 h-3 ml-1.5"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -179,15 +184,15 @@ const Products = () => {
                     >
                       <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3">
                 <div class="flex items-center justify-center">
                   Quantity
-                  <a href="/#">
+                  <button onClick={() => handleSort('brand')}>
                     <svg
-                      class="w-3 h-3 ml-1.5"
+                      className="w-3 h-3 ml-1.5"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -195,15 +200,15 @@ const Products = () => {
                     >
                       <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3">
                 <div class="flex items-center justify-center">
                   Price
-                  <a href="/#">
+                  <button onClick={() => handleSort('stockStatus')}>
                     <svg
-                      class="w-3 h-3 ml-1.5"
+                      className="w-3 h-3 ml-1.5"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -211,7 +216,7 @@ const Products = () => {
                     >
                       <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </th>
               <th scope="col" class="px-6 py-3">
@@ -220,8 +225,8 @@ const Products = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((product) => (
-              <tr key={product.id} class="bg-white border-b text-gray-700 text-lg">
+            {sortedProducts.map((product,index) => (
+              <tr key={index} class="bg-white border-b text-gray-700 text-lg">
                 <td class="px-6 py-4 text-center">{product.id}</td>
                 <th
                   scope="row"
@@ -240,26 +245,17 @@ const Products = () => {
                 <td class="px-6 py-4 text-center">{product.category}</td>
                 <td class="px-6 py-4 text-center">{product.quantity}</td>
                 <td class="px-6 py-4 text-center">{product.price}</td>
-                <td class="px-6 py-4">
-                  <a href="/#" class="mx-2 font-medium text-blue-600">
+                <td className="px-6 py-4">
+                  <NavLink to={`${product.productId}`} className="mx-2 font-medium text-blue-600">
                     <FontAwesomeIcon
                       icon={faPenToSquare}
                       style={{ color: "#ff9b00" }}
-                      size="md"
                     />
-                  </a>
-                  <a href="/#" class="mx-2 font-medium text-blue-600">
+                  </NavLink>
+                  <a href="/#" className="mx-2 font-medium text-blue-600">
                     <FontAwesomeIcon
                       icon={faTrash}
                       style={{ color: "#ff0000" }}
-                      size="md"
-                    />
-                  </a>
-                  <a href="/#" class="mx-2 font-medium text-blue-600">
-                    <FontAwesomeIcon
-                      icon={faEye}
-                      style={{ color: "#000000" }}
-                      size="md"
                     />
                   </a>
                 </td>
@@ -267,7 +263,11 @@ const Products = () => {
             ))}
           </tbody>
         </table>
-        <div className="flex justify-center"><Pagination /></div>        
+        <div className="flex justify-center"><Pagination
+                    totalPages={usePage.totalPages}
+                    currentPage={usePage.currentPage}
+                    onPageChange={handlePageChange}
+                /></div>        
       </div>
     </>
   );

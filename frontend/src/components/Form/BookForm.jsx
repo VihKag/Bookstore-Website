@@ -73,20 +73,32 @@ const BookForm = () => {
         Image: file,
       }));
     };
+    const postBookData = async (url, data) => {
+      try {
+        const response = await post(url, data);
+        return response.statusText || response.status;
+      } catch (error) {
+        console.error('Error during POST request:', error);
+        throw error;
+      }
+    };
     
     const handleSubmit = async (e) => {
       e.preventDefault();
-  
       const formDataSend = new FormData();
-  
       // Append data to FormData
       for (const key in formData) {
-        if (Array.isArray(formDataSend[key])) {
-          formDataSend[key].forEach((value) => {
-            formDataSend.append(`${key}[]`, value);
-          });
-        } else {
-          formDataSend.append(key, formData[key]);
+        if (formData.hasOwnProperty(key)) {
+          const value = formData[key];
+          if (value !== null && value !== undefined) {
+            if (key === 'Image') {
+              formDataSend.append(key, value, value.name);
+            } else if (Array.isArray(value)) {
+              value.forEach((item) => formDataSend.append(`${key}[]`, item));
+            } else {
+              formDataSend.append(key, value);
+            }
+          }
         }
       }
       for (var pair of formDataSend.entries()) {
@@ -94,21 +106,13 @@ const BookForm = () => {
       }
       try {
         const response = await post(API_BOOK.crudBook, formDataSend);
-  
-        if (!response.ok) {
-          showErrorToast();
-          throw new Error('Failed to create book');
+        if(response){
+          showSuccessToast('Book created successfully');
         }
-  
-        const data = await response.json();
-        showSuccessToast();
-        console.log('Book created successfully:', data);
       } catch (error) {
-        console.error('Error creating book:', error);
+        showErrorToast('Error creating book:', error);
       }
     };
-    
-    
   return (
     <div className="container mx-auto">
       <ToastContainer/>
@@ -147,7 +151,7 @@ const BookForm = () => {
             id="AuthorList"
             name="AuthorList"
             options={authOptions}
-            onChange={(selectedOptions)=>handleChange('AuthorList', selectedOptions.map((option)=>option.value))}
+            onChange={(selectedOptions)=>handleChange('AuthorList', selectedOptions.map((option)=>option.label))}
             className="basic-multi-select"
             classNamePrefix="select"
           />
@@ -162,7 +166,7 @@ const BookForm = () => {
             id="CategoryList"
             name="CategoryList"
             options={cateOptions}
-            onChange={(selectedOptions)=>handleChange('CategoryList', selectedOptions.map((option)=>option.value))}
+            onChange={(selectedOptions)=>handleChange('CategoryList', selectedOptions.map((option)=>option.label))}
             className="basic-multi-select"
             classNamePrefix="select"
           />
@@ -177,7 +181,7 @@ const BookForm = () => {
             id="PublisherList"
             name="PublisherList"
             options={pubOptions}
-            onChange={(selectedOptions)=>handleChange('PublisherList', selectedOptions.map((option)=>option.value))}
+            onChange={(selectedOptions)=>handleChange('PublisherList', selectedOptions.map((option)=>option.label))}
             className="basic-multi-select"
             classNamePrefix="select"
           />
