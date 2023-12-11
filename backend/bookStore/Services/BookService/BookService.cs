@@ -28,12 +28,13 @@ namespace bookStore.Services.BookService
         private readonly IImageRepository _imageRepository;
 
         private readonly MappingService _mappingService;
+        private readonly ILogger<BookService> _logger;
 
         private Account account;
         private Cloudinary cloudinary;
 
 
-        public BookService(MappingService mappingService, 
+        public BookService(MappingService mappingService, ILogger<BookService> logger,
                             IBookRepository bookRepository, ICategoryRepository categoryRepository, 
                             IBookCategoryRepository bookCategoryRepository, IAuthorRepository authorRepository, 
                             IBookAuthorRepository bookAuthorRepository, IPublisherRepository publisherRepository, 
@@ -47,42 +48,42 @@ namespace bookStore.Services.BookService
             _bookAuthorRepository= bookAuthorRepository;
             _bookCategoryRepository = bookCategoryRepository;
             _bookPublisherRepository= bookPublisherRepository;
-            _imageRepository= imageRepository;
+            _logger = logger;
+            _imageRepository = imageRepository;
             account = new Account("dggnygweb", "337595188235586", "u9JNvp9j9YlTwHcuX9MpXw73uME");
             cloudinary = new Cloudinary(account);
         }
 
+
         public BookDTO? Create(BookDTO dto)
         {
-            //dto.Id = Nanoid.Generate(size: 10);
-            Book book = _mappingService.GetMapper().Map<Book>(dto);
-            book.IsDelete = false;
-            book.State = true;
-            _bookRepository.Create(book);
-            _bookRepository.Save();
-            CreateRelationship(dto);
 
-            /*var uploadParams = new ImageUploadParams
-            {
-                File = new FileDescription(dto.ImagePath),
-                PublicId = Nanoid.Generate(size: 10)
-        };
+                Book book = _mappingService.GetMapper().Map<Book>(dto);
+                book.IsDelete = false;
+                book.State = true;
+                _bookRepository.Create(book);
+                _bookRepository.Save();
 
-            var uploadResult = cloudinary.Upload(uploadParams);
+                var cre = CreateRelationship(dto);
+                if (cre == false)
+                {
+                    _bookRepository.Delete(book);
+                    _bookRepository.Save();
+                    return null;
+                }
 
-            // Lấy URL công khai của hình ảnh đã tải lên
-            var imageUrl = uploadResult.SecureUrl;*/
+                var ImagePath = UploadImage(dto.Image, dto.Isbn);
 
-            var ImagePath = UploadImage(dto.Image,dto.Isbn);
+                Image pic = new Image();
+                pic.Isbn = dto.Isbn;
+                pic.ImagePath = ImagePath;
+                _imageRepository.Create(pic);
+                _imageRepository.Save();
 
-            Image pic = new Image();
-            pic.Isbn = dto.Isbn;
-            pic.ImagePath = ImagePath;
-            _imageRepository.Create(pic);
-            _imageRepository.Save();
-
-            return dto;
+                return dto;
+          
         }
+
         public string UploadImage(IFormFile imageFile, string isbn)
         {
             if (imageFile == null || imageFile.Length == 0)
@@ -100,37 +101,57 @@ namespace bookStore.Services.BookService
 
             return uploadResult.SecureUrl.ToString();
         }
-        private void CreateRelationship(BookDTO dto)
+        private bool CreateRelationship(BookDTO dto)
         {
-            dto.CategoryList.ForEach(cate =>
+            if (dto.CategoryList.Count < 1 || dto.PublisherList.Count < 1 || dto.AuthorList.Count < 1)
             {
-                Category category = _categoryRepository.FindByName(cate);
-                string IdcateB = Nanoid.Generate(size: 10);
-                var new_BookCategory = new BookCategory(IdcateB, dto.Isbn, category.Id);
-                new_BookCategory.IsDelete = false;
-                _bookCategoryRepository.Create(new_BookCategory);
-                _bookCategoryRepository.Save();
-            });
+                return false;
+            }
+            else
+            {
+                foreach (var cate in dto.CategoryList)
+                {
+                    Category category = _categoryRepository.FindByName(cate);
+                    if (category == null)
+                    {
+                        return false;
+                    }
+                    string IdcateB = Nanoid.Generate(size: 10);
+                    var new_BookCategory = new BookCategory(IdcateB, dto.Isbn, category.Id);
+                    new_BookCategory.IsDelete = false;
+                    _bookCategoryRepository.Create(new_BookCategory);
+                    _bookCategoryRepository.Save();
+                }
 
-            dto.AuthorList.ForEach(au =>
-            {
-                Author author = _authorRepository.FindByName(au);
-                string IdAuB = Nanoid.Generate(size: 10);
-                var new_BookAuthor = new BookAuthor(IdAuB, author.AuthorId, dto.Isbn);
-                new_BookAuthor.IsDelete = false;
-                _bookAuthorRepository.Create(new_BookAuthor);
-                _bookAuthorRepository.Save();
-            });
+                foreach (var au in dto.AuthorList)
+                {
+                    Author author = _authorRepository.FindByName(au);
+                    if (author == null)
+                    {
+                        return false;
+                    }
+                    string IdAuB = Nanoid.Generate(size: 10);
+                    var new_BookAuthor = new BookAuthor(IdAuB, author.AuthorId, dto.Isbn);
+                    new_BookAuthor.IsDelete = false;
+                    _bookAuthorRepository.Create(new_BookAuthor);
+                    _bookAuthorRepository.Save();
+                }
 
-            dto.PublisherList.ForEach(pub =>
-            {
-                Publisher publisher = _publisherRepository.FindByName(pub);
-                string IdPubB = Nanoid.Generate(size: 10);
-                var new_BookPublisher = new BookPublisher(IdPubB, dto.Isbn, publisher.Id);
-                new_BookPublisher.IsDelete = false;
-                _bookPublisherRepository.Create(new_BookPublisher);
-                _bookPublisherRepository.Save();
-            });
+                foreach (var pub in dto.PublisherList)
+                {
+                    Publisher publisher = _publisherRepository.FindByName(pub);
+                    if (publisher == null)
+                    {
+                        return false;
+                    }
+                    string IdPubB = Nanoid.Generate(size: 10);
+                    var new_BookPublisher = new BookPublisher(IdPubB, dto.Isbn, publisher.Id);
+                    new_BookPublisher.IsDelete = false;
+                    _bookPublisherRepository.Create(new_BookPublisher);
+                    _bookPublisherRepository.Save();
+                }
+            }
+            return true;
         }
 
         public bool Delete(string isbn)

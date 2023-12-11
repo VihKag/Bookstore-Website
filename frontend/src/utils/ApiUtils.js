@@ -8,7 +8,7 @@ const api = axios.create({
 const get = async (url) => {
   try {
     const response = await api.get(url);
-    return response;
+    return response.data;
   } catch (error) {
     console.error('Error during GET request:', error);
     throw error;
@@ -18,7 +18,7 @@ const get = async (url) => {
 const post = async (url, data) => {
   try {
     const response = await api.post(url, data);
-    return response;
+    return response.statusText || response.status;
   } catch (error) {
     console.error('Error during POST request:', error);
     throw error;

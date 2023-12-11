@@ -19,11 +19,10 @@ namespace bookStore.Controllers
         [HttpPost]
         public ActionResult<BookDTO> Create([FromForm] BookDTO bookDTO)
         {
-
             var book = _bookService.Create(bookDTO);
             if (book == null)
             {
-                return BadRequest("Đã tồn tại sách!");
+                return BadRequest("Lỗi khi thêm sách!");
             }
             return Ok(book);
         }
