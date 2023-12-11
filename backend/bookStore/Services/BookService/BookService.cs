@@ -28,6 +28,7 @@ namespace bookStore.Services.BookService
         private readonly IImageRepository _imageRepository;
 
         private readonly MappingService _mappingService;
+        private readonly ILogger<BookService> _logger;
 
         private Account account;
         private Cloudinary cloudinary;
@@ -37,7 +38,7 @@ namespace bookStore.Services.BookService
                             IBookRepository bookRepository, ICategoryRepository categoryRepository, 
                             IBookCategoryRepository bookCategoryRepository, IAuthorRepository authorRepository, 
                             IBookAuthorRepository bookAuthorRepository, IPublisherRepository publisherRepository, 
-                            IBookPublisherRepository bookPublisherRepository, IImageRepository imageRepository)
+                            IBookPublisherRepository bookPublisherRepository, IImageRepository imageRepository, ILogger<BookService> logger)
         {
             _bookRepository = bookRepository;
             _mappingService = mappingService;
@@ -47,13 +48,15 @@ namespace bookStore.Services.BookService
             _bookAuthorRepository= bookAuthorRepository;
             _bookCategoryRepository = bookCategoryRepository;
             _bookPublisherRepository= bookPublisherRepository;
-            _imageRepository= imageRepository;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _imageRepository = imageRepository;
             account = new Account("dggnygweb", "337595188235586", "u9JNvp9j9YlTwHcuX9MpXw73uME");
             cloudinary = new Cloudinary(account);
         }
 
         public BookDTO? Create(BookDTO dto)
         {
+            _logger.LogInformation($"Received DTO: {Newtonsoft.Json.JsonConvert.SerializeObject(dto)}");
             //dto.Id = Nanoid.Generate(size: 10);
             Book book = _mappingService.GetMapper().Map<Book>(dto);
             book.IsDelete = false;
@@ -103,7 +106,7 @@ namespace bookStore.Services.BookService
         private void CreateRelationship(BookDTO dto)
         {
             dto.CategoryList.ForEach(cate =>
-            {
+            { 
                 Category category = _categoryRepository.FindByName(cate);
                 string IdcateB = Nanoid.Generate(size: 10);
                 var new_BookCategory = new BookCategory(IdcateB, dto.Isbn, category.Id);
