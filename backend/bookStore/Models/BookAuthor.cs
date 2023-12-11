@@ -7,9 +7,9 @@ public partial class BookAuthor
 {
     public string Id { get; set; } = null!;
 
-    public string? AuthorId { get; set; }
+    public string AuthorId { get; set; }
 
-    public string? Isbn { get; set; }
+    public string Isbn { get; set; }
 
     public bool? IsDelete { get; set; }
 
@@ -17,7 +17,7 @@ public partial class BookAuthor
 
     public virtual Book? IsbnNavigation { get; set; }
 
-    public BookAuthor(string id, string? authorId, string? isbn)
+    public BookAuthor(string id, string authorId, string isbn)
     {
         Id = id;
         Isbn = isbn;
