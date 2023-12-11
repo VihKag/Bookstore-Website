@@ -198,7 +198,7 @@ namespace bookStore.Services.BookService
             return true;
         }
 
-        public List<BookDTO> GetAll(int pageNumber, int pageSize)
+        public PagedList<BookDTO> GetAll(int pageNumber, int pageSize)
         {
             List<Book> bookList = _bookRepository.FindAll();
 
@@ -210,11 +210,11 @@ namespace bookStore.Services.BookService
                 BookDTO bookDTO = GetById(bookID);
                 books.Add(bookDTO);
             }
-           var pagedBookList = GetPagedItems(books, pageNumber, pageSize);
-           return pagedBookList;
+            PagedList<BookDTO> pagedBookList = new PagedList<BookDTO>(books, pageNumber, pageSize);
+            return pagedBookList;
         }
 
-        public List<BookDTO> GetAllNotDelete(int pageNumber, int pageSize)
+        public PagedList<BookDTO> GetAllNotDelete(int pageNumber, int pageSize)
         {
             List<Book> bookList = _bookRepository.FindByCondition(x => x.IsDelete == false);
 
@@ -225,7 +225,7 @@ namespace bookStore.Services.BookService
                 BookDTO dto = _mappingService.GetMapper().Map<BookDTO>(item);
                 books.Add(dto);
             }
-            var pagedBookList = GetPagedItems(books, pageNumber, pageSize);
+            PagedList<BookDTO> pagedBookList = new PagedList<BookDTO>(books, pageNumber, pageSize);
             return pagedBookList;
         }
         public List<T> GetPagedItems<T>(List<T> itemList, int pageNumber, int pageSize)
@@ -311,7 +311,7 @@ namespace bookStore.Services.BookService
             return publishers;
         }
 
-        public List<BookDTO> GetByCate(string cateName, int pageNumber, int pageSize)
+        public PagedList<BookDTO> GetByCate(string cateName, int pageNumber, int pageSize)
         {
             Category cate = _categoryRepository.FindByName(cateName);
             var cateId = cate.Id;
@@ -327,7 +327,7 @@ namespace bookStore.Services.BookService
                     listBook.Add(dto);
                 }
             }
-            var pagedBookCategoryList = GetPagedItems(listBook, pageNumber, pageSize);
+            PagedList<BookDTO> pagedBookCategoryList = new PagedList<BookDTO>(listBook, pageNumber, pageSize);
             return pagedBookCategoryList;
         }
 
@@ -440,7 +440,7 @@ namespace bookStore.Services.BookService
                 _bookAuthorRepository.Delete(item);
             }
         }
-        public List<BookDTO> GetByAuthor(string authorName, int pageNumber, int pageSize)
+        public PagedList<BookDTO> GetByAuthor(string authorName, int pageNumber, int pageSize)
         {
             Author author = _authorRepository.FindByName(authorName);
             var authorID = author.AuthorId;
@@ -455,11 +455,11 @@ namespace bookStore.Services.BookService
                 }
             }
 
-            var pagedBookAuthorList = GetPagedItems(listBook, pageNumber, pageSize);
+            PagedList<BookDTO> pagedBookAuthorList = new PagedList<BookDTO>(listBook, pageNumber, pageSize);
             return pagedBookAuthorList;
         }
 
-        public List<BookDTO> GetByPublisher(string pubName, int pageNumber, int pageSize)
+        public PagedList<BookDTO> GetByPublisher(string pubName, int pageNumber, int pageSize)
         {
             Publisher publisher = _publisherRepository.FindByName(pubName);
             var pubId = publisher.Id;
@@ -473,7 +473,7 @@ namespace bookStore.Services.BookService
                     listBook.Add(dto);
                 }
             }
-            var pagedBookPublisherList = GetPagedItems(listBook, pageNumber, pageSize);
+            PagedList<BookDTO> pagedBookPublisherList = new PagedList<BookDTO>(listBook, pageNumber, pageSize);
             return pagedBookPublisherList;
         }
 
