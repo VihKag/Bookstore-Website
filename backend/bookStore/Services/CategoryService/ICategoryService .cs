@@ -1,5 +1,6 @@
 ﻿using bookStore.Models;
 using bookStore.Models.DTOs;
+using X.PagedList;
 
 namespace bookStore.Services.CategoryService
 {
@@ -8,9 +9,9 @@ namespace bookStore.Services.CategoryService
         CategoryDTO? Create(CategoryDTO dto);
         bool Delete(string id);
         List<CategoryDTO> GetAll();
-        List<CategoryDTO> PaginationCategory(int pageNumber, int pageSize);
+        PagedList<CategoryDTO> PaginationCategory(int pageNumber, int pageSize);
         List<CategoryDTO> GetAllNotDeleted();
-        List<CategoryDTO> PaginationNotDeleted(int pageNumber, int pageSize);
+        PagedList<CategoryDTO> PaginationNotDeleted(int pageNumber, int pageSize);
         CategoryDTO? GetById(string id);
         CategoryDTO? GetByName(string name);
         bool PermanentlyDelete(string id);

@@ -1,6 +1,7 @@
 ﻿using bookStore.Models.DTOs;
 using bookStore.Services.PublisherService;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace bookStore.Controllers
 {
@@ -14,50 +15,73 @@ namespace bookStore.Controllers
         {
             _publisherService = publisherService;
         }
-
-        [HttpGet("admin")]
-        public ActionResult<List<PublisherDTO>> PaginationPublishers(int pageNumber, int pageSize)
+        public static PagedResult<PagedList<PublisherDTO>> CreatePagedResult(PagedList<PublisherDTO> content, int pageNumber, int pageSize, int totalPages)
         {
-            var pagedPublishers = new List<PublisherDTO>();
+            return new PagedResult<PagedList<PublisherDTO>>
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPages = totalPages,
+                Content = content
+            };
+        }
+        [HttpGet("admin")]
+        public ActionResult<PagedResult<PagedList<PublisherDTO>>> PaginationPublishers(int pageNumber, int pageSize)
+        {
+            PagedList<PublisherDTO> pagedPublishers = null;
             switch (pageNumber, pageSize)
             {
                 case (0, 0):
-                    pagedPublishers = _publisherService.PaginationPublisher(1, 10);
+                    pagedPublishers = _publisherService.PaginationPublisher(pageNumber = 1, pageSize = 10);
                     break;
                 case (0, _):
-                    pagedPublishers = _publisherService.PaginationPublisher(1, pageSize);
+                    pagedPublishers = _publisherService.PaginationPublisher(pageNumber = 1, pageSize);
                     break;
                 case (_, 0):
-                    pagedPublishers = _publisherService.PaginationPublisher(pageNumber, 10);
+                    pagedPublishers = _publisherService.PaginationPublisher(pageNumber, pageSize = 10);
                     break;
                 default:
                     pagedPublishers = _publisherService.PaginationPublisher(pageNumber, pageSize);
                     break;
             }
-             
-            return Ok(pagedPublishers);
+
+            if (pagedPublishers == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+
+            PagedResult<PagedList<PublisherDTO>> pagedResult = CreatePagedResult(pagedPublishers, pageNumber, pageSize, pagedPublishers.PageCount);
+
+            return Ok(pagedResult);
         }
         [HttpGet("client")]
-        public ActionResult<List<PublisherDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
+        public ActionResult<PagedResult<PagedList<PublisherDTO>>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var pagedPublishers = new List<PublisherDTO>();
+            PagedList<PublisherDTO> pagedPublishers = null;
             switch (pageNumber, pageSize)
             {
                 case (0, 0):
-                    pagedPublishers = _publisherService.PaginationNotDeleted(1, 10);
+                    pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber = 1, pageSize = 10);
                     break;
                 case (0, _):
-                    pagedPublishers = _publisherService.PaginationNotDeleted(1, pageSize);
+                    pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber = 1, pageSize);
                     break;
                 case (_, 0):
-                    pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber, 10);
+                    pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber, pageSize = 10);
                     break;
                 default:
                     pagedPublishers = _publisherService.PaginationNotDeleted(pageNumber, pageSize);
                     break;
             }
-             
-            return Ok(pagedPublishers);
+
+            if (pagedPublishers == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+
+            PagedResult<PagedList<PublisherDTO>> pagedResult = CreatePagedResult(pagedPublishers, pageNumber, pageSize, pagedPublishers.PageCount);
+
+            return Ok(pagedResult);
         }
         [HttpGet("list")]
         public ActionResult<List<PublisherDTO>> GetAllNotDeleted()
