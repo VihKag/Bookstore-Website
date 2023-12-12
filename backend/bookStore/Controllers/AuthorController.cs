@@ -1,6 +1,8 @@
-﻿using bookStore.Models.DTOs;
+﻿using bookStore.Models;
+using bookStore.Models.DTOs;
 using bookStore.Services.AuthorService;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace bookStore.Controllers
 {
@@ -15,49 +17,72 @@ namespace bookStore.Controllers
             _authorSevice = authorSevice;
         }
 
-        [HttpGet("admin")]
-        public ActionResult<List<AuthorDTO>> PaginationAuthor(int pageNumber, int pageSize)
+        public static PagedResult<PagedList<AuthorDTO>> CreatePagedResult(PagedList<AuthorDTO> content, int pageNumber, int pageSize, int totalPages)
         {
-            var pagedAuthors = new List<AuthorDTO>();
+            return new PagedResult<PagedList<AuthorDTO>>
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPages = totalPages,
+                Content = content
+            };
+        }
+
+        [HttpGet("admin")]
+        public ActionResult<PagedResult<PagedList<AuthorDTO>>> PaginationAuthor(int pageNumber, int pageSize)
+        {
+            PagedList<AuthorDTO> pagedAuthors = null;
             switch (pageNumber, pageSize)
             {
                 case (0, 0):
-                    pagedAuthors = _authorSevice.PaginationAuthor(1, 10);
+                    pagedAuthors = _authorSevice.PaginationAuthor(pageNumber = 1, pageSize = 10);
                     break;
                 case (0, _):
-                    pagedAuthors = _authorSevice.PaginationAuthor(1, pageSize);
+                    pagedAuthors = _authorSevice.PaginationAuthor(pageNumber = 1, pageSize);
                     break;
                 case (_, 0):
-                    pagedAuthors = _authorSevice.PaginationAuthor(pageNumber, 10);
+                    pagedAuthors = _authorSevice.PaginationAuthor(pageNumber, pageSize = 10);
                     break;
                 default:
                     pagedAuthors = _authorSevice.PaginationAuthor(pageNumber, pageSize);
                     break;
             }
-             
-            return Ok(pagedAuthors);
+            if (pagedAuthors == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+
+            PagedResult<PagedList<AuthorDTO>> pagedResult = CreatePagedResult(pagedAuthors, pageNumber, pageSize, pagedAuthors.PageCount);
+
+            return Ok(pagedResult);
         }
         [HttpGet("client")]
-        public ActionResult<List<AuthorDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
+        public ActionResult<PagedResult<PagedList<AuthorDTO>>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var pagedAuthors = new List<AuthorDTO>();
+            PagedList<AuthorDTO> pagedAuthors = null;
             switch (pageNumber, pageSize)
             {
                 case (0, 0):
-                    pagedAuthors = _authorSevice.PaginationNotDeleted(1, 10);
+                    pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber = 1, pageSize = 10);
                     break;
                 case (0, _):
-                    pagedAuthors = _authorSevice.PaginationNotDeleted(1, pageSize);
+                    pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber = 1, pageSize);
                     break;
                 case (_, 0):
-                    pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber, 10);
+                    pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber, pageSize = 10);
                     break;
                 default:
                     pagedAuthors = _authorSevice.PaginationNotDeleted(pageNumber, pageSize);
                     break;
             }
-             
-            return Ok(pagedAuthors);
+            if (pagedAuthors == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+
+            PagedResult<PagedList<AuthorDTO>> pagedResult = CreatePagedResult(pagedAuthors, pageNumber, pageSize, pagedAuthors.PageCount);
+
+            return Ok(pagedResult);
         }
 
         [HttpGet("list")]
@@ -90,7 +115,7 @@ namespace bookStore.Controllers
         }
 
 
-        [HttpPost("{id}/restore")]
+        [HttpPut("{id}/restore")]
         public ActionResult<AuthorDTO> Restore(string id)
         {
             var author = _authorSevice.Restore(id);

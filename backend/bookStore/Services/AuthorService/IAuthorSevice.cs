@@ -1,4 +1,5 @@
 ﻿using bookStore.Models.DTOs;
+using X.PagedList;
 
 namespace bookStore.Services.AuthorService
 {
@@ -8,12 +9,12 @@ namespace bookStore.Services.AuthorService
         bool Delete(string id);
         List<AuthorDTO> GetAll();
         List<AuthorDTO> GetAllNotDeleted();
-        List<AuthorDTO> PaginationNotDeleted(int pageNumber, int pageSize);
+        PagedList<AuthorDTO> PaginationNotDeleted(int pageNumber, int pageSize);
         AuthorDTO? GetById(string id);
         AuthorDTO? GetByName(string name);
         bool PermanentlyDelete(string id);
         AuthorDTO? Restore(string id);
         AuthorDTO? Update(AuthorDTO dto, string authorID);
-        List<AuthorDTO> PaginationAuthor(int pageNumber, int pageSize);
+        PagedList<AuthorDTO> PaginationAuthor(int pageNumber, int pageSize);
     }
 }

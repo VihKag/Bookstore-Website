@@ -22,8 +22,6 @@ namespace bookStore.Services.CategoryService
 
         public CategoryDTO? Create(CategoryDTO dto)
         {
-           
-            //dto.Id = Nanoid.Generate(size: 10);
             Category category = _mappingService.GetMapper().Map<Category>(dto);
             category.IsDelete = false;
  
@@ -159,11 +157,10 @@ namespace bookStore.Services.CategoryService
 
             return dtoList;
         }
-        public  List<CategoryDTO> PaginationNotDeleted(int pageNumber, int pageSize)
+        public PagedList<CategoryDTO> PaginationNotDeleted(int pageNumber, int pageSize)
         {
             var allnotdelected = GetAllNotDeleted();
-            var pagedCategories = allnotdelected.ToPagedList(pageNumber, pageSize);
-            var pagedCategoriesList = pagedCategories.ToList();
+            PagedList<CategoryDTO> pagedCategoriesList = new PagedList<CategoryDTO>(allnotdelected, pageNumber, pageSize);
             return pagedCategoriesList;
         }
         public List<CategoryDTO> GetAllDeleted()
@@ -188,12 +185,11 @@ namespace bookStore.Services.CategoryService
             category.IsDelete = true;
         }
 
-        public List<CategoryDTO> PaginationCategory(int pageNumber,int pageSize)
+        public PagedList<CategoryDTO> PaginationCategory(int pageNumber,int pageSize)
         {
             var allCategories = GetAll();
 
-            var pagedCategories = allCategories.ToPagedList(pageNumber, pageSize);
-            var pagedCategoriesList = pagedCategories.ToList();
+            PagedList<CategoryDTO> pagedCategoriesList = new PagedList<CategoryDTO>(allCategories, pageNumber, pageSize);
             return pagedCategoriesList;
         }
     }

@@ -3,6 +3,7 @@ using bookStore.Models.DTOs;
 using bookStore.Services.CategoryService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace bookStore.Controllers
 {
@@ -17,51 +18,74 @@ namespace bookStore.Controllers
         {
             _categoryService = categoryService;
         }
+        public static PagedResult<PagedList<CategoryDTO>> CreatePagedResult(PagedList<CategoryDTO> content, int pageNumber, int pageSize, int totalPages)
+        {
+            return new PagedResult<PagedList<CategoryDTO>>
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPages = totalPages,
+                Content = content
+            };
+        }
 
         [HttpGet("admin")]
-        public ActionResult<List<CategoryDTO>> PaginationCategory(int pageNumber, int pageSize)
+        public ActionResult<PagedResult<PagedList<CategoryDTO>>> PaginationCategory(int pageNumber, int pageSize)
         {
-            var pagedCategories = new List<CategoryDTO>();
+            PagedList<CategoryDTO> pagedCategories = null;
             switch (pageNumber, pageSize)
             {
                 case (0, 0):
-                    pagedCategories = _categoryService.PaginationCategory(1, 10);
+                    pagedCategories = _categoryService.PaginationCategory(pageNumber = 1, pageSize = 10);
                     break;
                 case (0, _):
-                    pagedCategories = _categoryService.PaginationCategory(1, pageSize);
+                    pagedCategories = _categoryService.PaginationCategory(pageNumber = 1, pageSize);
                     break;
                 case (_, 0):
-                    pagedCategories = _categoryService.PaginationCategory(pageNumber, 10);
+                    pagedCategories = _categoryService.PaginationCategory(pageNumber, pageSize = 10);
                     break;
                 default:
                     pagedCategories = _categoryService.PaginationCategory(pageNumber, pageSize);
                     break;
             }
-             
-            return Ok(pagedCategories);
+            if (pagedCategories == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+
+            PagedResult<PagedList<CategoryDTO>> pagedResult = CreatePagedResult(pagedCategories, pageNumber, pageSize, pagedCategories.PageCount);
+           
+            return Ok(pagedResult);
         }
 
         [HttpGet("client")]
-        public ActionResult<List<CategoryDTO>> PaginationNotDeleted(int pageNumber, int pageSize)
+        public ActionResult<PagedResult<PagedList<CategoryDTO>>> PaginationNotDeleted(int pageNumber, int pageSize)
         {
-            var pagedCategories = new List<CategoryDTO>();
+            PagedList<CategoryDTO> pagedCategories = null;
             switch (pageNumber, pageSize)
             {
                 case (0, 0):
-                    pagedCategories = _categoryService.PaginationNotDeleted(1, 10);
+                    pagedCategories = _categoryService.PaginationNotDeleted(pageNumber = 1, pageSize = 10);
                     break;
                 case (0, _):
-                    pagedCategories = _categoryService.PaginationNotDeleted(1, pageSize);
+                    pagedCategories = _categoryService.PaginationNotDeleted(pageNumber = 1, pageSize);
                     break;
                 case (_, 0):
-                    pagedCategories = _categoryService.PaginationNotDeleted(pageNumber, 10);
+                    pagedCategories = _categoryService.PaginationNotDeleted(pageNumber, pageSize = 10);
                     break;
                 default:
                     pagedCategories = _categoryService.PaginationNotDeleted(pageNumber, pageSize);
                     break;
             }
-             
-            return Ok(pagedCategories);
+
+            if (pagedCategories == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+
+            PagedResult<PagedList<CategoryDTO>> pagedResult = CreatePagedResult(pagedCategories, pageNumber, pageSize, pagedCategories.PageCount);
+
+            return Ok(pagedResult);
         }
         [HttpGet("list")]
         public ActionResult<List<CategoryDTO>> GetAllNotDeleted()
@@ -93,7 +117,7 @@ namespace bookStore.Controllers
         }
 
 
-        [HttpPost("{id}/restore")]
+        [HttpPut("{id}/restore")]
         public ActionResult<CategoryDTO> Restore(string id)
         {
             var category = _categoryService.Restore(id);

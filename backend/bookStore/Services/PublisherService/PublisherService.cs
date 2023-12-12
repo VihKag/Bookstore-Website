@@ -163,12 +163,10 @@ namespace bookStore.Services.PublisherService
             return dto;
         }
 
-        public List<PublisherDTO> PaginationPublisher(int pageNumber, int pageSize)
+        public PagedList<PublisherDTO> PaginationPublisher(int pageNumber, int pageSize)
         {
             var allPublishers = GetAll();
-
-            var pagedPublishers = allPublishers.ToPagedList(pageNumber, pageSize);
-            var pagedPublishersList = pagedPublishers.ToList();
+            PagedList<PublisherDTO> pagedPublishersList = new PagedList<PublisherDTO>(allPublishers, pageNumber, pageSize);
             return pagedPublishersList;
         }
 
@@ -185,11 +183,10 @@ namespace bookStore.Services.PublisherService
             return dtoList;
         }
 
-        public List<PublisherDTO> PaginationNotDeleted(int pageNumber, int pageSize)
+        public PagedList<PublisherDTO> PaginationNotDeleted(int pageNumber, int pageSize)
         {
             var allnotdeleted = GetAllNotDeleted();
-            var pagedPublishers = allnotdeleted.ToPagedList(pageNumber, pageSize);
-            var pagedPublishersList = pagedPublishers.ToList();
+            PagedList<PublisherDTO> pagedPublishersList = new PagedList<PublisherDTO>(allnotdeleted, pageNumber, pageSize);
             return pagedPublishersList;
         }
     }

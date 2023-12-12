@@ -163,12 +163,10 @@ namespace bookStore.Services.AuthorService
 
             return dto;
         }
-        public List<AuthorDTO> PaginationAuthor(int pageNumber, int pageSize)
+        public PagedList<AuthorDTO> PaginationAuthor(int pageNumber, int pageSize)
         {
             var allAuthors = GetAll();
-
-            var pagedAuthors = allAuthors.ToPagedList(pageNumber, pageSize);
-            var pagedAuthorsList = pagedAuthors.ToList();
+            PagedList<AuthorDTO> pagedAuthorsList = new PagedList<AuthorDTO>(allAuthors, pageNumber, pageSize);
             return pagedAuthorsList;
         }
 
@@ -185,11 +183,10 @@ namespace bookStore.Services.AuthorService
             return dtoList;
         }
 
-        public List<AuthorDTO> PaginationNotDeleted(int pageNumber, int pageSize)
+        public PagedList<AuthorDTO> PaginationNotDeleted(int pageNumber, int pageSize)
         {
             var allNotDeleted = GetAllNotDeleted();
-            var pagedAuthors = allNotDeleted.ToPagedList(pageNumber, pageSize);
-            var pagedAuthorsList = pagedAuthors.ToList();
+            PagedList<AuthorDTO> pagedAuthorsList = new PagedList<AuthorDTO>(allNotDeleted, pageNumber, pageSize);
             return pagedAuthorsList;
         }
     }
