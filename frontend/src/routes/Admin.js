@@ -8,6 +8,7 @@ import Staff from "../pages/admin/user/Staff";
 import Profile from "../components/Form/Profile";
 import BookForm from "../components/Form/BookForm";
 import AddAccount from "../components/Form/AddAccount";
+import CreateCategory from "../pages/admin/product/CreateCategory";
 const AdminRoute = () => {
   return (
     <>
@@ -22,6 +23,7 @@ const AdminRoute = () => {
             <Route path="profile" element={<Profile />}/>
             <Route path="add_account" element={<AddAccount />}/>
             <Route path="add_product" element={<BookForm />}/>
+            <Route path="add_category" element={<CreateCategory />}/>
         </Route>
     </Routes>       
     </>

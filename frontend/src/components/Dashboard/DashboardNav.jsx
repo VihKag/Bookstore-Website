@@ -12,6 +12,7 @@ const DashboardNav = () => {
   const btnProduct = [
     { name: "Products", link: "/admin/products", icon: <FontAwesomeIcon icon={faBook} /> },
     { name: "Add Product", link: "/admin/add_product", icon: <FontAwesomeIcon icon={faCirclePlus} /> },
+    { name: "Add Category", link: "/admin/add_category", icon: <FontAwesomeIcon icon={faBook} /> },
   ];
   return (
     <>
@@ -174,17 +175,6 @@ const DashboardNav = () => {
               >
                 <FontAwesomeIcon icon="fa-solid fa-users" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/admin/createaccount"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 group"
-              >
-                <FontAwesomeIcon icon="user-plus" />
-                <span className="flex-1 ml-3 whitespace-nowrap">
-                  Create Account
-                </span>
               </Link>
             </li>
             <li>
