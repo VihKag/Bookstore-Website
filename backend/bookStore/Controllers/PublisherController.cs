@@ -113,7 +113,7 @@ namespace bookStore.Controllers
         }
 
 
-        [HttpPost("{id}/restore")]
+        [HttpPut("{id}/restore")]
         public ActionResult<PublisherDTO> Restore(string id)
         {
             var author = _publisherService.Restore(id);

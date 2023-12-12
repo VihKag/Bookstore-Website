@@ -20,7 +20,6 @@ namespace bookStore.Services.PublisherService
         }
         public PublisherDTO? Create(PublisherDTO dto)
         {
-            //dto.Id = Nanoid.Generate(size: 10);
             Publisher publisher = _mappingService.GetMapper().Map<Publisher>(dto);
             publisher.IsDelete = false;
 
