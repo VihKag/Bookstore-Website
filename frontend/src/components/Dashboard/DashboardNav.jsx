@@ -12,6 +12,7 @@ const DashboardNav = () => {
   const btnProduct = [
     { name: "Products", link: "/admin/products", icon: <FontAwesomeIcon icon={faBook} /> },
     { name: "Add Product", link: "/admin/add_product", icon: <FontAwesomeIcon icon={faCirclePlus} /> },
+    { name: "Add Category", link: "/admin/add_category", icon: <FontAwesomeIcon icon={faBook} /> },
   ];
   return (
     <>
