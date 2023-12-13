@@ -38,7 +38,7 @@ namespace bookStore.Services.BookService
                             IBookRepository bookRepository, ICategoryRepository categoryRepository, 
                             IBookCategoryRepository bookCategoryRepository, IAuthorRepository authorRepository, 
                             IBookAuthorRepository bookAuthorRepository, IPublisherRepository publisherRepository, 
-                            IBookPublisherRepository bookPublisherRepository, IImageRepository imageRepository, ILogger<BookService> logger)
+                            IBookPublisherRepository bookPublisherRepository, IImageRepository imageRepository)
         {
             _bookRepository = bookRepository;
             _mappingService = mappingService;
