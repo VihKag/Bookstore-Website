@@ -5,6 +5,7 @@ using bookStore.Services.RefreshTokenService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using bookStore.Services.UserService;
+using X.PagedList;
 
 namespace bookStore.Controllers
 {
@@ -20,14 +21,78 @@ namespace bookStore.Controllers
             _refreshTokenService = refreshTokenService;
         }
 
-//        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public ActionResult<List<UserDTO>> PaginationUser(int pageNumber, int pageSize)
+        public static PagedResult<PagedList<UserDTO>> CreatePagedResult(PagedList<UserDTO> content, int pageNumber, int pageSize, int totalPages)
         {
-            var pagedUsers = _userService.PaginationUser(pageNumber, pageSize);
-            return Ok(pagedUsers);
+            return new PagedResult<PagedList<UserDTO>>
+            {
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPages = totalPages,
+                Content = content
+            };
+        }
+        //        [Authorize(Roles = "Admin")]
+        [HttpGet("allUser")]
+        public ActionResult<PagedResult<PagedList<UserDTO>>> PaginationUser(int pageNumber, int pageSize)
+        {
+
+            PagedList<UserDTO> pagedUsers = null;
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    pagedUsers = _userService.PaginationUser(pageNumber = 1, pageSize = 10);
+                    break;
+                case (0, _):
+                    pagedUsers = _userService.PaginationUser(pageNumber = 1, pageSize);
+                    break;
+                case (_, 0):
+                    pagedUsers = _userService.PaginationUser(pageNumber, pageSize = 10);
+                    break;
+                default:
+                    pagedUsers = _userService.PaginationUser(pageNumber, pageSize);
+                    break;
+            }
+
+            if (pagedUsers == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+
+            PagedResult<PagedList<UserDTO>> pagedResult = CreatePagedResult(pagedUsers, pageNumber, pageSize, pagedUsers.PageCount);
+
+            return Ok(pagedResult);
         }
 
+        [HttpGet("allAdmin")]
+        public ActionResult<PagedResult<PagedList<UserDTO>>> PaginationAdmin(int pageNumber, int pageSize)
+        {
+
+            PagedList<UserDTO> pagedUsers = null;
+            switch (pageNumber, pageSize)
+            {
+                case (0, 0):
+                    pagedUsers = _userService.PaginationAdmin(pageNumber = 1, pageSize = 10);
+                    break;
+                case (0, _):
+                    pagedUsers = _userService.PaginationAdmin(pageNumber = 1, pageSize);
+                    break;
+                case (_, 0):
+                    pagedUsers = _userService.PaginationAdmin(pageNumber, pageSize = 10);
+                    break;
+                default:
+                    pagedUsers = _userService.PaginationAdmin(pageNumber, pageSize);
+                    break;
+            }
+
+            if (pagedUsers == null)
+            {
+                return BadRequest("Không lấy được danh sách");
+            }
+
+            PagedResult<PagedList<UserDTO>> pagedResult = CreatePagedResult(pagedUsers, pageNumber, pageSize, pagedUsers.PageCount);
+
+            return Ok(pagedResult);
+        }
 
         [HttpDelete("{id}")]
         public ActionResult Delete(string id)

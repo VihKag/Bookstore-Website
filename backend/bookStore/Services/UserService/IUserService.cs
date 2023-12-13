@@ -1,5 +1,6 @@
 ﻿using bookStore.Models.DTOs;
 using bookStore.Models;
+using X.PagedList;
 
 namespace bookStore.Services.UserService
 {
@@ -12,7 +13,8 @@ namespace bookStore.Services.UserService
         UserDTO Update(UserDTO userDTO);
         Task<AuthResult> Register(UserFormDTO dto);
         Task<AuthResult> Login(LoginDTO dto);
-        List<UserDTO> PaginationUser(int pageNumber, int pageSize);
+        PagedList<UserDTO> PaginationUser(int pageNumber, int pageSize);
+        PagedList<UserDTO> PaginationAdmin(int pageNumber, int pageSize);
         bool UpdatePassword(string password, string userId);
     }
 }

@@ -929,3 +929,66 @@ VALUES
 	('9781107001329', 'http://books.google.com/books/content?id=96EREAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'),
 	('9780429662812', 'http://books.google.com/books/content?id=jHrMEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'),
 	('9786049956119', 'http://books.google.com/books/content?id=uBzsDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api');
+
+
+INSERT INTO Role(ID, Name)
+VALUES 
+('1','Admin'),
+('2','User');
+
+INSERT INTO "User" (ID, Name, Email, Phone, Gender, DateOfBirth, Username, Password, Role, IsActive)
+VALUES 
+  ('1', 'Mr. Olive Koch', 'Nedra_Reynolds9@yahoo.com', '2162849896', 1, '1995-05-05', 'Carrie_Weber', 'aNV9lJ4Mzgveiy8', '1', 1),
+  ('2', 'Melinda Koch', 'Jamil_Lowe@hotmail.com', '8832555210', 0, '2000-06-11', 'Imani.Gottlieb', 'iKvdgFFZiNQMWHH', '1', 1),
+  ('3', 'Maria Grant', 'Jarrett_Wunsch66@yahoo.com', '6697920273', 0, '1993-10-07', 'Ashley_Dietrich11', 'TO5Ah3rzts6NBsD', '1', 0),
+  ('4', 'Cynthia Nikolaus', 'Aaliyah73@gmail.com', '6066121947', 0, '1999-05-27', 'Lyla_Stroman39', 'XDthGQKQ12r1du2', '1', 1),
+  ('5', 'Kelly Corwin', 'Aida_Krajcik@hotmail.com', '9817517777', 1, '1995-04-30', 'Fleta.Anderson95', 'fw3PCxVWDZSOYMC', '1', 0);
+
+
+INSERT INTO "User" (ID, Name, Email, Phone, Gender, DateOfBirth, Username, Password, Role, IsActive)
+VALUES 
+  ('6', 'Arthur Mayert', 'Barney_Swift3@yahoo.com', '4082363790', 1, '1994-05-22T11:17:23.012Z', 'Milford_Schroeder54', 'ya_nirqaEoLf8vD', '2', 1),
+  ('7', 'Henry Wolf', 'Golden_Kling@yahoo.com', '5482770563', 0, '1991-04-02T07:05:59.942Z', 'Neva.Langosh44', 'we0rlHUym_7gme5', '2', 1),
+  ('8', 'Myron Kris', 'Brice27@gmail.com', '3029417050', 0, '1994-07-06T10:14:56.478Z', 'Lawrence46', '6RaRI3g9avnsxDi', '2', 1),
+  ('9', 'Kelly Weissnat', 'Theodora40@hotmail.com', '4094665274', 0, '1995-03-10T00:02:42.921Z', 'Ramiro_Waters37', 'qRSoew7LfwUC3Bg', '2', 1),
+  ('10', 'Eduardo Schinner', 'Vladimir90@gmail.com', '9488639336', 0, '1994-05-25T20:36:17.558Z', 'Justina.Weissnat13', 'G3swVskgvR18O00', '2', 1),
+  ('11', 'Homer Langworth', 'Dylan15@hotmail.com', '9044950907', 1, '1995-06-22T15:03:16.674Z', 'Derick.Schmitt', '8hDsCiuo5t1O3QE', '2', 1),
+  ('12', 'Elijah Harber', 'Graham55@yahoo.com', '9478612609', 1, '1992-03-04T01:47:31.315Z', 'Alena_Hahn', 'RNiixuwBRAVKHLW', '2', 1),
+  ('13', 'Dr. Henrietta Barrows', 'Elna.Koelpin@yahoo.com', '2128846365', 1, '1996-09-27T00:21:06.930Z', 'Kira71', 'LHFkSZRhiJhJamL', '2', 1),
+  ('14', 'Alberto Sipes', 'Wendy14@gmail.com', '6169415622', 0, '1992-11-05T17:50:19.409Z', 'Clarabelle_Streich60', 'RQBR0IVxInrDwOk', '2', 1),
+  ('15', 'Adam Stoltenberg', 'Asa_Hermann23@hotmail.com', '2814849560', 0, '1997-12-02T08:40:10.465Z', 'Ashlynn82', 'GyawDhu2VzH2eqE', '2', 1),
+  ('16', 'Brandy Rippin', 'Mafalda_Collier5@gmail.com', '8053380922', 1, '2084-01-23T08:32:12.874Z', 'Jessy.Bruen99', 'UP5VdSK3XqhIz0R', '2', 1),
+  ('17', 'Dolores Swaniawski', 'Felipa.Trantow1@yahoo.com', '8104898126', 0, '1996-05-04T06:56:30.838Z', 'Verona_Prohaska17', 'Bl4mBytO2chzy8j', '2', 1),
+  ('18', 'Ms. Clint Bailey', 'Wallace_Cormier@gmail.com', '8839414741', 0, '2054-07-22T15:53:22.897Z', 'Judah_Wolff8', 'qDB_dkdqGLDFU1b', '2', 1),
+  ('19', 'Saul Rogahn MD', 'Ewell57@hotmail.com', '2422747845', 1, '2074-12-18T01:25:54.451Z', 'Jevon_Hartmann6', 'zvZx1zHvUKAJUhH', '2', 1),
+  ('20', 'Joyce Leannon', 'Julian.Corkery96@gmail.com', '4488793299', 0, '2055-10-25T13:08:20.849Z', 'Rylan_Cremin', 'xXknaIcG4eQtw2j', '2', 1),
+  ('21', 'Mrs. Stewart Nitzsche', 'Camille61@yahoo.com', '3224216867', 0, '2085-04-15T05:38:03.447Z', 'Alisa13', '8ZWXC33Bt87Np44', '2', 1),
+  ('22', 'Ross Mayer', 'Darron.Brown52@hotmail.com', '5704307034', 1, '2077-10-22T15:28:40.554Z', 'Lula_Ritchie', 'kvq7UxSmSpT5bzp', '2', 1),
+  ('23', 'Judith Lakin MD', 'Kathryne_Nikolaus@hotmail.com', '5695656583', 0, '2008-10-23T06:41:53.335Z', 'Friedrich.Harber43', 'LXD0e2unDj00pxf', '2', 1),
+  ('24', 'Santos Spencer DVM', 'Edwin46@gmail.com', '3202112457', 0, '2074-05-29T22:06:50.734Z', 'Alphonso_Brown80', 'V4B9IwxMzbGfa5k', '2', 1),
+  ('25', 'Shelia Spencer', 'Noemy.Willms@hotmail.com', '3302480592', 0, '2020-03-24T20:09:58.686Z', 'Nathaniel6', 'Z7eSVCjr_f6TYKw', '2', 1),
+  ('26', 'Tamara Bauch', 'Kathlyn.Ward@hotmail.com', '9424350834', 1, '2078-11-13T08:53:06.226Z', 'Llewellyn8', 'JSFnxrJ3dm3MbtX', '2', 1),
+  ('27', 'Aubrey Armstrong', 'Daphne.Legros35@gmail.com', '2774496255', 1, '1996-03-07T11:39:00.415Z', 'Keshaun.Hand17', 'p2UDOM1am9WCALM', '2', 1),
+  ('28', 'Jerald Schowalter', 'Quinten2@hotmail.com', '2205077818', 0, '2040-01-27T07:08:00.710Z', 'Jazmyn_Wolff', 'iARWhqqCX5kvuMv', '2', 1),
+  ('29', 'Danny Feeney', 'Sabryna.Batz@hotmail.com', '6407649025', 1, '2006-11-23T15:24:30.286Z', 'Ella_Baumbach', 'UGR339pgkxcdPjU', '2', 1),
+  ('30', 'Danny Zieme', 'Everette87@yahoo.com', '3539876170', 0, '2055-04-13T19:41:08.029Z', 'Ocie.Yost', 'RamzYYpF0jj3FCW', '2', 1),
+  ('31', 'Guadalupe Reinger', 'Mose28@hotmail.com', '6768868859', 0, '2003-12-10T03:50:50.240Z', 'Rafaela.Volkman41', 'ayzVSIBE0PsrdXA', '2', 1),
+  ('32', 'Edmond Steuber Jr.', 'Lennie.Marquardt@yahoo.com', '9556578959', 0, '2094-08-18T10:44:28.771Z', 'Kristy.Emard26', 'bahPOZeXNwPu0eR', '2', 1),
+  ('33', 'Tami Walker', 'Jensen_Simonis@yahoo.com', '7704434284', 0, '2013-09-24T14:40:13.130Z', 'Camille.Ward78', 'vORSHPvl96Dh19I', '2', 1),
+  ('34', 'Travis Kuhic', 'Marcus_Predovic58@gmail.com', '7845330450', 0, '2030-05-28T11:20:00.474Z', 'Sonny_Collins', 'DgEcqHzMi5baz0h', '2', 1),
+  ('35', 'Adrienne Padberg', 'Jeremie_Walsh@gmail.com', '3323572737', 0, '2010-11-06T07:19:51.913Z', 'Mattie.Ledner', '8CuJ7N1kTaopWVF', '2', 1),
+  ('36', 'Seth Quigley', 'Edwina.Kunze31@hotmail.com', '2927134038', 0, '2040-03-30T08:46:26.297Z', 'Alysa35', 'T93Gh_5RhtocDtk', '2', 1),
+  ('37', 'Omar Christiansen', 'Dion_Stark26@gmail.com', '5378412434', 0, '2053-12-13T13:34:50.327Z', 'Keegan.OKeefe6', 'Lr59_dizM11ku_l', '2', 1),
+  ('38', 'Brendan Kulas', 'Anissa.McKenzie@hotmail.com', '5038192107', 0, '2032-11-04T01:12:31.988Z', 'Rosemary.Friesen', 'EcczeHkIejzOMrK', '2', 1),
+  ('39', 'Katie Runolfsdottir', 'Presley.Mante92@gmail.com', '6892667875', 1, '2064-03-01T16:55:05.879Z', 'Bradley97', 'Cr2d6M_GWLkFHWH', '2', 1),
+  ('40', 'Elizabeth Schumm', 'Sigmund_Green31@gmail.com', '3777392432', 0, '2037-04-17T02:56:55.432Z', 'Raphael_Olson14', 'zGWrCD665ToTdPp', '2', 1),
+  ('41', 'Tara Lynch', 'Jeramie57@hotmail.com', '5112555050', 0, '2099-01-07T17:09:38.164Z', 'Trinity.Price', '7nxE8t84Ne_Sm9O', '2', 1),
+  ('42', 'Nelson Cremin', 'Blair.Carter@yahoo.com', '8377825226', 1, '1992-05-14T14:15:05.098Z', 'Juwan57', 'EGjVn9V1Ajy0c2j', '2', 1),
+  ('43', 'Toni Macejkovic DVM', 'Jaida.Buckridge@gmail.com', '9112673583', 0, '1998-07-01T15:59:05.162Z', 'Grace_Kirlin62', 'XAhJ8YYoKh3xuL9', '2', 1),
+  ('44', 'Phyllis Schuppe', 'Jada_Wisozk@yahoo.com', '6238644745', 1, '2003-06-23T03:56:33.429Z', 'Jessy93', 'PnVcl1DlRFH82bF', '2', 1),
+  ('45', 'Jordan McKenzie', 'Agnes_Bechtelar@yahoo.com', '5309012838', 0, '2051-05-20T10:04:15.253Z', 'Heaven.Prosacco', 'R4s6_sBYa73nrZh', '2', 1),
+  ('46', 'Courtney Hilll', 'Kaya_Nolan84@yahoo.com', '7434284726', 0, '2063-09-12T11:48:00.623Z', 'Winston_Rutherford', '5XrBb4z3eZp5Noz', '2', 1),
+  ('47', 'Casey Connelly MD', 'Destin.Rippin76@yahoo.com', '6164389880', 1, '2015-01-13T21:23:51.590Z', 'Kraig.Sanford', 'M30g2CZNdmPFAhr', '2', 1),
+  ('48', 'Monica Flatley', 'Valentine_Casper67@yahoo.com', '9019336872', 1, '2059-05-03T00:21:14.747Z', 'Fabian.Lesch', 'WKl6apTlMhoYuAk', '2', 1),
+  ('49', 'Karl Roob', 'Clementine79@hotmail.com', '6896560243', 1, '2001-03-15T14:34:50.455Z', 'Cecilia99', 'JebJNYAo0IUEGrF', '2', 1),
+  ('50', 'Jana Fisher', 'Sydni_Romaguera37@yahoo.com', '4805059507', 0, '1999-12-24T13:49:15.218Z', 'Webster_Hartmann76', '5Hwj4VqJjBNyb0J', '2', 1);

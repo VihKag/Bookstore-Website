@@ -51,7 +51,20 @@ namespace bookStore.Services.UserService
         }
         public List<UserDTO> GetAllUser()
         {
-            List<User> entityList = _userRepository.FindAll();
+            List<User> entityList = _userRepository.FindByCondition(x => x.Role == "2");
+            List<UserDTO> dtoList = new List<UserDTO>();
+            foreach (User entity in entityList)
+            {
+                UserDTO dto = _mappingService.GetMapper().Map<UserDTO>(entity);
+                dtoList.Add(dto);
+
+            }
+            return dtoList;
+        }
+
+        public List<UserDTO> GetAllAdmin()
+        {
+            List<User> entityList = _userRepository.FindByCondition(x => x.Role == "1");
             List<UserDTO> dtoList = new List<UserDTO>();
             foreach (User entity in entityList)
             {
@@ -134,16 +147,20 @@ namespace bookStore.Services.UserService
             });
         }
 
-        public List<UserDTO> PaginationUser(int pageNumber, int pageSize)
+        public PagedList<UserDTO> PaginationUser(int pageNumber, int pageSize)
         {
             var allUsers = GetAllUser();
-
-            var pagedUsers = allUsers.ToPagedList(pageNumber, pageSize);
-            var pagedUsersList = pagedUsers.ToList();
+            PagedList<UserDTO> pagedUsersList = new PagedList<UserDTO>(allUsers, pageNumber, pageSize);
+            return pagedUsersList;
+        }
+        public PagedList<UserDTO> PaginationAdmin(int pageNumber, int pageSize)
+        {
+            var allAdmins = GetAllAdmin();
+            PagedList<UserDTO> pagedUsersList = new PagedList<UserDTO>(allAdmins, pageNumber, pageSize);
             return pagedUsersList;
         }
 
-        public async Task<AuthResult> Register(UserFormDTO dto)
+            public async Task<AuthResult> Register(UserFormDTO dto)
         {
             if (!IsValidEmail(dto.Email))
             {
